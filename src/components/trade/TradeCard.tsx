@@ -16,9 +16,9 @@ interface Props {
   className?: string;
 }
 
-/** "Mon 28 session · Sun 19:44 ET" */
-export function tradeWhen(t: Trade): string {
-  return `${fmtDayShort(t.session_day)} session · ${fmtDayShort(t.open).slice(0, 3)} ${fmtTime(t.open)} ET`;
+/** "Mon 28 session · Sun 19:44 ET" ("Mon 28 · Sun 19:44 ET" when short). */
+export function tradeWhen(t: Trade, short = false): string {
+  return `${fmtDayShort(t.session_day)}${short ? "" : " session"} · ${fmtDayShort(t.open).slice(0, 3)} ${fmtTime(t.open)} ET`;
 }
 
 /** The unit shown under the result: R when the result is in another unit, $ when it is in R. */
@@ -44,7 +44,7 @@ export function TradeCard({ trade: t, unit, href, compact = false, shotHeight, c
         )}
       </div>
       <span className="k" style={compact ? { fontSize: 10 } : undefined}>
-        {tradeWhen(t)}
+        {tradeWhen(t, compact)}
         {t.entry_type !== "first" && (
           <span className="blue">
             {" "}

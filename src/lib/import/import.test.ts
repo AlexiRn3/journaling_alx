@@ -356,3 +356,33 @@ test("orders CSV (synthetic sample, NOT a real Tradesea export): stops and targe
   assert.deepEqual(readStamp("2026-09-27T23:44:35Z"), { time: "2026-09-27T19:44:35", clock: null });
   assert.equal(parseOrdersCsv("hello,world\n1,2").error !== null, true);
 });
+
+test("orders CSV in the documented Tradesea layout: DD.M.YYYY stamps with a zone, CME:MNQ symbols", () => {
+  // Columns as documented by journal tools that import Tradesea's Orders → Export file:
+  // Time, Symbol, Qty, Side, Order Type, Limit Price, Stop Price, Avg Price, Commission, Status.
+  const csv = [
+    "Time,Symbol,Qty,Side,Order Type,Limit Price,Stop Price,Avg Price,Commission,Status",
+    // Trade 9 (long 10 @ 30,809.47, 19:44:34 → 20:23:39 ET)
+    '"27.9.2026, 19:44:34 EDT",CME:MNQ,10,Buy,Market,,,30809.47,18.20,Filled',
+    '"27.9.2026, 19:44:35 EDT",CME:MNQ,10,Sell,Stop,,30800.00,,0,Cancelled',
+    // Same instant written by a browser set to Paris time: converted back to ET.
+    '"28.9.2026, 01:44:35 CEST",CME:MNQ,10,Sell,Limit,30900.25,,30900.25,0,Filled',
+    // Another instrument: ignored.
+    '"27.9.2026, 19:44:35 EDT",CME:MES,10,Sell,Stop,,5700.00,,0,Cancelled',
+  ].join("\n");
+
+  assert.deepEqual(readStamp("27.9.2026, 19:44:34 EDT"), { time: "2026-09-27T19:44:34", clock: null });
+  assert.deepEqual(readStamp("28.9.2026, 01:44:35 CEST"), { time: "2026-09-27T19:44:35", clock: null });
+  assert.deepEqual(readStamp("27.9.2026, 23:44:35 GMT+0"), { time: "2026-09-27T19:44:35", clock: null });
+
+  const parsed = parseOrdersCsv(csv);
+  assert.equal(parsed.error, null);
+  assert.equal(parsed.orders.length, 4);
+  assert.equal(parsed.columns.time, "Time");
+
+  const { report, db } = planImport(STORED(), { csv });
+  assert.equal(report.csv?.matches.length, 1);
+  const t9 = db.trades.find((t) => t.id === 9)!;
+  assert.deepEqual(t9.stop, { price: 30800, source: "csv" });
+  assert.deepEqual(t9.target, { price: 30900.25, source: "csv" });
+});

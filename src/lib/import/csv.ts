@@ -91,7 +91,33 @@ function num(s: string | undefined): number | null {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/** Reads a date-time cell. Returns a naive ET timestamp, or only a clock time. */
+/** Hours from UTC of the zone abbreviations a browser may print. ET ones are left as they are. */
+const ZONES: Record<string, number> = {
+  UTC: 0, GMT: 0, Z: 0, WET: 0, WEST: 1, BST: 1, CET: 1, CEST: 2, EET: 2, EEST: 3,
+  CST: -6, CDT: -5, MST: -7, MDT: -6, PST: -8, PDT: -7,
+};
+const ET_ZONES = new Set(["ET", "EST", "EDT"]);
+
+/** Wall time in another zone → naive ET. */
+function toET(day: string, clock: string, offsetHours: number): string {
+  const [y, mo, d] = day.split("-").map(Number);
+  const [h, mi, se] = clock.split(":").map(Number);
+  return naiveET(new Date(Date.UTC(y, mo - 1, d, h, mi, se) - offsetHours * 3600_000));
+}
+
+/** Offset in hours of a trailing zone ("EDT", "CEST", "GMT+2", "UTC-04:00"); null = ET or none. */
+function zoneOffset(rest: string): number | null {
+  const g = /\b(?:GMT|UTC)\s*([+-])(\d{1,2})(?::?(\d{2}))?\b/i.exec(rest);
+  if (g) return (g[1] === "-" ? -1 : 1) * (+g[2] + (g[3] ? +g[3] / 60 : 0));
+  const a = /\b([A-Z]{1,5})\s*$/.exec(rest.trim());
+  if (!a || ET_ZONES.has(a[1]) || /^[AP]M$/.test(a[1])) return null;
+  return a[1] in ZONES ? ZONES[a[1]] : null;
+}
+
+/**
+ * Reads a date-time cell. Returns a naive ET timestamp, or only a clock time.
+ * Tradesea writes "28.9.2026, 19:44:34 EDT" (day first, zone of the browser): other zones are converted to ET.
+ */
 export function readStamp(s: string): { time: string | null; clock: string | null } {
   const v = s.trim();
   if (!v) return { time: null, clock: null };
@@ -107,6 +133,8 @@ export function readStamp(s: string): { time: string | null; clock: string | nul
   else if ((m = /(\d{1,2})\/(\d{1,2})\/(\d{2,4})/.exec(v))) {
     const y = m[3].length === 2 ? 2000 + +m[3] : +m[3];
     day = `${y}-${pad(+m[1])}-${pad(+m[2])}`;
+  } else if ((m = /(\d{1,2})\.(\d{1,2})\.(\d{4})/.exec(v))) {
+    day = `${m[3]}-${pad(+m[2])}-${pad(+m[1])}`; // DD.M.YYYY (Tradesea)
   }
   const rest = m ? v.slice(m.index + m[0].length) : v;
   const c = clockRe.exec(rest);
@@ -114,7 +142,9 @@ export function readStamp(s: string): { time: string | null; clock: string | nul
   let h = +c[1];
   if (c[4]) h = (h % 12) + (c[4][0].toLowerCase() === "p" ? 12 : 0);
   const clock = `${pad(h)}:${pad(+c[2])}:${pad(+(c[3] ?? 0))}`;
-  return day ? { time: `${day}T${clock}`, clock: null } : { time: null, clock };
+  if (!day) return { time: null, clock };
+  const offset = zoneOffset(rest.slice(c.index + c[0].length));
+  return { time: offset === null ? `${day}T${clock}` : toET(day, clock, offset), clock: null };
 }
 
 function orderType(raw: string, hasStop: boolean, hasLimit: boolean): OrderType {
@@ -254,7 +284,8 @@ export function matchOrders(trades: Trade[], orders: Order[], instrument = "MNQ"
     const targets: CsvPick[] = [];
     for (const o of orders) {
       if (o.side !== closing || o.price === null) continue;
-      if (o.symbol && !o.symbol.toUpperCase().replace(/[^A-Z]/g, "").startsWith(instrument.toUpperCase())) continue;
+      // "CME:MNQ", "MNQZ6", "/MNQ": compare what follows the exchange prefix.
+      if (o.symbol && !o.symbol.toUpperCase().split(":").pop()!.replace(/[^A-Z]/g, "").startsWith(instrument.toUpperCase())) continue;
       const when = within(o, t);
       if (!when) continue;
       const pick = { price: round2(o.price), status: o.status, line: o.line, time: when };

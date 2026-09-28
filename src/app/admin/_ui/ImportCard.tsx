@@ -101,7 +101,7 @@ function pasteChecks(r: ImportReport): Item[] {
 function csvChecks(r: ImportReport, fileName: string): Item[] {
   const c = r.csv;
   if (!c) return [];
-  const items: Item[] = [{ mark: "warn", text: "Orders CSV · untested against a real Tradesea export" }];
+  const items: Item[] = [{ mark: "warn", text: "Orders CSV · not yet checked on a real Tradesea export" }];
   if (c.error) return [...items, { mark: "warn", text: c.error }];
   items.push({ mark: c.orders ? "ok" : "warn", text: `${n(c.orders, "order")} read from ${fileName}` });
   if (c.unreadable.length) items.push({ mark: "warn", text: `${n(c.unreadable.length, "line")} not read`, details: lineList(c.unreadable) });
@@ -325,6 +325,11 @@ export function ImportCard() {
               ) : (
                 <>
                   <span className={`k ${s.label}`}>The day&rsquo;s orders · Tradesea › Orders › Export</span>
+                  <p className={s.hint}>
+                    In Tradesea on a computer (web or desktop, not the phone app): open the <strong>Orders</strong> tab of the bottom
+                    panel, then the <strong>Export</strong> button at the bottom of that panel. It only exports <strong>today&rsquo;s</strong>{" "}
+                    orders, so export before the day ends.
+                  </p>
                   <label className={`${s.drop} ${csv ? s.loaded : ""}`}>
                     <input
                       ref={fileRef}
@@ -361,8 +366,9 @@ export function ImportCard() {
                     </button>
                   )}
                   <p className={s.untested}>
-                    <strong>Untested.</strong> No real export was available when this import was built: the columns are guessed from
-                    their names (symbol, side, type, qty, stop / limit price, status, time) and times without a zone are read as ET.
+                    <strong>Not yet checked on one of your files.</strong> Built for the layout journal tools document for this export
+                    (Time, Symbol, Qty, Side, Order Type, Limit Price, Stop Price, Avg Price, Commission, Status, times like
+                    &ldquo;27.9.2026, 19:44:34 EDT&rdquo;); other column names are guessed. Times in another zone are converted to ET.
                     Check the stops in the list before importing.
                   </p>
                   {report?.csv && !report.csv.error && (

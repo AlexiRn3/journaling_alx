@@ -1,5 +1,6 @@
 // /admin: import (paste from Tradesea, orders CSV, auto-sync later) and every trade with what
 // its sheet still misses. Reads data/trades.json on each request (local admin, `next dev`).
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageTransition } from "@/components/site/transitions";
 import { hasFullSheet, sortByOpen } from "@/lib/calc";
@@ -10,6 +11,7 @@ import { TradeList, type ListRow } from "./_ui/TradeList";
 import s from "./_ui/list.module.css";
 
 export const dynamic = "force-dynamic";
+export const metadata: Metadata = { title: { absolute: "Trades · ALX admin" } };
 
 export default function AdminPage() {
   if (!adminEnabled()) notFound();

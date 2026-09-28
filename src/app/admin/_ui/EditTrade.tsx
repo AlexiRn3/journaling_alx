@@ -11,7 +11,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { swap } from "@/components/site/transitions";
 import { Seg } from "@/components/ui/Seg";
 import { fmtDayMonth, fmtDayShort, fmtTime } from "@/lib/dates";
-import { ENTRY_ICON, fmtGap, fmtMoney, fmtPrice, MINUS } from "@/lib/format";
+import { ENTRY_ICON, fmtGap, fmtMoney, fmtPrice, fmtValue, MINUS } from "@/lib/format";
 import type { AdminTrade } from "@/lib/import/derive";
 import type { AutoValues } from "@/lib/import/edit";
 import type { EntryType, Result, Session, Side, Trade } from "@/lib/types";
@@ -92,6 +92,8 @@ function parseNum(v: string): number | null {
 }
 
 const signed = (v: number, d = 2) => `${v > 0 ? "+" : v < 0 ? MINUS : ""}${Math.abs(v).toFixed(d)}`;
+/** "8.23 pts": rounds like the rest of the site (8.225 is 8.2249999… in binary). */
+const pts = (v: number) => fmtValue(v, "pts", { signed: false });
 
 type SaveState = "idle" | "saving" | "saved" | "error";
 
@@ -248,7 +250,7 @@ export function EditTrade({ trade: initial, auto: initialAuto, slug, linked, poi
     if (stopTyped) return "Typed by you: risk and R below use it. Save to keep it.";
     switch (t.stop.source) {
       case "estimated_avg_loser_distance":
-        return `Estimated from your stopped trades, ${avgStop.toFixed(2)} pts. Type the real one if you know it.`;
+        return `Estimated from your stopped trades, ${pts(avgStop)}. Type the real one if you know it.`;
       case "manual":
         return `Typed by you. Clear the field to go back to the automatic stop, ${fmtPrice(auto.stop.price)}.`;
       case "csv":
@@ -366,7 +368,7 @@ export function EditTrade({ trade: initial, auto: initialAuto, slug, linked, poi
                   />
                 ) : (
                   <div id={`story-${f.key}`} className={`${s.md} ${s.mdEmpty} fade-in`}>
-                    Empty: this part is left out of the public sheet.
+                    Empty.
                   </div>
                 )}
               </div>
@@ -424,7 +426,7 @@ export function EditTrade({ trade: initial, auto: initialAuto, slug, linked, poi
                 <span className="mono">
                   {estimated ? "~" : ""}
                   {fmtMoney(risk, { signed: false })}
-                  <span className="pencil"> · {distance.toFixed(2)} pts</span>
+                  <span className="pencil"> · {pts(distance)}</span>
                 </span>
               </div>
               <div className={s.kv}>
@@ -461,20 +463,20 @@ export function EditTrade({ trade: initial, auto: initialAuto, slug, linked, poi
             <h2 id="class-h" className={s.h3}>
               Classification
             </h2>
-            <div className={s.pair}>
-              <div className={s.fld}>
-                <label htmlFor="session" className={s.lbl}>
-                  Session
-                </label>
-                <select id="session" className={s.in} value={form.session} onChange={(e) => set("session", e.target.value as Session)}>
-                  {SESSIONS.map((x) => (
-                    <option key={x} value={x}>
-                      {x}
-                      {x === auto.session ? " (from entry time)" : ""}
-                    </option>
-                  ))}
-                </select>
-              </div>
+            <div className={s.fld}>
+              <label htmlFor="session" className={s.lbl}>
+                Session
+              </label>
+              <select id="session" className={s.in} value={form.session} onChange={(e) => set("session", e.target.value as Session)}>
+                {SESSIONS.map((x) => (
+                  <option key={x} value={x}>
+                    {x}
+                    {x === auto.session ? " (from entry time)" : ""}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={`${s.pair} ${s.selects}`}>
               <div className={s.fld}>
                 <label htmlFor="etype" className={s.lbl}>
                   Entry type
@@ -501,12 +503,12 @@ export function EditTrade({ trade: initial, auto: initialAuto, slug, linked, poi
                   ))}
                 </select>
               </div>
-              <div className={s.fld}>
-                <label htmlFor="day" className={s.lbl}>
-                  Trading day
-                </label>
-                <input id="day" type="date" className={s.in} value={form.session_day} required onChange={(e) => set("session_day", e.target.value)} />
-              </div>
+            </div>
+            <div className={s.fld}>
+              <label htmlFor="day" className={s.lbl}>
+                Trading day <span className={s.lblNote} title="CME session, 18:00 → 17:00 ET">· auto {fmtDayMonth(auto.session_day)}</span>
+              </label>
+              <input id="day" type="date" className={s.in} value={form.session_day} required onChange={(e) => set("session_day", e.target.value)} />
             </div>
             <div className={s.kvs}>
               <div className={s.kv}>
@@ -519,12 +521,6 @@ export function EditTrade({ trade: initial, auto: initialAuto, slug, linked, poi
                   ) : (
                     <span className="pencil">{linkLine}</span>
                   )}
-                </span>
-              </div>
-              <div className={s.kv}>
-                <span className="k">Computed</span>
-                <span className="mono pencil" style={{ fontSize: 12 }}>
-                  {auto.session} · {ENTRY.find((x) => x.v === auto.entry_type)?.label} · {RESULTS.find((x) => x.v === auto.result)?.label} · {fmtDayMonth(auto.session_day)}
                 </span>
               </div>
             </div>
@@ -548,7 +544,7 @@ export function EditTrade({ trade: initial, auto: initialAuto, slug, linked, poi
             </span>
             <div className={s.buttons}>
               {slug && saved.published !== false ? (
-                <a className="btn plain" href={`/journal/${slug}`} target="_blank" rel="noopener" title={dirty ? "Shows the saved version" : undefined}>
+                <a className="btn" href={`/journal/${slug}`} target="_blank" rel="noopener" title={dirty ? "Shows the saved version" : undefined}>
                   Preview
                 </a>
               ) : (
@@ -587,7 +583,7 @@ function sourceText(source: Trade["stop"]["source"], avg: number, linked: Linked
     case "previous_attempt_stop":
       return `Kept from the stopped attempt before it${linked ? ` (#${linked.id})` : ""}.`;
     case "estimated_avg_loser_distance":
-      return `Estimated from your stopped trades, ${avg.toFixed(2)} pts.`;
+      return `Estimated from your stopped trades, ${fmtValue(avg, "pts", { signed: false })}.`;
     case "csv":
       return "Read from the orders CSV.";
     case "manual":

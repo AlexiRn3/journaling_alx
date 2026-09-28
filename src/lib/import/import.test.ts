@@ -51,15 +51,11 @@ const emptyDb = (): TradesFile => {
 };
 
 /**
- * Stored values that differ from the pipeline on purpose, explained in the admin report.
- * Trade 9's exit is the weighted average of 9 @ 30,900.25 and 1 @ 30,894.00 = 30,899.625 exactly:
- * the file holds 30,899.62 (round half to even), the pipeline rounds half away from zero, 30,899.63,
- * like the plan board (02-donnees-import-calculs.html) and the admin wireframe. Points (+90.15),
- * net, risk and R do not depend on it: points are averaged per contract from the rows.
+ * Stored values allowed to differ from the pipeline, with the reason. None today: trade 9's exit
+ * (9 @ 30,900.25 + 1 @ 30,894.00 = 30,899.625) is stored rounded half away from zero, 30,899.63,
+ * like the pipeline and the plan board.
  */
-const KNOWN_SLIPS: Record<string, { stored: unknown; computed: unknown }> = {
-  "9.exit": { stored: 30899.62, computed: 30899.63 },
-};
+const KNOWN_SLIPS: Record<string, { stored: unknown; computed: unknown }> = {};
 
 test("pasting the 10 raw Tradesea rows reproduces the 9 trades of data/trades.json", () => {
   const stored = STORED();

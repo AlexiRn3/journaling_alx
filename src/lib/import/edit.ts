@@ -177,11 +177,12 @@ export function applyTradeEdit(db: TradesFile, id: number, edit: TradeEdit): Edi
 
   // Stop and target: a typed value becomes "manual"; an empty field goes back to automatic.
   const manualDir = t.side === "Long" ? "below" : "above";
+  const entry = t.entry.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   if (edit.stop !== undefined) {
     if (edit.stop === null) {
       if (t.stop.source === "manual" || t.stop.source === "csv") t.stop = { price: 0, source: "estimated_avg_loser_distance" };
     } else if (!stopSideOk(t, edit.stop)) {
-      errors.push(`The stop of a ${t.side.toLowerCase()} must be ${manualDir} the entry (${t.entry}).`);
+      errors.push(`The stop of a ${t.side.toLowerCase()} must be ${manualDir} the entry (${entry}).`);
     } else if (edit.stop !== t.stop.price || t.stop.source === "manual") {
       t.stop = { price: edit.stop, source: "manual" };
     }
@@ -190,7 +191,7 @@ export function applyTradeEdit(db: TradesFile, id: number, edit: TradeEdit): Edi
     if (edit.target === null) {
       if (t.target && (t.target.source === "manual" || t.target.source === "csv")) t.target = null;
     } else if (!targetSideOk(t, edit.target)) {
-      errors.push(`The target of a ${t.side.toLowerCase()} must be ${t.side === "Long" ? "above" : "below"} the entry (${t.entry}).`);
+      errors.push(`The target of a ${t.side.toLowerCase()} must be ${t.side === "Long" ? "above" : "below"} the entry (${entry}).`);
     } else if (!t.target || edit.target !== t.target.price || t.target.source === "manual") {
       t.target = { price: edit.target, source: "manual" };
     }

@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, ViewTransition, type DragEvent, type KeyboardEvent, type ReactNode } from "react";
 import { swap } from "@/components/site/transitions";
 import type { ImportReport } from "@/lib/import/plan";
-import { fmtMoney } from "@/lib/format";
+import { fmtMoney, fmtPrice, fmtValue } from "@/lib/format";
 import s from "./import.module.css";
 
 type Tab = "paste" | "csv";
@@ -91,7 +91,8 @@ function pasteChecks(r: ImportReport): Item[] {
       : { mark: "ok", text: "0 duplicates" },
   );
   if (r.restopped.length) {
-    const avg = r.avgStop.before !== r.avgStop.after ? ` · loser average ${r.avgStop.before.toFixed(2)} → ${r.avgStop.after.toFixed(2)} pts` : "";
+    const p = (v: number) => fmtValue(v, "pts", { signed: false });
+    const avg = r.avgStop.before !== r.avgStop.after ? ` · loser average ${p(r.avgStop.before)} → ${p(r.avgStop.after)}` : "";
     items.push({ mark: "ok", text: `Stop and R updated on ${n(r.restopped.length, "stored trade")}${avg}` });
   }
   return items;
@@ -113,8 +114,8 @@ function csvChecks(r: ImportReport, fileName: string): Item[] {
       text: `Stops read for ${n(stops.length, "trade")}, targets for ${targets.length}`,
       details: c.matches.map(
         (m) =>
-          `${m.label}: ${m.stop ? `stop ${m.stop.price.toFixed(2)} (${m.stop.status || "?"})` : "no stop"} · ${
-            m.target ? `target ${m.target.price.toFixed(2)} (${m.target.status || "?"})` : "no target"
+          `${m.label}: ${m.stop ? `stop ${fmtPrice(m.stop.price)} (${m.stop.status || "?"})` : "no stop"} · ${
+            m.target ? `target ${fmtPrice(m.target.price)} (${m.target.status || "?"})` : "no target"
           }${m.applied.stop || m.applied.target ? "" : " · already there"}`,
       ),
     });

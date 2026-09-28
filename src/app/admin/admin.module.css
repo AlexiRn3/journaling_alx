@@ -32,12 +32,12 @@
   }
 }
 
-.brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.brand { display: flex; align-items: center; gap: 16px; flex: none; }
 .logo { display: flex; color: var(--bar-fg); border: 0; }
 .logo:hover { color: var(--bar-fg); }
 .badge { font-size: 12px; letter-spacing: .12em; }
 
-.right { display: flex; align-items: center; gap: 20px; min-width: 0; font-size: 15px; }
+.right { display: flex; align-items: center; justify-content: flex-end; gap: 20px; min-width: 0; font-size: 15px; }
 .where {
   color: var(--bar-dim);
   white-space: nowrap;

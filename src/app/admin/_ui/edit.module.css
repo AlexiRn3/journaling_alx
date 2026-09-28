@@ -1,0 +1,252 @@
+/* /admin/trades/[id] */
+
+.page { display: flex; flex-direction: column; }
+.back { align-self: flex-start; font-size: 16px; }
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-top: 20px;
+}
+.headText { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.title { font-size: 52px; font-weight: 500; letter-spacing: -.02em; line-height: 1; }
+.pill {
+  font-family: var(--monof);
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--pencil);
+  white-space: nowrap;
+}
+.pub { border-color: var(--gain); color: var(--gain); }
+
+/* Imported data, locked */
+.locked {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  align-items: center;
+  margin-top: 24px;
+  padding: 14px 18px;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  font-family: var(--monof);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+}
+.lock { color: var(--pencil); flex: none; }
+.from { margin-left: auto; font-size: 11px; color: var(--pencil); }
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  gap: 40px;
+  margin-top: 40px;
+  align-items: start;
+}
+.main { display: flex; flex-direction: column; gap: 44px; min-width: 0; }
+.section { display: flex; flex-direction: column; gap: 20px; }
+.section:first-child { gap: 14px; }
+.sectionHead { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px 16px; }
+.mdSwitch { display: flex; align-items: center; gap: 14px; }
+.h2 { font-size: 28px; font-weight: 500; }
+.h3 { font-size: 24px; font-weight: 500; }
+
+.fld { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.lbl {
+  font-family: var(--monof);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink2);
+}
+.lblNote { text-transform: none; letter-spacing: 0; color: var(--pencil); }
+.hint { font-size: 15px; line-height: 1.4; color: var(--pencil); }
+.errText { font-size: 15px; line-height: 1.4; color: var(--loss); }
+
+.in {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  font-family: var(--monof);
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--field);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  transition: border-color var(--fast) var(--ease), color var(--fast) var(--ease);
+}
+select.in { padding: 0 10px; cursor: pointer; }
+.in:focus { outline: none; border-color: var(--ink2); }
+.in:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+.in::placeholder { color: var(--pencil); font-style: italic; }
+.est { font-style: italic; color: var(--pencil); }
+.bad { border-color: var(--loss); }
+
+.ta {
+  width: 100%;
+  min-height: 120px;
+  height: 120px;
+  padding: 14px;
+  resize: vertical;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--field);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  transition: border-color var(--fast) var(--ease);
+}
+.ta::placeholder { color: var(--pencil); }
+.ta:focus { outline: none; border-color: var(--ink2); }
+.ta:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+
+/* Markdown preview: same box, rendered like the public sheet */
+.md {
+  min-height: 120px;
+  padding: 12px 14px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--sheet);
+  border: 1px dashed var(--rule);
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+.md > * + * { margin-top: .6em; }
+.md :global(p), .md :global(ul), .md :global(ol) { margin: 0; }
+.md :global(ul), .md :global(ol) { padding-left: 1.3em; }
+.md :global(* + p), .md :global(* + ul), .md :global(* + ol) { margin-top: .6em; }
+.md :global(code) { font-family: var(--monof); font-size: .85em; }
+.md :global(h1), .md :global(h2), .md :global(h3) { font-size: 20px; margin: .4em 0 0; }
+.md :global(blockquote) { margin: 0; padding-left: 12px; border-left: 2px solid var(--rule); color: var(--ink2); }
+.mdEmpty { color: var(--pencil); font-style: italic; display: flex; align-items: center; }
+
+/* Screenshots */
+.shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.drop {
+  position: relative;
+  height: 220px;
+  border: 1.5px dashed var(--pencil);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--sheet);
+  background-image:
+    linear-gradient(var(--rule2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule2) 1px, transparent 1px);
+  background-size: 24px 24px;
+  transition: border-color var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
+}
+.drop:hover { border-color: var(--ink); }
+.over { border-color: var(--blue); box-shadow: inset 0 0 0 2px var(--blue); }
+.filled { border-style: solid; border-color: var(--rule); }
+.dropBtn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: center;
+}
+.dropBtn:focus-visible { outline-offset: -4px; }
+.dropTitle { font-size: 17px; }
+.preview { display: block; width: 100%; height: 100%; border: 0; }
+.preview img { width: 100%; height: 100%; object-fit: contain; background: var(--sheet); }
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--rule2);
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  transform-origin: left;
+  transition: transform 160ms var(--ease);
+}
+.shotActions { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 18px; font-size: 15px; }
+.shotActions :global(.mono) { font-size: 11px; margin-left: auto; }
+.linkBtn {
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: none;
+  color: var(--blue);
+  font-size: 15px;
+  cursor: pointer;
+  min-height: 28px;
+}
+.linkBtn:hover { color: var(--ink); }
+.linkBtn:disabled { opacity: .45; cursor: default; }
+
+/* Right column */
+.aside { display: flex; flex-direction: column; gap: 20px; }
+.card {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+.kvs { display: flex; flex-direction: column; border-bottom: 1px solid var(--rule2); }
+.kv {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--rule2);
+  font-size: 15px;
+}
+.kv > :global(.k) { flex: none; }
+.linkLine { font-size: 13px; text-align: right; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+/* Two selects side by side need about 170 px each. */
+@container (max-width: 380px) {
+  .selects { grid-template-columns: minmax(0, 1fr); }
+}
+
+.check { display: flex; gap: 12px; align-items: center; font-size: 17px; cursor: pointer; min-height: 44px; }
+.check input { width: 22px; height: 22px; margin: 0; accent-color: var(--ink); cursor: pointer; }
+.buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+.buttons :global(.btn) { height: 46px; padding: 0 22px; }
+.save { min-width: 116px; transition: background-color 240ms var(--ease), color var(--fast) var(--ease), transform var(--fast) var(--ease); }
+.buttons .savedState:disabled,
+.buttons .savedState { opacity: 1; background: var(--gain); border-color: var(--gain); color: var(--paper); }
+
+/* Laptop */
+@media (max-width: 1180px) {
+  .grid { grid-template-columns: minmax(0, 1fr) 360px; gap: 32px; }
+}
+/* Tablet: one column, the cards side by side */
+@media (max-width: 960px) {
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .aside { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .aside > :last-child { grid-column: 1 / -1; }
+  .title { font-size: 44px; }
+}
+@media (max-width: 719px) {
+  .aside { grid-template-columns: minmax(0, 1fr); }
+  .shots { grid-template-columns: minmax(0, 1fr); }
+  .title { font-size: 36px; }
+  .from { margin-left: 0; }
+}

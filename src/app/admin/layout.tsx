@@ -10,7 +10,7 @@ import { adminEnabled, TRADES_FILE } from "@/lib/data";
 import s from "./admin.module.css";
 
 export const metadata: Metadata = {
-  title: "Admin",
+  title: { default: "Admin", template: "%s · ALX admin" },
   robots: { index: false, follow: false },
 };
 

@@ -23,6 +23,14 @@ export interface Exit {
   net: number;
 }
 
+/** Classification set by hand in the admin; wins over the computed value on later imports. */
+export interface TradeOverrides {
+  session?: Session;
+  entry_type?: EntryType;
+  result?: Result;
+  session_day?: string;
+}
+
 export interface Trade {
   id: number;
   side: Side;
@@ -56,6 +64,7 @@ export interface Trade {
   story: { context: string; scenario: string; why: string; management: string }; // Markdown
   mae: number | null; // points
   mfe: number | null; // points
+  overrides?: TradeOverrides; // only present when the admin changed a classification
 }
 
 export interface Rules {

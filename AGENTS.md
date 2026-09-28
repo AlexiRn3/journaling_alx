@@ -46,7 +46,13 @@ Mockups are fixed-size HTML: rebuild them responsively, never copy their absolut
 - Wrap in-page state changes that swap content in `swap(() => setX(...))` (unit, view, filters, selected day).
 - Durations 120–240 ms, `var(--ease)`, no bounce, no parallax. Respect `prefers-reduced-motion` (globals already does).
 
+## Admin and import
+
+- `/admin` (list + import) and `/admin/trades/[id]` (edit) run with `next dev` only (`adminEnabled()`), API under `src/app/api/admin/`.
+- Import pipeline: `src/lib/import/` (paste parser, CSV orders parser, merge, derived fields, edits). Tests: `npm test`.
+- To try the admin without touching the real data: `ALX_DATA_DIR=<copy of data/> npx next dev`.
+
 ## Checks
 
-- `npx tsc --noEmit`, then look at the page: several dev servers can share the repo with
-  `NEXT_DIST_DIR=.next-<name> npx next dev -p <port>`.
+- `npx tsc --noEmit`, `npm test`, then look at the page: several dev servers can share the repo with
+  `NEXT_DIST_DIR=.next-<name> npx next dev -p <port>` (revert the include lines `next dev` adds to tsconfig.json).

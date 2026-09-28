@@ -64,8 +64,8 @@
   .tr { grid-template-columns: 136px 128px 48px 34px 116px 60px 146px minmax(0, 1fr) 100px; }
 }
 
-/* Tablet: each trade on three lines. */
-@media (max-width: 960px) {
+/* Small laptop and tablet: each trade on three lines. */
+@media (max-width: 1100px) {
   .th { display: none; }
   .tr {
     grid-template-columns: auto auto auto minmax(0, 1fr) auto auto;

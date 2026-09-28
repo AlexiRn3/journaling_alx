@@ -1,0 +1,98 @@
+/* Bottom sheet: full-screen transparent dialog holding a backdrop and the panel. */
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  overflow: hidden;
+}
+.dialog::backdrop { background: transparent; }
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--backdrop);
+}
+
+.panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  max-width: 640px;
+  max-height: calc(100dvh - 72px);
+  display: flex;
+  flex-direction: column;
+  background: var(--sheet);
+  border-top: 1px solid var(--ink);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -12px 30px var(--shadow);
+  padding-bottom: var(--safe-b);
+  will-change: transform;
+}
+
+.dialog[open] .panel { animation: sheet-in 240ms var(--ease) backwards; }
+.dialog[open] .backdrop { animation: backdrop-in 240ms var(--ease) backwards; }
+
+@keyframes sheet-in { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* Drag zone: grip + title row. */
+.grab {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 16px 0;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.grab:active { cursor: grabbing; }
+.grip {
+  align-self: center;
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--rule);
+}
+.head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 6px;
+}
+.title {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.close { flex-shrink: 0; margin-right: -10px; color: var(--pencil); }
+.close:hover { color: var(--ink); }
+
+.body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 16px 20px;
+}
+
+@media (min-width: 720px) {
+  .panel {
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+  .grab { padding: 10px 24px 0; }
+  .body { padding: 0 24px 24px; }
+}

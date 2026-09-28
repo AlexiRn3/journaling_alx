@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALX · Journal, calendar</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap">
+<style>
+body{margin:0;background:#F2ECE1}
+.light{--paper:#F2ECE1;--sheet:#FAF7F0;--rule:#D8CFBF;--rule2:#E7DFD1;--ink:#211D18;--ink2:#3D372F;--pencil:#5E574D;--blue:#2A4A73;--gain:#245738;--loss:#A8452F;--gm:#1B7046;--lm:#DB8B6B;--bm:#B9AE9B;--gbg:rgba(27,112,70,.10);--lbg:rgba(168,69,47,.10);--dot:rgba(33,29,24,.05);--shadow:rgba(33,29,24,.14)}
+.dark{--paper:#1A1714;--sheet:#24201B;--rule:#3A332B;--rule2:#2E2923;--ink:#EDE5D8;--ink2:#D6CCBC;--pencil:#A89E8E;--blue:#9DB7DC;--gain:#8CC79D;--loss:#E08064;--gm:#5FB47D;--lm:#C4553A;--bm:#6B6256;--gbg:rgba(95,180,125,.14);--lbg:rgba(196,85,58,.16);--dot:rgba(237,229,216,.035);--shadow:rgba(0,0,0,.45)}
+.pg{position:relative;box-sizing:border-box;background-color:var(--paper);background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:4px 4px;color:var(--ink);font-family:'Newsreader',Georgia,serif;overflow:hidden}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
+a:hover{color:var(--ink)}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.g{color:var(--gain)}.l{color:var(--loss)}.be{color:var(--pencil)}
+.bar{position:absolute;left:0;right:0;top:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;box-sizing:border-box;background:var(--sheet);border-bottom:1px solid var(--rule);z-index:5}
+.seg{display:flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.seg button,.seg a{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;height:32px;line-height:32px;padding:0 12px;border:0;background:transparent;color:var(--ink2);cursor:pointer}
+.seg button[aria-pressed="true"],.seg a[aria-current="page"]{background:var(--ink);color:var(--paper)}
+.big a{font-size:13px;height:40px;line-height:40px;padding:0 18px}
+.tabbar{position:absolute;left:0;right:0;height:64px;display:flex;align-items:center;justify-content:center;background:var(--sheet);border-top:1px solid var(--rule);z-index:6}
+.tabbar .tabs{display:flex;gap:8px}
+.tabbar .tabs a{border:0;font-size:17px;height:64px;line-height:64px;padding:0 22px;color:var(--pencil)}
+.tabbar .tabs a:hover{color:var(--ink)}
+.tabbar .tabs a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 2px 0 var(--ink)}
+.tabbar .ib{position:absolute;right:24px;top:10px}
+.ib{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:0;padding:0;background:transparent;border-radius:22px;color:var(--ink);cursor:pointer}
+.day{display:flex;flex-direction:column;gap:6px;height:112px;box-sizing:border-box;padding:10px 12px;border:1px solid var(--rule2);border-radius:4px;background:transparent}
+.dn{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;color:var(--pencil)}
+.dv{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:15px}
+.dt{font-size:14px;color:var(--pencil)}
+.wk{display:flex;flex-direction:column;justify-content:center;gap:4px;height:112px;box-sizing:border-box;padding:0 14px;border-left:1px solid var(--ink)}
+.dots{display:flex;gap:4px;margin-top:auto}
+.w,.x,.b{width:8px;height:8px;border-radius:4px}
+.w{background:var(--gm)}.x{background:var(--lm)}.b{background:var(--bm)}
+.tr{display:grid;grid-template-columns:18px 52px 50px 30px minmax(0,1fr) 64px;align-items:center;gap:8px;min-height:48px;border:0;border-top:1px solid var(--rule);font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:13px;color:var(--ink)}
+.flt{display:flex;gap:8px;align-items:center}
+</style>
+<style>
+/* Export: bars behave like the real site (fixed), page centred */
+body{background:#E9E2D5}
+.pg{margin:0 auto}
+.when-dark,.when-light{display:contents}
+.light .when-dark,.dark .when-light{display:none}
+.bar,.mbar,.abar{position:fixed !important;top:0 !important;left:50% !important;right:auto !important;width:1440px;transform:translateX(-50%)}
+.tabbar,.mdock{position:fixed !important;top:auto !important;bottom:0 !important;left:50% !important;right:auto !important;width:1440px;transform:translateX(-50%)}
+</style>
+</head>
+<body>
+<div class="pg light" style="width: 1440px; height: 1240px">
+
+<header class="bar">
+<div style="display: flex; align-items: center; gap: 18px">
+<a href="home.html" aria-label="ALX, home" style="border: 0; color: var(--ink); display: flex"><svg width="56" height="26" viewBox="0 0 172 80" aria-hidden="true" style="color: var(--ink)"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="currentColor" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="currentColor"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="currentColor" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">X</text></svg></a>
+<span style="width: 1px; height: 20px; background: var(--rule)"></span>
+<span class="mono" style="font-size: 12px; color: var(--pencil)">Tradeify 50K · MNQ</span>
+</div>
+<div style="display: flex; align-items: center; gap: 16px">
+<div class="seg" role="group" aria-label="Unit"><button type="button" aria-pressed="false">R</button><button type="button" aria-pressed="true">$</button><button type="button" aria-pressed="false">pts</button><button type="button" aria-pressed="false">%</button></div>
+<div class="seg" role="group" aria-label="Period"><button type="button" aria-pressed="false">1W</button><button type="button" aria-pressed="false">1M</button><button type="button" aria-pressed="false">3M</button><button type="button" aria-pressed="false">YTD</button><button type="button" aria-pressed="true">All</button></div>
+<span class="mono" style="font-size: 11px; color: var(--pencil)">Updated Sep 28, 09:58 ET</span>
+</div>
+</header>
+
+<main style="position: absolute; left: 120px; right: 120px; top: 120px; display: flex; flex-direction: column">
+
+<div style="display: flex; justify-content: space-between; align-items: flex-end">
+<div style="display: flex; align-items: baseline; gap: 20px">
+<h1 style="margin: 0; font-size: 72px; font-weight: 500; letter-spacing: -0.02em; line-height: 1">Journal</h1>
+<span class="mono" style="font-size: 13px; color: var(--pencil)">9 trades · 2 sessions</span>
+</div>
+<nav class="seg big" aria-label="View"><a href="journal-calendar.html" aria-current="page">Calendar</a><a href="journal-cards.html">Cards</a><a href="journal-timeline.html">Timeline</a></nav>
+</div>
+
+<div style="display: flex; gap: 28px; align-items: center; margin-top: 32px; padding: 14px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule)">
+<div class="flt"><span class="k">Side</span><div class="seg"><button type="button" aria-pressed="true">All</button><button type="button" aria-pressed="false">Long</button><button type="button" aria-pressed="false">Short</button></div></div>
+<div class="flt"><span class="k">Result</span><div class="seg"><button type="button" aria-pressed="true">All</button><button type="button" aria-pressed="false">Win</button><button type="button" aria-pressed="false">Loss</button><button type="button" aria-pressed="false">BE</button></div></div>
+<div class="flt"><span class="k">Session</span><div class="seg"><button type="button" aria-pressed="true">All</button><button type="button" aria-pressed="false">Asia</button><button type="button" aria-pressed="false">London</button><button type="button" aria-pressed="false">New York</button></div></div>
+<div class="flt"><span class="k">Entry</span><div class="seg"><button type="button" aria-pressed="true">All</button><button type="button" aria-pressed="false">First</button><button type="button" aria-pressed="false">Re-entry</button><button type="button" aria-pressed="false">Flip</button></div></div>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; margin-top: 36px; align-items: start">
+
+<section style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<div style="display: flex; align-items: center; gap: 8px">
+<button type="button" class="ib" aria-label="Previous month"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></button>
+<h2 style="margin: 0; font-size: 32px; font-weight: 500; min-width: 250px; text-align: center">September 2026</h2>
+<button type="button" class="ib" aria-label="Next month"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button>
+</div>
+<span class="mono" style="font-size: 13px; color: var(--pencil)">Net <span class="g">+$2,145.62</span> · 2 days · best Mon 28</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)) 132px; gap: 6px">
+<span class="k">Mon</span><span class="k">Tue</span><span class="k">Wed</span><span class="k">Thu</span><span class="k">Fri</span><span class="k" style="padding-left: 14px">Week</span>
+<div class="day" style="opacity: .4"><span class="dn">31</span></div><div class="day"><span class="dn">1</span></div><div class="day"><span class="dn">2</span></div><div class="day"><span class="dn">3</span></div><div class="day"><span class="dn">4</span></div><div class="wk"><span class="mono" style="font-size: 13px; color: var(--pencil)">—</span></div>
+<div class="day"><span class="dn">7</span></div><div class="day"><span class="dn">8</span></div><div class="day"><span class="dn">9</span></div><div class="day"><span class="dn">10</span></div><div class="day"><span class="dn">11</span></div><div class="wk"><span class="mono" style="font-size: 13px; color: var(--pencil)">—</span></div>
+<div class="day"><span class="dn">14</span></div><div class="day"><span class="dn">15</span></div><div class="day"><span class="dn">16</span></div><div class="day"><span class="dn">17</span></div><div class="day"><span class="dn">18</span></div><div class="wk"><span class="mono" style="font-size: 13px; color: var(--pencil)">—</span></div>
+<div class="day"><span class="dn">21</span></div><div class="day"><span class="dn">22</span></div><div class="day"><span class="dn">23</span></div><div class="day"><span class="dn">24</span></div>
+<button type="button" class="day" style="background: var(--gbg); border-color: transparent; text-align: left; cursor: pointer; font-family: inherit; color: var(--ink)" aria-label="Friday Sep 25, +$854.20, 4 trades"><span class="dn" style="color: var(--ink)">25</span><span class="dv g">+$854.20</span><span class="dt">4 trades</span><span class="dots" aria-hidden="true"><span class="b"></span><span class="b"></span><span class="x"></span><span class="w"></span></span></button>
+<div class="wk"><span class="mono g" style="font-size: 15px">+$854.20</span><span class="dt">4 trades</span></div>
+<button type="button" class="day" style="background: var(--gbg); border: 2px solid var(--ink); text-align: left; cursor: pointer; font-family: inherit; color: var(--ink)" aria-pressed="true" aria-label="Monday Sep 28, +$1,291.42, 5 trades, selected"><span class="dn" style="color: var(--blue)">28 · today</span><span class="dv g">+$1,291.42</span><span class="dt">5 trades</span><span class="dots" aria-hidden="true"><span class="b"></span><span class="x"></span><span class="x"></span><span class="x"></span><span class="w"></span></span></button>
+<div class="day"><span class="dn">29</span></div><div class="day"><span class="dn">30</span></div><div class="day" style="opacity: .4"><span class="dn">1</span></div><div class="day" style="opacity: .4"><span class="dn">2</span></div>
+<div class="wk"><span class="mono g" style="font-size: 15px">+$1,291.42</span><span class="dt">5 trades</span></div>
+</div>
+<div style="display: flex; gap: 20px; align-items: center; padding-top: 4px">
+<span class="mono" style="font-size: 11px; color: var(--pencil); display: flex; gap: 6px; align-items: center"><span class="w"></span>win</span>
+<span class="mono" style="font-size: 11px; color: var(--pencil); display: flex; gap: 6px; align-items: center"><span class="x"></span>loss</span>
+<span class="mono" style="font-size: 11px; color: var(--pencil); display: flex; gap: 6px; align-items: center"><span class="b"></span>break-even</span>
+<span class="mono" style="font-size: 11px; color: var(--pencil); margin-left: auto">A day is a CME session, 18:00 → 17:00 ET</span>
+</div>
+</section>
+
+<aside style="display: flex; flex-direction: column; padding: 24px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 8px">
+<span class="k">Selected day</span>
+<h2 style="margin: 8px 0 0; font-size: 32px; font-weight: 500">Monday, Sep 28</h2>
+<span class="mono" style="font-size: 12px; color: var(--pencil); margin-top: 4px">Session opened Sun 18:00 ET</span>
+<span class="mono g" style="font-size: 36px; margin-top: 18px">+$1,291.42</span>
+<span style="font-size: 15px; color: var(--pencil); margin-top: 2px">5 trades · 1 win · 3 losses · 1 break-even</span>
+<div style="display: flex; flex-direction: column; margin-top: 20px">
+<a class="tr" href="trade.html"><span></span><span>19:12</span><span>Long</span><span>6</span><span class="be" style="text-align: right">BE −$11.42</span><span style="text-align: right; color: var(--pencil)">−0.12R</span></a>
+<a class="tr" href="trade.html"><span style="color: var(--blue)" aria-label="re-entry">↻</span><span>19:32</span><span>Long</span><span>8</span><span class="l" style="text-align: right">−$177.06</span><span style="text-align: right; color: var(--pencil)">−1.09R</span></a>
+<a class="tr" href="trade.html"><span style="color: var(--blue)" aria-label="re-entry">↻</span><span>19:35</span><span>Long</span><span>8</span><span class="l" style="text-align: right">−$138.56</span><span style="text-align: right; color: var(--pencil)">−1.12R</span></a>
+<a class="tr" href="trade.html"><span style="color: var(--blue)" aria-label="flip">⇄</span><span>19:42</span><span>Short</span><span>12</span><span class="l" style="text-align: right">−$166.34</span><span style="text-align: right; color: var(--pencil)">−1.15R</span></a>
+<a class="tr" href="trade.html" style="border-bottom: 1px solid var(--rule)"><span style="color: var(--blue)" aria-label="flip">⇄</span><span>19:44</span><span>Long</span><span>10</span><span class="g" style="text-align: right">+$1,784.80</span><span style="text-align: right; color: var(--pencil)">+10.85R</span></a>
+</div>
+<span class="mono" style="font-size: 11px; color: var(--pencil); margin-top: 12px">↻ re-entry · ⇄ flip · within 2 min · R est. on trade 5 and 9</span>
+<a href="journal-timeline.html" style="align-self: flex-start; font-size: 16px; margin-top: 20px">Read this day in the timeline →</a>
+</aside>
+</div>
+
+<footer style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 88px; padding-top: 20px; border-top: 1px solid var(--rule)">
+<span style="font-size: 15px; color: var(--ink2)">Not financial advice. Past performance does not guarantee future results.</span>
+<span class="mono" style="font-size: 11px; color: var(--pencil)">Data: Tradeify via Tradesea · Updated Sep 28, 2026 · © 2026 ALX</span>
+</footer>
+</main>
+
+<nav class="tabbar" aria-label="Main" style="top: 836px">
+<div class="tabs"><a href="home.html">Home</a><a href="journal-calendar.html" aria-current="page">Journal</a><a href="stats.html">Stats</a><a href="strategy.html">Strategy</a></div>
+<button type="button" class="ib" aria-label="Switch theme" onclick="toggleTheme()">
+<span class="when-dark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></span>
+<span class="when-light"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"></path></svg></span>
+</button>
+</nav>
+</div>
+<script>
+function toggleTheme(){var r=document.querySelector('.pg');var d=r.classList.contains('dark');r.classList.toggle('dark',!d);r.classList.toggle('light',d);}
+</script>
+</body>
+</html>

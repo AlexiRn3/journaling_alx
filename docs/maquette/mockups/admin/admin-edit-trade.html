@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALX · Admin, edit a trade</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap">
+<style>
+body{margin:0;background:#F2ECE1}
+.light{--paper:#F2ECE1;--sheet:#FAF7F0;--rule:#D8CFBF;--rule2:#E7DFD1;--ink:#211D18;--ink2:#3D372F;--pencil:#5E574D;--blue:#2A4A73;--gain:#245738;--loss:#A8452F;--gm:#1B7046;--lm:#DB8B6B;--bm:#B9AE9B;--gbg:rgba(27,112,70,.10);--lbg:rgba(168,69,47,.10);--dot:rgba(33,29,24,.05);--shadow:rgba(33,29,24,.14);--field:#FFFFFF}
+.dark{--paper:#1A1714;--sheet:#24201B;--rule:#3A332B;--rule2:#2E2923;--ink:#EDE5D8;--ink2:#D6CCBC;--pencil:#A89E8E;--blue:#9DB7DC;--gain:#8CC79D;--loss:#E08064;--gm:#5FB47D;--lm:#C4553A;--bm:#6B6256;--gbg:rgba(95,180,125,.14);--lbg:rgba(196,85,58,.16);--dot:rgba(237,229,216,.035);--shadow:rgba(0,0,0,.45);--field:#1F1B17}
+.pg{position:relative;box-sizing:border-box;background-color:var(--paper);background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:4px 4px;color:var(--ink);font-family:'Newsreader',Georgia,serif;overflow:hidden}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
+a:hover{color:var(--ink)}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.g{color:var(--gain)}.l{color:var(--loss)}
+.abar{position:absolute;left:0;right:0;top:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;box-sizing:border-box;background:#211D18;color:#EDE5D8;z-index:5}
+.abar a{color:#EDE5D8}
+.btn{font-family:'Newsreader',Georgia,serif;font-size:17px;height:46px;padding:0 22px;border-radius:6px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer}
+.btn2{font-family:'Newsreader',Georgia,serif;font-size:17px;height:46px;padding:0 22px;border-radius:6px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.fld{display:flex;flex-direction:column;gap:8px}
+.fld label,.lbl{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.in{box-sizing:border-box;height:46px;padding:0 14px;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:15px;color:var(--ink);background:var(--field);border:1px solid var(--rule);border-radius:6px}
+.ta{box-sizing:border-box;width:100%;height:120px;padding:14px;resize:none;font-family:'Newsreader',Georgia,serif;font-size:17px;line-height:1.5;color:var(--ink);background:var(--field);border:1px solid var(--rule);border-radius:6px}
+.hint{font-size:15px;line-height:1.4;color:var(--pencil)}
+.drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;height:220px;border:1.5px dashed var(--pencil);border-radius:8px;background-color:var(--sheet);background-image:linear-gradient(var(--rule2) 1px,transparent 1px),linear-gradient(90deg,var(--rule2) 1px,transparent 1px);background-size:24px 24px;cursor:pointer;font-family:inherit;color:var(--ink)}
+.card{display:flex;flex-direction:column;gap:18px;padding:24px;background:var(--sheet);border:1px solid var(--rule);border-radius:8px}
+.kv{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-top:1px solid var(--rule2)}
+.pill{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;padding:4px 10px;border:1px solid var(--gain);border-radius:999px;color:var(--gain)}
+</style>
+<style>
+/* Export: bars behave like the real site (fixed), page centred */
+body{background:#E9E2D5}
+.pg{margin:0 auto}
+.when-dark,.when-light{display:contents}
+.light .when-dark,.dark .when-light{display:none}
+.bar,.mbar,.abar{position:fixed !important;top:0 !important;left:50% !important;right:auto !important;width:1440px;transform:translateX(-50%)}
+.tabbar,.mdock{position:fixed !important;top:auto !important;bottom:0 !important;left:50% !important;right:auto !important;width:1440px;transform:translateX(-50%)}
+</style>
+</head>
+<body>
+<div class="pg light" style="width: 1440px; height: 1440px">
+
+<header class="abar">
+<div style="display: flex; align-items: center; gap: 16px">
+<svg width="52" height="24" viewBox="0 0 172 80" aria-hidden="true" style="color: #EDE5D8"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="currentColor" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="currentColor"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="currentColor" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">X</text></svg>
+<span class="mono" style="font-size: 12px; letter-spacing: 0.12em">ADMIN</span>
+</div>
+<div style="display: flex; align-items: center; gap: 24px; font-size: 15px">
+<span style="color: #A89E8E">Signed in as Alexi</span>
+<a href="../desktop/home.html">View the site ↗</a>
+<a href="../desktop/home.html">Sign out</a>
+</div>
+</header>
+
+<main style="position: absolute; left: 120px; right: 120px; top: 104px; display: flex; flex-direction: column">
+
+<a href="admin-trades.html" style="align-self: flex-start; font-size: 16px">← All trades</a>
+<div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 20px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="k">Mon 28 session · Sun Sep 27, 19:44 → 20:23 ET · ⇄ flip</span>
+<h1 style="margin: 0; font-size: 52px; font-weight: 500; letter-spacing: -0.02em; line-height: 1">Long MNQ, Asia session</h1>
+</div>
+<span class="pill">Published · short sheet</span>
+</div>
+
+<div style="display: flex; gap: 28px; align-items: center; margin-top: 24px; padding: 14px 18px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px">
+<svg width="14" height="16" viewBox="0 0 14 16" aria-hidden="true" style="color: var(--pencil)"><rect x="1" y="7" width="12" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"></rect><path d="M4 7V4.5a3 3 0 0 1 6 0V7" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg>
+<span class="mono" style="font-size: 13px">Entry 30,809.47</span>
+<span class="mono" style="font-size: 13px">Exits 9 @ 30,900.25 · 1 @ 30,894.00</span>
+<span class="mono" style="font-size: 13px">10 MNQ</span>
+<span class="mono" style="font-size: 13px">Fees $18.20</span>
+<span class="mono g" style="font-size: 13px">Net +$1,784.80</span>
+<span class="mono" style="font-size: 11px; color: var(--pencil); margin-left: auto">From Tradesea · read-only</span>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 40px; margin-top: 40px; align-items: start">
+
+<div style="display: flex; flex-direction: column; gap: 44px">
+<section style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 28px; font-weight: 500">Screenshots</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px">
+<div class="fld"><span class="lbl">Before · at entry</span><button type="button" class="drop"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 16v4h16v-4"></path></svg><span style="font-size: 17px">Drop your TradingView screenshot</span><span class="mono" style="font-size: 11px; color: var(--pencil)">PNG or JPG · annotated</span></button></div>
+<div class="fld"><span class="lbl">After · outcome</span><button type="button" class="drop"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 16v4h16v-4"></path></svg><span style="font-size: 17px">Drop your TradingView screenshot</span><span class="mono" style="font-size: 11px; color: var(--pencil)">Optional</span></button></div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 28px; font-weight: 500">Write-up</h2><span class="mono" style="font-size: 11px; color: var(--pencil)">Markdown · public</span></div>
+<div class="fld"><label for="ctx">Context</label><textarea id="ctx" class="ta" placeholder="What the market was doing before the entry"></textarea></div>
+<div class="fld"><label for="scn">Scenario</label><textarea id="scn" class="ta" placeholder="What you expected, and what would have proved you wrong"></textarea></div>
+<div class="fld"><label for="why">Why I took it</label><textarea id="why" class="ta" placeholder="In general terms, never the exact entry rule"></textarea></div>
+<div class="fld"><label for="mgmt">Management</label><textarea id="mgmt" class="ta" placeholder="How you handled it once in"></textarea></div>
+<span class="hint">This text is public. Keep the exact entry criteria out of it.</span>
+</section>
+</div>
+
+<aside style="display: flex; flex-direction: column; gap: 20px">
+<section class="card">
+<h2 style="margin: 0; font-size: 24px; font-weight: 500">Risk</h2>
+<div class="fld"><label for="stop">Stop price</label><input id="stop" class="in" type="text" value="30,801.25" style="font-style: italic; color: var(--pencil)"><span class="hint">Estimated from your stopped trades, 8.23 pts. Type the real one if you know it.</span></div>
+<div class="fld"><label for="target">Target price</label><input id="target" class="in" type="text" value="30,900.25"><span class="hint">Taken from the partial fill on 9 contracts.</span></div>
+<div style="display: flex; flex-direction: column">
+<div class="kv"><span class="k">Risk</span><span class="mono" style="font-size: 15px">~$164.50</span></div>
+<div class="kv"><span class="k">Result</span><span class="mono g" style="font-size: 15px">+10.85 R est.</span></div>
+<div class="kv" style="border-bottom: 1px solid var(--rule2)"><span class="k">Planned reward : risk</span><span class="mono" style="font-size: 15px">11.0 : 1 est.</span></div>
+</div>
+</section>
+
+<section class="card">
+<h2 style="margin: 0; font-size: 24px; font-weight: 500">Classification</h2>
+<div class="fld"><label for="session">Session</label><select id="session" class="in"><option>Asia (from entry time)</option><option>London</option><option>New York</option></select></div>
+<div style="display: flex; flex-direction: column">
+<div class="kv"><span class="k">Entry type</span><span class="mono" style="font-size: 14px; color: var(--blue)">⇄ Flip · 34 s after a short</span></div>
+<div class="kv"><span class="k">Result</span><span class="mono g" style="font-size: 14px">Win</span></div>
+<div class="kv" style="border-bottom: 1px solid var(--rule2)"><span class="k">Trading day</span><span class="mono" style="font-size: 14px">Mon Sep 28</span></div>
+</div>
+</section>
+
+<section class="card">
+<h2 style="margin: 0; font-size: 24px; font-weight: 500">Publishing</h2>
+<div style="display: flex; gap: 12px; align-items: center">
+<input id="pub" type="checkbox" checked style="width: 22px; height: 22px; accent-color: var(--ink); margin: 0">
+<label for="pub" style="font-size: 17px">Published on the site</label>
+</div>
+<span class="hint">Short sheet for now. It becomes a full sheet as soon as a screenshot and the write-up are in.</span>
+<div style="display: flex; gap: 12px">
+<button type="button" class="btn2">Preview</button>
+<button type="button" class="btn">Save</button>
+</div>
+</section>
+</aside>
+</div>
+</main>
+
+</div>
+<script>
+function toggleTheme(){var r=document.querySelector('.pg');var d=r.classList.contains('dark');r.classList.toggle('dark',!d);r.classList.toggle('light',d);}
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+.box {
+  position: relative;
+  width: 100%;
+  outline-offset: 4px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.svg { overflow: visible; }
+.clickable { cursor: pointer; }
+
+.empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--pencil);
+  border: 1px dashed var(--rule);
+  border-radius: 4px;
+}
+
+.grid { stroke: var(--rule2); stroke-width: 1; }
+.zero { stroke: var(--rule); stroke-width: 1; }
+.tick, .day, .end { fill: var(--pencil); font-family: var(--monof); font-variant-numeric: tabular-nums; }
+.day { letter-spacing: .08em; }
+.end { fill: var(--ink); }
+.sep { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 3 4; }
+.guide {
+  stroke: var(--ink);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  opacity: .5;
+  transition: x1 var(--fast) var(--ease), x2 var(--fast) var(--ease);
+}
+
+.line {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.dot {
+  stroke: var(--paper);
+  stroke-width: 2;
+  transition: r var(--fast) var(--ease);
+}
+.dotActive { stroke: var(--ink); stroke-width: 1.5; }
+
+.dd .ddDash { stroke: var(--loss); stroke-width: 1; stroke-dasharray: 2 3; }
+.dd .ddBar { stroke: var(--loss); stroke-width: 1.5; }
+.ddText { fill: var(--loss); font-family: var(--monof); font-variant-numeric: tabular-nums; }
+
+/* Draw once on mount (0.9 s), dots and fill follow the pen. */
+@media (prefers-reduced-motion: no-preference) {
+  .line { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw .9s ease-out forwards; }
+  .dot { animation: fade-in 200ms var(--ease) both; }
+  .area { animation: fade-in 400ms var(--ease) 450ms both; }
+  .dd { animation: fade-in 300ms var(--ease) 800ms both; }
+}
+
+.tip {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  background: var(--sheet);
+  border: 1px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px var(--shadow);
+  pointer-events: none;
+  animation: pop-in 140ms var(--ease) both;
+  transition: left 140ms var(--ease), top 140ms var(--ease);
+}
+.tipLink { pointer-events: auto; color: var(--ink); }
+.tipLink:hover { color: var(--ink); }
+.tipRow { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 15px; }
+.tipRow .mono { font-size: 14px; }
+.tipOpen { color: var(--blue); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; }
+.legItem { display: flex; gap: 6px; align-items: center; font-size: 11px; color: var(--pencil); }

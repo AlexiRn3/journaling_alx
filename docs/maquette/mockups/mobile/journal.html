@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALX · Journal, mobile</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap">
+<style>
+body{margin:0;background:#F2ECE1}
+.light{--paper:#F2ECE1;--sheet:#FAF7F0;--rule:#D8CFBF;--rule2:#E7DFD1;--ink:#211D18;--ink2:#3D372F;--pencil:#5E574D;--blue:#2A4A73;--gain:#245738;--loss:#A8452F;--gm:#1B7046;--lm:#DB8B6B;--bm:#B9AE9B;--gbg:rgba(27,112,70,.10);--lbg:rgba(168,69,47,.10);--dot:rgba(33,29,24,.05);--shadow:rgba(33,29,24,.16)}
+.dark{--paper:#1A1714;--sheet:#24201B;--rule:#3A332B;--rule2:#2E2923;--ink:#EDE5D8;--ink2:#D6CCBC;--pencil:#A89E8E;--blue:#9DB7DC;--gain:#8CC79D;--loss:#E08064;--gm:#5FB47D;--lm:#C4553A;--bm:#6B6256;--gbg:rgba(95,180,125,.14);--lbg:rgba(196,85,58,.16);--dot:rgba(237,229,216,.035);--shadow:rgba(0,0,0,.5)}
+.pg{position:relative;box-sizing:border-box;background-color:var(--paper);background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:4px 4px;color:var(--ink);font-family:'Newsreader',Georgia,serif;overflow:hidden}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.g{color:var(--gain)}.l{color:var(--loss)}.be{color:var(--pencil)}
+.mbar{position:absolute;left:0;right:0;top:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 8px 0 16px;box-sizing:border-box;background:var(--sheet);border-bottom:1px solid var(--rule);z-index:5}
+.pick{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:13px;height:40px;padding:0 12px;border:1px solid var(--rule);border-radius:6px;background:transparent;color:var(--ink);display:flex;align-items:center;gap:6px;cursor:pointer}
+.ib{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:0;padding:0;background:transparent;border-radius:22px;color:var(--ink);cursor:pointer}
+.seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.seg button{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:13px;height:44px;border:0;background:transparent;color:var(--ink2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.c{display:flex;flex-direction:column;gap:2px;height:58px;box-sizing:border-box;padding:5px 6px;border:1px solid var(--rule2);border-radius:4px;background:transparent;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:10px;color:var(--pencil);text-align:left}
+.cv{font-size:11px}
+.dots{display:flex;gap:3px;margin-top:auto}
+.w,.x,.b{width:6px;height:6px;border-radius:3px}
+.w{background:var(--gm)}.x{background:var(--lm)}.b{background:var(--bm)}
+.row{display:grid;grid-template-columns:16px 46px 46px 26px minmax(0,1fr) 12px;align-items:center;gap:6px;min-height:48px;border:0;border-top:1px solid var(--rule2);font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:13px;color:var(--ink)}
+</style>
+<style>
+/* Export: bars behave like the real site (fixed), page centred */
+body{background:#E9E2D5}
+.pg{margin:0 auto}
+.when-dark,.when-light{display:contents}
+.light .when-dark,.dark .when-light{display:none}
+.bar,.mbar,.abar{position:fixed !important;top:0 !important;left:50% !important;right:auto !important;width:390px;transform:translateX(-50%)}
+.tabbar,.mdock{position:fixed !important;top:auto !important;bottom:0 !important;left:50% !important;right:auto !important;width:390px;transform:translateX(-50%)}
+</style>
+</head>
+<body>
+<div class="pg light" style="width: 390px; height: 844px">
+
+<header class="mbar">
+<a href="home.html" aria-label="ALX, home" style="border: 0; display: flex; color: var(--ink)"><svg width="46" height="21" viewBox="0 0 172 80" aria-hidden="true" style="color: var(--ink)"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="currentColor" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="currentColor"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="currentColor" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">X</text></svg></a>
+<div style="display: flex; gap: 6px; align-items: center">
+<button type="button" class="pick" aria-label="Unit: dollars">$ <span aria-hidden="true">▾</span></button>
+<button type="button" class="pick" aria-label="Period: all time">All <span aria-hidden="true">▾</span></button>
+<button type="button" class="ib" aria-label="Switch theme" onclick="toggleTheme()">
+<span class="when-dark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></span>
+<span class="when-light"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"></path></svg></span>
+</button>
+</div>
+</header>
+
+<main style="position: absolute; left: 16px; right: 16px; top: 76px; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<h1 style="margin: 0; font-size: 38px; font-weight: 500; letter-spacing: -0.02em; line-height: 1">Journal</h1>
+<button type="button" class="pick" aria-label="Filters, none active">Filters · 0</button>
+</div>
+<div class="seg" role="group" aria-label="View" style="margin-top: 16px"><button type="button" aria-pressed="true">Calendar</button><button type="button" aria-pressed="false">Cards</button><button type="button" aria-pressed="false">Timeline</button></div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px">
+<button type="button" class="ib" aria-label="Previous month"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></button>
+<div style="display: flex; flex-direction: column; align-items: center"><span style="font-size: 20px; font-weight: 500">September 2026</span><span class="mono g" style="font-size: 12px">+$2,145.62 · 2 days</span></div>
+<button type="button" class="ib" aria-label="Next month"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin-top: 10px">
+<span class="k" style="font-size: 9px">Mon</span><span class="k" style="font-size: 9px">Tue</span><span class="k" style="font-size: 9px">Wed</span><span class="k" style="font-size: 9px">Thu</span><span class="k" style="font-size: 9px">Fri</span>
+<div class="c" style="opacity: .4">31</div><div class="c">1</div><div class="c">2</div><div class="c">3</div><div class="c">4</div>
+<div class="c">7</div><div class="c">8</div><div class="c">9</div><div class="c">10</div><div class="c">11</div>
+<div class="c">14</div><div class="c">15</div><div class="c">16</div><div class="c">17</div><div class="c">18</div>
+<div class="c">21</div><div class="c">22</div><div class="c">23</div><div class="c">24</div>
+<button type="button" class="c" style="background: var(--gbg); border-color: transparent; color: var(--ink)" aria-label="Friday Sep 25, +$854.20"><span>25</span><span class="cv g">+$854</span><span class="dots" aria-hidden="true"><span class="b"></span><span class="b"></span><span class="x"></span><span class="w"></span></span></button>
+<button type="button" class="c" style="background: var(--gbg); border: 2px solid var(--ink); color: var(--blue)" aria-pressed="true" aria-label="Monday Sep 28, +$1,291.42, selected"><span>28</span><span class="cv g">+$1.3k</span><span class="dots" aria-hidden="true"><span class="b"></span><span class="x"></span><span class="x"></span><span class="x"></span><span class="w"></span></span></button>
+<div class="c">29</div><div class="c">30</div><div class="c" style="opacity: .4">1</div><div class="c" style="opacity: .4">2</div>
+</div>
+</main>
+
+<div style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: rgba(20,17,14,0.28); z-index: 7"></div>
+<section aria-label="Monday Sep 28" style="position: absolute; left: 0; right: 0; bottom: 0; top: 432px; z-index: 8; display: flex; flex-direction: column; padding: 10px 16px 0; background: var(--sheet); border-top: 1px solid var(--ink); border-radius: 16px 16px 0 0; box-shadow: 0 -12px 30px var(--shadow)">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: var(--rule)"></span>
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 14px"><h2 style="margin: 0; font-size: 24px; font-weight: 500">Monday, Sep 28</h2><span class="mono g" style="font-size: 16px">+$1,291.42</span></div>
+<span class="mono" style="font-size: 11px; color: var(--pencil); padding: 4px 0 10px">Session from Sun 18:00 ET · 5 trades</span>
+<a class="row" href="trade.html"><span></span><span>19:12</span><span>Long</span><span>6</span><span class="be" style="text-align: right">BE −$11.42</span><span>›</span></a>
+<a class="row" href="trade.html"><span style="color: var(--blue)" aria-label="re-entry">↻</span><span>19:32</span><span>Long</span><span>8</span><span class="l" style="text-align: right">−$177.06</span><span>›</span></a>
+<a class="row" href="trade.html"><span style="color: var(--blue)" aria-label="re-entry">↻</span><span>19:35</span><span>Long</span><span>8</span><span class="l" style="text-align: right">−$138.56</span><span>›</span></a>
+<a class="row" href="trade.html"><span style="color: var(--blue)" aria-label="flip">⇄</span><span>19:42</span><span>Short</span><span>12</span><span class="l" style="text-align: right">−$166.34</span><span>›</span></a>
+<a class="row" href="trade.html"><span style="color: var(--blue)" aria-label="flip">⇄</span><span>19:44</span><span>Long</span><span>10</span><span class="g" style="text-align: right">+$1,784.80</span><span>›</span></a>
+<span class="mono" style="font-size: 10px; color: var(--pencil); padding-top: 10px">↻ re-entry · ⇄ flip · within 2 min</span>
+</section>
+
+</div>
+<script>
+function toggleTheme(){var r=document.querySelector('.pg');var d=r.classList.contains('dark');r.classList.toggle('dark',!d);r.classList.toggle('light',d);}
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALX · Admin, trades and import</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap">
+<style>
+body{margin:0;background:#F2ECE1}
+.light{--paper:#F2ECE1;--sheet:#FAF7F0;--rule:#D8CFBF;--rule2:#E7DFD1;--ink:#211D18;--ink2:#3D372F;--pencil:#5E574D;--blue:#2A4A73;--gain:#245738;--loss:#A8452F;--gm:#1B7046;--lm:#DB8B6B;--bm:#B9AE9B;--gbg:rgba(27,112,70,.10);--lbg:rgba(168,69,47,.10);--dot:rgba(33,29,24,.05);--shadow:rgba(33,29,24,.14);--field:#FFFFFF}
+.dark{--paper:#1A1714;--sheet:#24201B;--rule:#3A332B;--rule2:#2E2923;--ink:#EDE5D8;--ink2:#D6CCBC;--pencil:#A89E8E;--blue:#9DB7DC;--gain:#8CC79D;--loss:#E08064;--gm:#5FB47D;--lm:#C4553A;--bm:#6B6256;--gbg:rgba(95,180,125,.14);--lbg:rgba(196,85,58,.16);--dot:rgba(237,229,216,.035);--shadow:rgba(0,0,0,.45);--field:#1F1B17}
+.pg{position:relative;box-sizing:border-box;background-color:var(--paper);background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:4px 4px;color:var(--ink);font-family:'Newsreader',Georgia,serif;overflow:hidden}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
+a:hover{color:var(--ink)}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.g{color:var(--gain)}.l{color:var(--loss)}.be{color:var(--pencil)}
+.abar{position:absolute;left:0;right:0;top:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;box-sizing:border-box;background:#211D18;color:#EDE5D8;z-index:5}
+.abar a{color:#EDE5D8}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--ink)}
+.tab{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:13px;height:44px;padding:0 18px;border:1px solid transparent;border-bottom:0;border-radius:6px 6px 0 0;background:transparent;color:var(--pencil);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--sheet);border-color:var(--ink);color:var(--ink);margin-bottom:-1px}
+.btn{font-family:'Newsreader',Georgia,serif;font-size:17px;height:46px;padding:0 22px;border-radius:6px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer}
+.btn2{font-family:'Newsreader',Georgia,serif;font-size:17px;height:46px;padding:0 22px;border-radius:6px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.ok{display:flex;gap:12px;font-size:17px;line-height:1.4;padding:10px 0;border-top:1px solid var(--rule2)}
+.ok b{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-weight:500;font-size:13px;color:var(--gain);padding-top:3px}
+.seg{display:flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.seg button{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;height:36px;padding:0 14px;border:0;background:transparent;color:var(--ink2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.tr{display:grid;grid-template-columns:150px 110px 80px 50px 130px 90px 170px minmax(0,1fr) 120px;align-items:center;min-height:54px;border-bottom:1px solid var(--rule2);font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:13px}
+.th{min-height:36px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil);border-bottom:1px solid var(--ink)}
+.pill{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;padding:3px 8px;border:1px solid var(--rule);border-radius:999px;color:var(--pencil);white-space:nowrap}
+.miss{border-color:var(--loss);color:var(--loss)}
+.pub{border-color:var(--gain);color:var(--gain)}
+</style>
+<style>
+/* Export: bars behave like the real site (fixed), page centred */
+body{background:#E9E2D5}
+.pg{margin:0 auto}
+.when-dark,.when-light{display:contents}
+.light .when-dark,.dark .when-light{display:none}
+.bar,.mbar,.abar{position:fixed !important;top:0 !important;left:50% !important;right:auto !important;width:1440px;transform:translateX(-50%)}
+.tabbar,.mdock{position:fixed !important;top:auto !important;bottom:0 !important;left:50% !important;right:auto !important;width:1440px;transform:translateX(-50%)}
+</style>
+</head>
+<body>
+<div class="pg light" style="width: 1440px; height: 1360px">
+
+<header class="abar">
+<div style="display: flex; align-items: center; gap: 16px">
+<svg width="52" height="24" viewBox="0 0 172 80" aria-hidden="true" style="color: #EDE5D8"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="currentColor" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="currentColor"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="currentColor" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">X</text></svg>
+<span class="mono" style="font-size: 12px; letter-spacing: 0.12em">ADMIN</span>
+</div>
+<div style="display: flex; align-items: center; gap: 24px; font-size: 15px">
+<span style="color: #A89E8E">Signed in as Alexi</span>
+<a href="../desktop/home.html">View the site ↗</a>
+<a href="../desktop/home.html">Sign out</a>
+</div>
+</header>
+
+<main style="position: absolute; left: 120px; right: 120px; top: 112px; display: flex; flex-direction: column">
+
+<div style="display: flex; align-items: baseline; gap: 20px">
+<h1 style="margin: 0; font-size: 64px; font-weight: 500; letter-spacing: -0.02em; line-height: 1">Trades</h1>
+<span class="mono" style="font-size: 13px; color: var(--pencil)">9 imported · 9 published as short sheets · 0 hidden</span>
+</div>
+
+<section style="margin-top: 40px">
+<div class="tabs" role="tablist" aria-label="Import method">
+<button type="button" class="tab" role="tab" aria-selected="true">Paste from Tradesea</button>
+<button type="button" class="tab" role="tab" aria-selected="false">Upload today's orders · CSV</button>
+<button type="button" class="tab" role="tab" aria-selected="false" disabled style="opacity: .55; cursor: default">Auto-sync · not available yet</button>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 36px; padding: 28px; background: var(--sheet); border: 1px solid var(--ink); border-top: 0; border-radius: 0 0 8px 8px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<label for="paste" class="k" style="color: var(--ink2)">Paste the Recent Trades table from Tradesea Compass</label>
+<textarea id="paste" style="box-sizing: border-box; width: 100%; height: 196px; padding: 14px; resize: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--ink2); background: var(--field); border: 1px solid var(--rule); border-radius: 6px">Tradeify  RTSL50436117908  MNQ  2026-09-27, 7:44:34 PM  2026-09-27, 8:23:39 PM  Long  1  $30,809.48  $30,894.00  $167.23  $1.82
+Tradeify  RTSL50436117908  MNQ  2026-09-27, 7:44:34 PM  2026-09-27, 8:23:31 PM  Long  9  $30,809.47  $30,900.25  $1,617.57  $16.38
+Tradeify  RTSL50436117908  MNQ  2026-09-27, 7:42:43 PM  2026-09-27, 7:44:00 PM  Short  12  $30,801.67  $30,807.69  $166.34  $21.84
+…</textarea>
+<span style="font-size: 15px; color: var(--pencil)">Or drop the CSV exported from Orders › Export. It carries your stop and limit orders, so stop, target and R are read, not estimated.</span>
+</div>
+<div style="display: flex; flex-direction: column">
+<span class="k" style="padding-bottom: 8px; color: var(--ink2)">Before importing</span>
+<div class="ok"><b>✓</b><span>10 rows read</span></div>
+<div class="ok"><b>✓</b><span>1 partial exit merged · Mon 28, 19:44, 9 + 1 contracts</span></div>
+<div class="ok"><b>✓</b><span>Signs recomputed from side and prices</span></div>
+<div class="ok"><b>✓</b><span>3 re-entries and 2 flips linked</span></div>
+<div class="ok"><b>✓</b><span>1 flash trade flagged · held 8 s</span></div>
+<div class="ok" style="border-bottom: 1px solid var(--rule2)"><b>✓</b><span>0 duplicates</span></div>
+<button type="button" class="btn" style="margin-top: 18px; align-self: flex-start">Import 9 trades</button>
+</div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; margin-top: 56px">
+<div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px">
+<h2 style="margin: 0; font-size: 32px; font-weight: 500">All trades</h2>
+<div class="seg" role="group" aria-label="Filter"><button type="button" aria-pressed="true">To complete · 9</button><button type="button" aria-pressed="false">Published · 9</button><button type="button" aria-pressed="false">Hidden · 0</button></div>
+</div>
+<div class="tr th"><span>Opened (ET)</span><span>Session</span><span>Side</span><span>Qty</span><span>Net</span><span>R</span><span>Status</span><span>Missing for a full sheet</span><span></span></div>
+<div class="tr"><span>Sun 27 · 19:44</span><span>Mon 28</span><span>Long</span><span>10</span><span class="g">+$1,784.80</span><span>+10.85</span><span><span class="pill pub">Published · short</span></span><span style="display: flex; gap: 6px"><span class="pill miss">screenshots</span><span class="pill miss">write-up</span><span class="pill">stop est.</span></span><a href="admin-edit-trade.html" style="font-family: 'Newsreader', serif; font-size: 16px; justify-self: end">Complete →</a></div>
+<div class="tr"><span>Sun 27 · 19:42</span><span>Mon 28</span><span>Short</span><span>12</span><span class="l">−$166.34</span><span>−1.15</span><span><span class="pill pub">Published · short</span></span><span style="display: flex; gap: 6px"><span class="pill miss">screenshots</span><span class="pill miss">write-up</span></span><a href="admin-edit-trade.html" style="font-family: 'Newsreader', serif; font-size: 16px; justify-self: end">Complete →</a></div>
+<div class="tr"><span>Sun 27 · 19:35</span><span>Mon 28</span><span>Long</span><span>8</span><span class="l">−$138.56</span><span>−1.12</span><span><span class="pill pub">Published · short</span></span><span style="display: flex; gap: 6px"><span class="pill miss">screenshots</span><span class="pill miss">write-up</span></span><a href="admin-edit-trade.html" style="font-family: 'Newsreader', serif; font-size: 16px; justify-self: end">Complete →</a></div>
+<div class="tr"><span>Sun 27 · 19:32</span><span>Mon 28</span><span>Long</span><span>8</span><span class="l">−$177.06</span><span>−1.09</span><span><span class="pill pub">Published · short</span></span><span style="display: flex; gap: 6px"><span class="pill miss">screenshots</span><span class="pill miss">write-up</span></span><a href="admin-edit-trade.html" style="font-family: 'Newsreader', serif; font-size: 16px; justify-self: end">Complete →</a></div>
+<div class="tr"><span>Sun 27 · 19:12</span><span>Mon 28</span><span>Long</span><span>6</span><span class="be">BE −$11.42</span><span>−0.12</span><span><span class="pill pub">Published · short</span></span><span style="display: flex; gap: 6px"><span class="pill miss">screenshots</span><span class="pill miss">write-up</span><span class="pill">stop est.</span></span><a href="admin-edit-trade.html" style="font-family: 'Newsreader', serif; font-size: 16px; justify-self: end">Complete →</a></div>
+<div class="tr"><span>Fri 25 · 05:15</span><span>Fri 25</span><span>Short</span><span>11</span><span class="g">+$1,039.48</span><span>+6.03</span><span><span class="pill pub">Published · short</span></span><span style="display: flex; gap: 6px"><span class="pill miss">screenshots</span><span class="pill miss">write-up</span></span><a href="admin-edit-trade.html" style="font-family: 'Newsreader', serif; font-size: 16px; justify-self: end">Complete →</a></div>
+<div class="tr"><span>Fri 25 · 05:15</span><span>Fri 25</span><span>Short</span><span>10</span><span class="l">−$197.70</span><span>−1.10</span><span><span class="pill pub">Published · short</span></span><span style="display: flex; gap: 6px"><span class="pill miss">screenshots</span><span class="pill miss">write-up</span></span><a href="admin-edit-trade.html" style="font-family: 'Newsreader', serif; font-size: 16px; justify-self: end">Complete →</a></div>
+<div class="tr"><span>Thu 24 · 21:58</span><span>Fri 25</span><span>Long</span><span>13</span><span class="be">BE −$13.66</span><span>−0.06</span><span><span class="pill pub">Published · short</span></span><span style="display: flex; gap: 6px"><span class="pill miss">screenshots</span><span class="pill miss">write-up</span><span class="pill">stop est.</span></span><a href="admin-edit-trade.html" style="font-family: 'Newsreader', serif; font-size: 16px; justify-self: end">Complete →</a></div>
+<div class="tr"><span>Thu 24 · 21:30</span><span>Fri 25</span><span>Short</span><span>6</span><span class="be">BE +$26.08</span><span>+0.26</span><span><span class="pill pub">Published · short</span></span><span style="display: flex; gap: 6px"><span class="pill miss">screenshots</span><span class="pill miss">write-up</span><span class="pill">stop est.</span></span><a href="admin-edit-trade.html" style="font-family: 'Newsreader', serif; font-size: 16px; justify-self: end">Complete →</a></div>
+</section>
+</main>
+
+</div>
+<script>
+function toggleTheme(){var r=document.querySelector('.pg');var d=r.classList.contains('dark');r.classList.toggle('dark',!d);r.classList.toggle('light',d);}
+</script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+/* 96 px under the content so the footer never hides behind the bottom menu. */
+.main { padding-bottom: calc(96px + var(--safe-b)); }

@@ -1,0 +1,18 @@
+{
+  "method": "MSNR · MNQ futures",
+  "intro": "[Intro: what MSNR is, in two sentences, without any entry rule.]",
+  "home_intro": "[Two sentences on MSNR and the way you read the market, without any entry rule.]",
+  "idea": [
+    "[First paragraph: how you read the market, what you look for, what you ignore.]",
+    "[Second paragraph: why this method suits you, and how you got to it.]"
+  ],
+  "highlight": "[One sentence you want people to remember.]",
+  "principles": [
+    { "title": "[Principle]", "body": "[One or two sentences on why it matters to you.]" },
+    { "title": "[Principle]", "body": "[One or two sentences on why it matters to you.]" },
+    { "title": "[Principle]", "body": "[One or two sentences on why it matters to you.]" },
+    { "title": "[Principle]", "body": "[One or two sentences on why it matters to you.]" },
+    { "title": "[Principle]", "body": "[One or two sentences on why it matters to you.]" }
+  ],
+  "not_here": "The exact entry rules stay in my notebook. This page is the thinking. The journal shows the execution."
+}

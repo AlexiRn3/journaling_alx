@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>ALX · Données, import et calculs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap">
+<style>
+body{margin:0;background:#F2ECE1;font-family:'Newsreader',Georgia,serif;color:#211D18}
+a{color:#2A4A73}a:hover{color:#1B3354}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5E574D}
+.sec{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:13px;color:#2A4A73;letter-spacing:.04em}
+.h2{margin:0;font-size:40px;font-weight:500;line-height:1.1;letter-spacing:-.01em}
+.tr{display:grid;grid-template-columns:28px 200px 70px 52px 38px 96px 120px 104px 76px 126px 70px 150px minmax(0,1fr);align-items:center;min-height:40px;border-bottom:1px solid #D8CFBF;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:13px;color:#211D18}
+.th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#5E574D;border-bottom:1px solid #211D18}
+.r{text-align:right;padding-right:16px}
+.g{color:#245738}.l{color:#A8452F}.be{color:#5E574D}.est{color:#5E574D;font-style:italic}.inf{color:#2A4A73}.ch{font-size:11px;color:#2A4A73}
+.case{display:grid;grid-template-columns:170px minmax(0,1fr) 400px;gap:32px;padding:16px 0;border-top:1px solid #D8CFBF;font-size:16px;line-height:1.45}
+.case span:first-child{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#211D18;padding-top:3px}
+.case span:last-child{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:13px;line-height:1.5;color:#2A4A73}
+.kp{display:flex;flex-direction:column;gap:4px;padding:14px 0;border-top:1px solid #D8CFBF}
+.kv{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:22px}
+.li{display:flex;gap:12px;font-size:17px;line-height:1.45;color:#3D372F}
+.li b{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-weight:500;font-size:12px;color:#2A4A73;padding-top:4px;min-width:20px}
+.rule{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding:12px 0;border-top:1px solid #D8CFBF;font-size:16px;line-height:1.4}
+.rule span:first-child{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#211D18;padding-top:3px}
+.q{display:flex;gap:14px;padding:16px 0;border-top:1px solid #D8CFBF;font-size:17px;line-height:1.45}
+.q b{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-weight:500;font-size:13px;color:#A8452F;min-width:24px;padding-top:3px}
+</style>
+</head>
+<body>
+<div style="width: 1440px; height: 3320px; box-sizing: border-box; padding: 80px; display: flex; flex-direction: column; gap: 72px; background-color: #F2ECE1; background-image: radial-gradient(rgba(33,29,24,0.05) 1px, transparent 1px); background-size: 4px 4px">
+
+<header style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 28px; border-bottom: 2px solid #211D18">
+<h1 style="margin: 0; font-size: 56px; font-weight: 500; line-height: 1; letter-spacing: -0.02em">Tes données, l'import, les calculs</h1>
+<span class="k">Source : ton copier-coller Tradesea</span>
+</header>
+
+<section style="display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; align-items: baseline; gap: 16px"><span class="sec">04</span><h2 class="h2">Tes trades, sessions du 25 et du 28 septembre</h2></div>
+<p style="margin: 0; font-size: 18px; line-height: 1.45; color: #3D372F; max-width: 900px">10 lignes Tradesea, fusionnées en 9 trades, sur deux journées de session (18:00 → 17:00 ET). Heures d'horloge en ET. Ce sont ces chiffres qui remplissent les wireframes.</p>
+
+<div style="display: flex; flex-direction: column">
+<div class="tr th"><span>#</span><span>Ouverture → clôture</span><span>Session</span><span>Sens</span><span>Qté</span><span>Entrée</span><span>Sortie</span><span>Stop</span><span class="r">Points</span><span class="r">Net</span><span class="r">R</span><span>Enchaînement</span><span>Durée</span></div>
+<div style="display: flex; justify-content: space-between; padding: 14px 0 6px; border-bottom: 1px solid #D8CFBF"><span class="k" style="color: #2A4A73">Journée du vendredi 25 · jeu. 18:00 → ven. 17:00</span><span class="mono g" style="font-size: 13px">+$854.20 · 4 trades</span></div>
+<div class="tr"><span>1</span><span>Thu 24 · 21:30 → 21:37</span><span>Asia</span><span>Short</span><span>6</span><span>30,772.54</span><span>30,769.46</span><span class="est">~30,780.76</span><span class="r g">+3.08</span><span class="r be">+$26.08 BE</span><span class="r be">+0.26</span><span class="ch"></span><span>7 min</span></div>
+<div class="tr"><span>2</span><span>Thu 24 · 21:58 → 22:29</span><span>Asia</span><span>Long</span><span>13</span><span>30,789.13</span><span>30,789.52</span><span class="est">~30,780.90</span><span class="r g">+0.39</span><span class="r be">−$13.66 BE</span><span class="r be">−0.06</span><span class="ch"></span><span>30 min</span></div>
+<div class="tr"><span>3</span><span>Fri 25 · 05:15 → 05:15</span><span>London</span><span>Short</span><span>10</span><span>30,952.03</span><span>30,961.00</span><span>30,961.00</span><span class="r l">−8.97</span><span class="r l">−$197.70</span><span class="r l">−1.10</span><span class="ch">éclair · 8 s</span><span>8 s</span></div>
+<div class="tr"><span>4</span><span>Fri 25 · 05:15 → 06:03</span><span>London</span><span>Short</span><span>11</span><span>30,953.16</span><span>30,905.00</span><span class="inf">30,961.00</span><span class="r g">+48.16</span><span class="r g">+$1,039.48</span><span class="r g">+6.03</span><span class="ch">ré-entrée · 7 s</span><span>48 min</span></div>
+<div style="display: flex; justify-content: space-between; padding: 14px 0 6px; border-bottom: 1px solid #D8CFBF"><span class="k" style="color: #2A4A73">Journée du lundi 28 · dim. 18:00 → lun. 17:00</span><span class="mono g" style="font-size: 13px">+$1,291.42 · 5 trades</span></div>
+<div class="tr"><span>5</span><span>Sun 27 · 19:12 → 19:31</span><span>Asia</span><span>Long</span><span>6</span><span>30,811.88</span><span>30,811.83</span><span class="est">~30,803.65</span><span class="r l">−0.05</span><span class="r be">−$11.42 BE</span><span class="r be">−0.12</span><span class="ch"></span><span>19 min</span></div>
+<div class="tr"><span>6</span><span>Sun 27 · 19:32 → 19:34</span><span>Asia</span><span>Long</span><span>8</span><span>30,816.41</span><span>30,806.25</span><span>30,806.25</span><span class="r l">−10.16</span><span class="r l">−$177.06</span><span class="r l">−1.09</span><span class="ch">ré-entrée · 1 min 29</span><span>2 min</span></div>
+<div class="tr"><span>7</span><span>Sun 27 · 19:35 → 19:42</span><span>Asia</span><span>Long</span><span>8</span><span>30,807.50</span><span>30,799.75</span><span>30,799.75</span><span class="r l">−7.75</span><span class="r l">−$138.56</span><span class="r l">−1.12</span><span class="ch">ré-entrée · 44 s</span><span>7 min</span></div>
+<div class="tr"><span>8</span><span>Sun 27 · 19:42 → 19:44</span><span>Asia</span><span>Short</span><span>12</span><span>30,801.67</span><span>30,807.69</span><span>30,807.69</span><span class="r l">−6.02</span><span class="r l">−$166.34</span><span class="r l">−1.15</span><span class="ch">retournement · 38 s</span><span>1 min</span></div>
+<div class="tr"><span>9</span><span>Sun 27 · 19:44 → 20:23</span><span>Asia</span><span>Long</span><span>10</span><span>30,809.47</span><span>30,899.63 (2)</span><span class="est">~30,801.25</span><span class="r g">+90.15</span><span class="r g">+$1,784.80</span><span class="r g">+10.85</span><span class="ch">retournement · 34 s</span><span>39 min</span></div>
+<div style="display: flex; gap: 32px; padding: 8px 0 10px 28px; border-bottom: 1px solid #D8CFBF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5E574D"><span>└ 20:23:31 · 9 @ 30,900.25 · objectif, rempli en partie</span><span>20:23:39 · 1 @ 30,894.00 · fermé à la main</span></div>
+<div style="padding-top: 8px"><span class="mono" style="font-size: 11px; color: #5E574D">~ stop estimé (distance moyenne des perdants) · <span style="color: #2A4A73">bleu</span> : stop repris de la tentative précédente · R sur le net, frais inclus : un trade stoppé fait un peu plus que −1 R</span></div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 28px">
+<div class="kp"><span class="k">Net</span><span class="kv g">+$2,145.62</span></div>
+<div class="kp"><span class="k">Net en R · estimé</span><span class="kv g">+12.50 R</span></div>
+<div class="kp"><span class="k">Net / compte 50K</span><span class="kv g">+4.29 %</span></div>
+<div class="kp"><span class="k">Win rate</span><span class="kv">33.3 % <span style="font-size: 13px; color: #5E574D">2 W · 4 L</span></span></div>
+<div class="kp"><span class="k">Break-even</span><span class="kv">3</span></div>
+<div class="kp"><span class="k">Profit factor</span><span class="kv">4.04</span></div>
+<div class="kp"><span class="k">Expectancy</span><span class="kv g">+$238.40</span></div>
+<div class="kp"><span class="k">Expectancy R</span><span class="kv g">+1.39 R</span></div>
+<div class="kp"><span class="k">Gain moyen</span><span class="kv g">+$1,412.14</span></div>
+<div class="kp"><span class="k">Perte moyenne</span><span class="kv l">−$169.92</span></div>
+<div class="kp"><span class="k">Max drawdown</span><span class="kv l">−$493.38</span></div>
+<div class="kp"><span class="k">Durée médiane</span><span class="kv">7 min</span></div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; row-gap: 14px; padding-top: 8px">
+<div class="li"><b>a</b><span>Les signes ont sauté au copier-coller. Je les ai recalculés avec le sens et les prix : écart de moins de 0,15 $ avec Tradesea.</span></div>
+<div class="li"><b>b</b><span>Une journée = une session de 18:00 à 17:00 ET. Le jeudi soir compte pour vendredi, le dimanche soir pour lundi. Aucun trade ne tombe le week-end : le calendrier reste sur 5 colonnes.</span></div>
+<div class="li"><b>c</b><span>Sessions standard, en ET : Asia 18:00 → 03:00, London 03:00 → 09:30, New York 09:30 → 17:00. Tes trades tombent en Asia (7) et London (2).</span></div>
+<div class="li"><b>d</b><span>Stop des perdants = leur prix de sortie : 8,23 pts en moyenne. Gagnants et BE : stop estimé à cette distance, sauf ré-entrée (stop repris). Le R du trade 9 (+10,85) reste une estimation.</span></div>
+<div class="li"><b>e</b><span>Le Net P&amp;L de Tradesea est déjà après frais (152,88 $ au total). Le site affiche du net partout.</span></div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; align-items: baseline; gap: 16px"><span class="sec">05</span><h2 class="h2">Cas particuliers</h2></div>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; color: #3D372F; max-width: 1000px">Chaque tentative a pris son propre risque : une ré-entrée reste un trade à part dans les stats. Fusionner les tentatives cacherait des pertes et gonflerait le win rate. Dans le journal et sur la fiche, elles sont reliées pour qu'on lise l'enchaînement réel.</p>
+<div style="display: flex; flex-direction: column">
+<div class="case" style="border-top: 1px solid #211D18"><span class="k" style="color: #5E574D">Cas</span><span class="k" style="color: #5E574D; font-size: 12px; text-transform: uppercase">Règle</span><span class="k" style="color: #5E574D; font-size: 12px">Dans tes trades</span></div>
+<div class="case"><span>Sortie partielle</span><span>Même heure d'ouverture, même sens, plusieurs clôtures : un seul trade, plusieurs sorties. Durée jusqu'à la dernière sortie. Une partie des contrats sortie au même prix = l'objectif.</span><span>Trade 9 : 9 contrats à 30,900.25 à 20:23:31 (objectif), le 10e fermé à la main 8 s plus tard à 30,894.00.</span></div>
+<div class="case"><span>Renfort</span><span>Nouvelle entrée dans le même sens alors que la position est encore ouverte : même trade, entrée moyenne pondérée.</span><span>Aucun.</span></div>
+<div class="case"><span>Ré-entrée</span><span>Même sens, rouverte moins de 2 min après une clôture : trade à part, relié au précédent. Un gagnant repris après un stop garde le stop de la tentative précédente.</span><span>3 → 4 (7 s), 5 → 6 (1 min 29), 6 → 7 (44 s). Stop du 4 : 30,961.00, son R passe de +5,74 à +6,03.</span></div>
+<div class="case"><span>Retournement</span><span>Sens inverse moins de 2 min après une clôture : trade à part, marqué comme retournement.</span><span>7 → 8 (38 s), 8 → 9 (34 s).</span></div>
+<div class="case"><span>Trade éclair</span><span>Moins de 30 s : gardé et signalé. En général un stop touché dans un mouvement rapide.</span><span>Trade 3 : 8 s.</span></div>
+<div class="case"><span>Break-even</span><span>Net entre −30 $ et +30 $ : compté dans le net, pas dans le win rate.</span><span>Trades 1, 2 et 5.</span></div>
+</div>
+<span class="mono" style="font-size: 12px; color: #245738">Vérifié : aucun chevauchement entre positions à part le trade 9, aucune ligne en double, 10 lignes recalculées à 0,15 $ près de Tradesea.</span>
+</section>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px">
+<section style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; align-items: baseline; gap: 16px"><span class="sec">06</span><h2 class="h2">Import des trades</h2></div>
+<p style="margin: 0; font-size: 17px; line-height: 1.5; color: #3D372F">Tradesea ne documente pas d'API publique, et son export CSV (onglet Orders, bouton Export) ne couvre que les ordres du jour. Une sync 100 % automatique n'est donc pas possible directement pour l'instant. Je propose trois voies dans l'admin :</p>
+<div class="rule"><span>A · Coller</span><span>Tu colles le tableau Compass (exactement ce que tu m'as envoyé). Le site le lit, fusionne les sorties partielles, recalcule les signes.</span></div>
+<div class="rule"><span>B · CSV du jour</span><span>Orders, puis Export, après chaque journée de trading. Il contient tes ordres stop et limit, même annulés : le R et l'objectif se calculent tout seuls.</span></div>
+<div class="rule"><span>C · Plus tard</span><span>Connecteur automatique si Tradeify ou Tradesea ouvre un accès API. L'écran admin est prévu pour l'accueillir.</span></div>
+<div class="rule"><span>Doublons</span><span>Un trade = compte + heure d'ouverture + sens. Réimporter la même journée ne crée pas de doublon.</span></div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; align-items: baseline; gap: 16px"><span class="sec">07</span><h2 class="h2">Règles de calcul</h2></div>
+<div style="display: flex; flex-direction: column">
+<div class="rule"><span>Trade</span><span>Une position, de l'ouverture au retour à plat. Sorties partielles et renforts regroupés (section 05).</span></div>
+<div class="rule"><span>Net</span><span>P&amp;L après frais, comme Tradesea.</span></div>
+<div class="rule"><span>Points</span><span>(sortie − entrée) × sens, moyenne pondérée par contrat.</span></div>
+<div class="rule"><span>R</span><span>Net ÷ risque initial. Risque = distance au stop × contrats × 2 $ (MNQ).</span></div>
+<div class="rule"><span>Stop</span><span>Lu dans le CSV du jour s'il existe. Sinon : perdant = prix de sortie ; ré-entrée gagnante = stop de la tentative précédente ; autre gagnant ou BE = distance moyenne des perdants, marqué « estimé ».</span></div>
+<div class="rule"><span>Break-even</span><span>Net entre −30 $ et +30 $.</span></div>
+<div class="rule"><span>%</span><span>Net ÷ 50 000 $, le solde de départ du compte.</span></div>
+<div class="rule"><span>Jour</span><span>Journée de session CME, 18:00 → 17:00 ET.</span></div>
+<div class="rule"><span>Win rate</span><span>Gagnants ÷ (gagnants + perdants). Les BE sont exclus.</span></div>
+<div class="rule"><span>Expectancy</span><span>Résultat moyen par trade, dans l'unité choisie.</span></div>
+<div class="rule"><span>Profit factor</span><span>Gains bruts ÷ pertes brutes.</span></div>
+<div class="rule"><span>Max drawdown</span><span>Plus forte baisse depuis un sommet de la courbe, trades clôturés.</span></div>
+<div class="rule"><span>Session</span><span>Heure d'entrée (ET) : Asia, London ou New York.</span></div>
+</div>
+</section>
+</div>
+
+<section style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; align-items: baseline; gap: 16px"><span class="sec">08</span><h2 class="h2">Décisions</h2></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px">
+<div style="display: flex; flex-direction: column">
+<div class="q"><b style="color: #245738">✓</b><span>R : stop du CSV du jour, sinon calculé depuis les sorties.</span></div>
+<div class="q"><b style="color: #245738">✓</b><span>% : base de 50 000 $, le solde de départ du compte.</span></div>
+<div class="q"><b style="color: #245738">✓</b><span>Journée : session CME de 18:00 à 17:00 ET. Le dimanche soir compte pour lundi.</span></div>
+<div class="q"><b style="color: #245738">✓</b><span>Sessions standard Asia, London, New York.</span></div>
+<div class="q"><b style="color: #245738">✓</b><span>Cas particuliers selon la section 05, suivis dans Stats par type d'entrée.</span></div>
+</div>
+<div style="display: flex; flex-direction: column">
+<div class="q"><b style="color: #245738">✓</b><span>Pas de découpage par setup pour l'instant.</span></div>
+<div class="q"><b style="color: #245738">✓</b><span>Break-even : net entre −30 $ et +30 $.</span></div>
+<div class="q"><b style="color: #245738">✓</b><span>Trade sans capture ni explication : publié en fiche courte.</span></div>
+<div class="q"><b style="color: #245738">✓</b><span>Historique : ces 10 lignes sont tout le compte.</span></div>
+</div>
+</div>
+</section>
+
+</div>
+</body>
+</html>

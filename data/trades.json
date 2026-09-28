@@ -1,0 +1,484 @@
+{
+  "meta": {
+    "account": "Tradeify 50K",
+    "account_id": "RTSL50436117908",
+    "instrument": "MNQ",
+    "source": "Tradeify via Tradesea",
+    "updated_at": "2026-09-28T09:58:00",
+    "timezone": "America/Toronto (ET), as shown in Tradesea"
+  },
+  "rules": {
+    "point_value_usd": 2,
+    "account_start_usd": 50000,
+    "breakeven_band_usd": 30,
+    "link_window_seconds": 120,
+    "session_day": "18:00 → 17:00 ET, CME",
+    "sessions_et": {
+      "Asia": "18:00-03:00",
+      "London": "03:00-09:30",
+      "New York": "09:30-17:00"
+    },
+    "avg_stop_distance_pts": 8.225
+  },
+  "trades": [
+    {
+      "side": "Short",
+      "qty": 6,
+      "open": "2026-09-24T21:30:06",
+      "close": "2026-09-24T21:37:06",
+      "entry": 30772.54,
+      "exit": 30769.46,
+      "net": 26.08,
+      "fees": 10.92,
+      "points": 3.08,
+      "exits": [
+        {
+          "time": "2026-09-24T21:37:06",
+          "qty": 6,
+          "price": 30769.46,
+          "net": 26.08
+        }
+      ],
+      "id": 1,
+      "session_day": "2026-09-25",
+      "session": "Asia",
+      "hold_seconds": 420,
+      "result": "be",
+      "flash": false,
+      "entry_type": "first",
+      "gap_seconds": null,
+      "linked_to": null,
+      "stop": {
+        "price": 30780.76,
+        "source": "estimated_avg_loser_distance"
+      },
+      "target": null,
+      "risk_usd": 98.7,
+      "r": 0.26,
+      "r_estimated": true,
+      "pct_of_account": 0.05,
+      "published": true,
+      "shots": {
+        "before": null,
+        "after": null
+      },
+      "story": {
+        "context": "",
+        "scenario": "",
+        "why": "",
+        "management": ""
+      },
+      "mae": null,
+      "mfe": null
+    },
+    {
+      "side": "Long",
+      "qty": 13,
+      "open": "2026-09-24T21:58:57",
+      "close": "2026-09-24T22:29:05",
+      "entry": 30789.13,
+      "exit": 30789.52,
+      "net": -13.66,
+      "fees": 23.66,
+      "points": 0.39,
+      "exits": [
+        {
+          "time": "2026-09-24T22:29:05",
+          "qty": 13,
+          "price": 30789.52,
+          "net": -13.66
+        }
+      ],
+      "id": 2,
+      "session_day": "2026-09-25",
+      "session": "Asia",
+      "hold_seconds": 1808,
+      "result": "be",
+      "flash": false,
+      "entry_type": "first",
+      "gap_seconds": null,
+      "linked_to": null,
+      "stop": {
+        "price": 30780.91,
+        "source": "estimated_avg_loser_distance"
+      },
+      "target": null,
+      "risk_usd": 213.85,
+      "r": -0.06,
+      "r_estimated": true,
+      "pct_of_account": -0.03,
+      "published": true,
+      "shots": {
+        "before": null,
+        "after": null
+      },
+      "story": {
+        "context": "",
+        "scenario": "",
+        "why": "",
+        "management": ""
+      },
+      "mae": null,
+      "mfe": null
+    },
+    {
+      "side": "Short",
+      "qty": 10,
+      "open": "2026-09-25T05:15:02",
+      "close": "2026-09-25T05:15:10",
+      "entry": 30952.03,
+      "exit": 30961,
+      "net": -197.7,
+      "fees": 18.2,
+      "points": -8.97,
+      "exits": [
+        {
+          "time": "2026-09-25T05:15:10",
+          "qty": 10,
+          "price": 30961,
+          "net": -197.7
+        }
+      ],
+      "id": 3,
+      "session_day": "2026-09-25",
+      "session": "London",
+      "hold_seconds": 8,
+      "result": "loss",
+      "flash": true,
+      "entry_type": "first",
+      "gap_seconds": null,
+      "linked_to": null,
+      "stop": {
+        "price": 30961,
+        "source": "exit_of_stopped_trade"
+      },
+      "target": null,
+      "risk_usd": 179.4,
+      "r": -1.1,
+      "r_estimated": false,
+      "pct_of_account": -0.4,
+      "published": true,
+      "shots": {
+        "before": null,
+        "after": null
+      },
+      "story": {
+        "context": "",
+        "scenario": "",
+        "why": "",
+        "management": ""
+      },
+      "mae": null,
+      "mfe": null
+    },
+    {
+      "side": "Short",
+      "qty": 11,
+      "open": "2026-09-25T05:15:17",
+      "close": "2026-09-25T06:03:47",
+      "entry": 30953.16,
+      "exit": 30905,
+      "net": 1039.48,
+      "fees": 20.02,
+      "points": 48.16,
+      "exits": [
+        {
+          "time": "2026-09-25T06:03:47",
+          "qty": 11,
+          "price": 30905,
+          "net": 1039.48
+        }
+      ],
+      "id": 4,
+      "session_day": "2026-09-25",
+      "session": "London",
+      "hold_seconds": 2910,
+      "result": "win",
+      "flash": false,
+      "entry_type": "re-entry",
+      "gap_seconds": 7,
+      "linked_to": 3,
+      "stop": {
+        "price": 30961,
+        "source": "previous_attempt_stop"
+      },
+      "target": null,
+      "risk_usd": 172.48,
+      "r": 6.03,
+      "r_estimated": false,
+      "pct_of_account": 2.08,
+      "published": true,
+      "shots": {
+        "before": null,
+        "after": null
+      },
+      "story": {
+        "context": "",
+        "scenario": "",
+        "why": "",
+        "management": ""
+      },
+      "mae": null,
+      "mfe": null
+    },
+    {
+      "side": "Long",
+      "qty": 6,
+      "open": "2026-09-27T19:12:07",
+      "close": "2026-09-27T19:31:05",
+      "entry": 30811.88,
+      "exit": 30811.83,
+      "net": -11.42,
+      "fees": 10.92,
+      "points": -0.05,
+      "exits": [
+        {
+          "time": "2026-09-27T19:31:05",
+          "qty": 6,
+          "price": 30811.83,
+          "net": -11.42
+        }
+      ],
+      "id": 5,
+      "session_day": "2026-09-28",
+      "session": "Asia",
+      "hold_seconds": 1138,
+      "result": "be",
+      "flash": false,
+      "entry_type": "first",
+      "gap_seconds": null,
+      "linked_to": null,
+      "stop": {
+        "price": 30803.66,
+        "source": "estimated_avg_loser_distance"
+      },
+      "target": null,
+      "risk_usd": 98.7,
+      "r": -0.12,
+      "r_estimated": true,
+      "pct_of_account": -0.02,
+      "published": true,
+      "shots": {
+        "before": null,
+        "after": null
+      },
+      "story": {
+        "context": "",
+        "scenario": "",
+        "why": "",
+        "management": ""
+      },
+      "mae": null,
+      "mfe": null
+    },
+    {
+      "side": "Long",
+      "qty": 8,
+      "open": "2026-09-27T19:32:34",
+      "close": "2026-09-27T19:34:22",
+      "entry": 30816.41,
+      "exit": 30806.25,
+      "net": -177.06,
+      "fees": 14.56,
+      "points": -10.16,
+      "exits": [
+        {
+          "time": "2026-09-27T19:34:22",
+          "qty": 8,
+          "price": 30806.25,
+          "net": -177.06
+        }
+      ],
+      "id": 6,
+      "session_day": "2026-09-28",
+      "session": "Asia",
+      "hold_seconds": 108,
+      "result": "loss",
+      "flash": false,
+      "entry_type": "re-entry",
+      "gap_seconds": 89,
+      "linked_to": 5,
+      "stop": {
+        "price": 30806.25,
+        "source": "exit_of_stopped_trade"
+      },
+      "target": null,
+      "risk_usd": 162.56,
+      "r": -1.09,
+      "r_estimated": false,
+      "pct_of_account": -0.35,
+      "published": true,
+      "shots": {
+        "before": null,
+        "after": null
+      },
+      "story": {
+        "context": "",
+        "scenario": "",
+        "why": "",
+        "management": ""
+      },
+      "mae": null,
+      "mfe": null
+    },
+    {
+      "side": "Long",
+      "qty": 8,
+      "open": "2026-09-27T19:35:06",
+      "close": "2026-09-27T19:42:05",
+      "entry": 30807.5,
+      "exit": 30799.75,
+      "net": -138.56,
+      "fees": 14.56,
+      "points": -7.75,
+      "exits": [
+        {
+          "time": "2026-09-27T19:42:05",
+          "qty": 8,
+          "price": 30799.75,
+          "net": -138.56
+        }
+      ],
+      "id": 7,
+      "session_day": "2026-09-28",
+      "session": "Asia",
+      "hold_seconds": 419,
+      "result": "loss",
+      "flash": false,
+      "entry_type": "re-entry",
+      "gap_seconds": 44,
+      "linked_to": 6,
+      "stop": {
+        "price": 30799.75,
+        "source": "exit_of_stopped_trade"
+      },
+      "target": null,
+      "risk_usd": 124,
+      "r": -1.12,
+      "r_estimated": false,
+      "pct_of_account": -0.28,
+      "published": true,
+      "shots": {
+        "before": null,
+        "after": null
+      },
+      "story": {
+        "context": "",
+        "scenario": "",
+        "why": "",
+        "management": ""
+      },
+      "mae": null,
+      "mfe": null
+    },
+    {
+      "side": "Short",
+      "qty": 12,
+      "open": "2026-09-27T19:42:43",
+      "close": "2026-09-27T19:44:00",
+      "entry": 30801.67,
+      "exit": 30807.69,
+      "net": -166.34,
+      "fees": 21.84,
+      "points": -6.02,
+      "exits": [
+        {
+          "time": "2026-09-27T19:44:00",
+          "qty": 12,
+          "price": 30807.69,
+          "net": -166.34
+        }
+      ],
+      "id": 8,
+      "session_day": "2026-09-28",
+      "session": "Asia",
+      "hold_seconds": 77,
+      "result": "loss",
+      "flash": false,
+      "entry_type": "flip",
+      "gap_seconds": 38,
+      "linked_to": 7,
+      "stop": {
+        "price": 30807.69,
+        "source": "exit_of_stopped_trade"
+      },
+      "target": null,
+      "risk_usd": 144.48,
+      "r": -1.15,
+      "r_estimated": false,
+      "pct_of_account": -0.33,
+      "published": true,
+      "shots": {
+        "before": null,
+        "after": null
+      },
+      "story": {
+        "context": "",
+        "scenario": "",
+        "why": "",
+        "management": ""
+      },
+      "mae": null,
+      "mfe": null
+    },
+    {
+      "side": "Long",
+      "qty": 10,
+      "open": "2026-09-27T19:44:34",
+      "close": "2026-09-27T20:23:39",
+      "entry": 30809.47,
+      "exit": 30899.62,
+      "net": 1784.8,
+      "fees": 18.2,
+      "points": 90.15,
+      "exits": [
+        {
+          "time": "2026-09-27T20:23:31",
+          "qty": 9,
+          "price": 30900.25,
+          "net": 1617.57
+        },
+        {
+          "time": "2026-09-27T20:23:39",
+          "qty": 1,
+          "price": 30894,
+          "net": 167.23
+        }
+      ],
+      "id": 9,
+      "session_day": "2026-09-28",
+      "session": "Asia",
+      "hold_seconds": 2345,
+      "result": "win",
+      "flash": false,
+      "entry_type": "flip",
+      "gap_seconds": 34,
+      "linked_to": 8,
+      "stop": {
+        "price": 30801.25,
+        "source": "estimated_avg_loser_distance"
+      },
+      "target": {
+        "price": 30900.25,
+        "source": "partial_fill"
+      },
+      "risk_usd": 164.5,
+      "r": 10.85,
+      "r_estimated": true,
+      "pct_of_account": 3.57,
+      "published": true,
+      "shots": {
+        "before": null,
+        "after": null
+      },
+      "story": {
+        "context": "",
+        "scenario": "",
+        "why": "",
+        "management": ""
+      },
+      "mae": null,
+      "mfe": null
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALX · Trade, Sep 28 session, 19:44</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap">
+<style>
+body{margin:0;background:#F2ECE1}
+.light{--paper:#F2ECE1;--sheet:#FAF7F0;--rule:#D8CFBF;--rule2:#E7DFD1;--ink:#211D18;--ink2:#3D372F;--pencil:#5E574D;--blue:#2A4A73;--gain:#245738;--loss:#A8452F;--gm:#1B7046;--lm:#DB8B6B;--bm:#B9AE9B;--gbg:rgba(27,112,70,.10);--lbg:rgba(168,69,47,.10);--dot:rgba(33,29,24,.05);--shadow:rgba(33,29,24,.14)}
+.dark{--paper:#1A1714;--sheet:#24201B;--rule:#3A332B;--rule2:#2E2923;--ink:#EDE5D8;--ink2:#D6CCBC;--pencil:#A89E8E;--blue:#9DB7DC;--gain:#8CC79D;--loss:#E08064;--gm:#5FB47D;--lm:#C4553A;--bm:#6B6256;--gbg:rgba(95,180,125,.14);--lbg:rgba(196,85,58,.16);--dot:rgba(237,229,216,.035);--shadow:rgba(0,0,0,.45)}
+.pg{position:relative;box-sizing:border-box;background-color:var(--paper);background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:4px 4px;color:var(--ink);font-family:'Newsreader',Georgia,serif;overflow:hidden}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
+a:hover{color:var(--ink)}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.g{color:var(--gain)}.l{color:var(--loss)}.be{color:var(--pencil)}
+.bar{position:absolute;left:0;right:0;top:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;box-sizing:border-box;background:var(--sheet);border-bottom:1px solid var(--rule);z-index:5}
+.seg{display:flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.seg button{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;height:32px;padding:0 12px;border:0;background:transparent;color:var(--ink2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.tabbar{position:absolute;left:0;right:0;height:64px;display:flex;align-items:center;justify-content:center;background:var(--sheet);border-top:1px solid var(--rule);z-index:6}
+.tabbar .tabs{display:flex;gap:8px}
+.tabbar .tabs a{border:0;font-size:17px;height:64px;line-height:64px;padding:0 22px;color:var(--pencil)}
+.tabbar .tabs a:hover{color:var(--ink)}
+.tabbar .tabs a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 2px 0 var(--ink)}
+.tabbar .ib{position:absolute;right:24px;top:10px}
+.ib{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:0;padding:0;background:transparent;border-radius:22px;color:var(--ink);cursor:pointer}
+.tag{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;padding:5px 10px;border:1px solid var(--rule);border-radius:999px;color:var(--ink2)}
+.shot{position:relative;border:1px solid var(--rule);background-color:var(--sheet);background-image:linear-gradient(var(--rule2) 1px,transparent 1px),linear-gradient(90deg,var(--rule2) 1px,transparent 1px);background-size:32px 32px;border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.chip{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;color:var(--pencil);background:var(--sheet);border:1px solid var(--rule);padding:5px 12px;border-radius:999px}
+.ex{display:flex;flex-direction:column;gap:8px;padding:16px 0 18px;border-top:1px solid var(--ink)}
+.ev{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:22px}
+.es{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:22px;font-style:italic;color:var(--pencil)}
+.h2{margin:0;font-size:32px;font-weight:500;letter-spacing:-.01em}
+.wr{display:grid;grid-template-columns:220px 680px;gap:60px;padding:32px 0;border-top:1px solid var(--rule)}
+.wr h3{margin:0;font-size:26px;font-weight:500}
+.wr p{margin:0;font-size:20px;line-height:1.6;color:var(--pencil)}
+.xt{display:grid;grid-template-columns:120px 100px 160px 160px minmax(0,1fr);align-items:center;min-height:48px;border-top:1px solid var(--rule);font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:14px}
+</style>
+<style>
+/* Export: bars behave like the real site (fixed), page centred */
+body{background:#E9E2D5}
+.pg{margin:0 auto}
+.when-dark,.when-light{display:contents}
+.light .when-dark,.dark .when-light{display:none}
+.bar,.mbar,.abar{position:fixed !important;top:0 !important;left:50% !important;right:auto !important;width:1440px;transform:translateX(-50%)}
+.tabbar,.mdock{position:fixed !important;top:auto !important;bottom:0 !important;left:50% !important;right:auto !important;width:1440px;transform:translateX(-50%)}
+</style>
+</head>
+<body>
+<div class="pg light" style="width: 1440px; height: 3180px">
+
+<header class="bar">
+<div style="display: flex; align-items: center; gap: 18px">
+<a href="home.html" aria-label="ALX, home" style="border: 0; color: var(--ink); display: flex"><svg width="56" height="26" viewBox="0 0 172 80" aria-hidden="true" style="color: var(--ink)"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="currentColor" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="currentColor"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="currentColor" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">X</text></svg></a>
+<span style="width: 1px; height: 20px; background: var(--rule)"></span>
+<span class="mono" style="font-size: 12px; color: var(--pencil)">Tradeify 50K · MNQ</span>
+</div>
+<div style="display: flex; align-items: center; gap: 16px">
+<div class="seg" role="group" aria-label="Unit"><button type="button" aria-pressed="false">R</button><button type="button" aria-pressed="true">$</button><button type="button" aria-pressed="false">pts</button><button type="button" aria-pressed="false">%</button></div>
+<div class="seg" role="group" aria-label="Period"><button type="button" aria-pressed="false">1W</button><button type="button" aria-pressed="false">1M</button><button type="button" aria-pressed="false">3M</button><button type="button" aria-pressed="false">YTD</button><button type="button" aria-pressed="true">All</button></div>
+<span class="mono" style="font-size: 11px; color: var(--pencil)">Updated Sep 28, 09:58 ET</span>
+</div>
+</header>
+
+<main style="position: absolute; left: 120px; right: 120px; top: 108px; display: flex; flex-direction: column">
+
+<nav aria-label="Trade navigation" style="display: flex; justify-content: space-between; align-items: center">
+<a href="journal-calendar.html" style="font-size: 16px">← Journal</a>
+<div style="display: flex; gap: 24px; align-items: center"><a href="trade.html" style="font-size: 16px">‹ Previous trade</a><span style="font-size: 16px; color: var(--pencil)">Next trade ›</span></div>
+</nav>
+
+<section style="display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: end; margin-top: 44px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span class="k">Mon 28 session · Sun Sep 27, 2026 · 19:44 → 20:23 ET</span>
+<h1 style="margin: 0; font-size: 64px; font-weight: 500; letter-spacing: -0.02em; line-height: 1">Long MNQ, Asia session</h1>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><span class="tag">Long</span><span class="tag">Asia</span><span class="tag">10 contracts</span><span class="tag">39 min</span><span class="tag" style="color: var(--blue); border-color: var(--blue)">⇄ Flip, 34 s after a short</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end">
+<span class="mono g" style="font-size: 72px; line-height: 1; letter-spacing: -0.02em">+$1,784.80</span>
+<span class="mono" style="font-size: 14px; color: var(--ink2)">+90.15 pts · +3.57 % · +10.85 R est.</span>
+</div>
+</section>
+
+<div style="display: flex; gap: 8px; align-items: center; margin-top: 28px; padding: 14px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule)">
+<span class="k" style="margin-right: 8px">The Monday session</span>
+<a href="trade.html" class="tag" style="color: var(--pencil)">19:12 Long · BE</a>
+<a href="trade.html" class="tag" style="color: var(--pencil)">↻ 19:32 Long · −$177.06</a>
+<a href="trade.html" class="tag" style="color: var(--pencil)">↻ 19:35 Long · −$138.56</a>
+<a href="trade.html" class="tag" style="color: var(--pencil)">⇄ 19:42 Short · −$166.34</a>
+<span class="tag" style="background: var(--ink); border-color: var(--ink); color: var(--paper)" aria-current="true">⇄ 19:44 Long · this trade</span>
+</div>
+
+<figure style="margin: 48px 0 0; display: flex; flex-direction: column; gap: 12px">
+<div class="shot" style="height: 620px"><span class="chip">Your annotated TradingView screenshot, at entry</span></div>
+<figcaption style="display: flex; justify-content: space-between"><span class="k" style="color: var(--ink)">Before · 19:44 ET</span><span class="mono" style="font-size: 12px; color: var(--pencil)">Click to enlarge</span></figcaption>
+</figure>
+
+<section style="display: flex; flex-direction: column; gap: 8px; margin-top: 64px">
+<h2 class="h2">Execution</h2>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: 28px; margin-top: 12px">
+<div class="ex"><span class="k">Entry</span><span class="ev">30,809.47</span></div>
+<div class="ex"><span class="k">Stop · estimated</span><span class="es">~30,801.25</span></div>
+<div class="ex"><span class="k">Target · from fill</span><span class="ev">30,900.25</span></div>
+<div class="ex"><span class="k">Exit · average</span><span class="ev">30,899.63</span></div>
+<div class="ex"><span class="k">Contracts</span><span class="ev">10</span></div>
+<div class="ex"><span class="k">Risk · estimated</span><span class="es">~$164.50</span></div>
+<div class="ex"><span class="k">Net</span><span class="ev g">+$1,784.80</span></div>
+<div class="ex"><span class="k">Fees</span><span class="ev">$18.20</span></div>
+<div class="ex"><span class="k">Hold</span><span class="ev">39 min</span></div>
+<div class="ex"><span class="k">MAE / MFE</span><span class="ev" style="color: var(--pencil)">Not tracked</span></div>
+</div>
+<span class="mono" style="font-size: 12px; color: var(--pencil)">Estimated values: no order export for this day, so the stop uses the average distance of stopped trades (8.23 pts).</span>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 10px; margin-top: 40px">
+<span class="k">Price path, 30,795 → 30,905</span>
+<svg width="1200" height="120" viewBox="0 0 1200 120" role="img" aria-label="Stop 30,801.25 estimated, entry 30,809.47, exit 30,899.63, target 30,900.25">
+<line x1="50" y1="60" x2="1150" y2="60" style="stroke: var(--rule); stroke-width: 1"></line>
+<line x1="100" y1="54" x2="100" y2="66" style="stroke: var(--rule); stroke-width: 1"></line>
+<line x1="350" y1="54" x2="350" y2="66" style="stroke: var(--rule); stroke-width: 1"></line>
+<line x1="600" y1="54" x2="600" y2="66" style="stroke: var(--rule); stroke-width: 1"></line>
+<line x1="850" y1="54" x2="850" y2="66" style="stroke: var(--rule); stroke-width: 1"></line>
+<line x1="1100" y1="54" x2="1100" y2="66" style="stroke: var(--rule); stroke-width: 1"></line>
+<rect x="112.5" y="52" width="82.2" height="16" rx="2" style="fill: var(--lbg); stroke: var(--lm); stroke-width: 1"></rect>
+<rect x="194.7" y="52" width="901.6" height="16" rx="2" style="fill: var(--gbg); stroke: var(--gm); stroke-width: 1"></rect>
+<line x1="112.5" y1="36" x2="112.5" y2="84" style="stroke: var(--loss); stroke-width: 1.5; stroke-dasharray: 3 3"></line>
+<line x1="194.7" y1="36" x2="194.7" y2="84" style="stroke: var(--ink); stroke-width: 2"></line>
+<line x1="1096.3" y1="36" x2="1096.3" y2="84" style="stroke: var(--ink); stroke-width: 2"></line>
+<line x1="1102.5" y1="20" x2="1102.5" y2="52" style="stroke: var(--gain); stroke-width: 1.5; stroke-dasharray: 3 3"></line>
+<text x="106" y="102" text-anchor="end" style="fill: var(--loss); font: 12px 'IBM Plex Mono', monospace">stop ~30,801.25</text>
+<text x="200" y="102" text-anchor="start" style="fill: var(--ink); font: 12px 'IBM Plex Mono', monospace">entry 30,809.47</text>
+<text x="1090" y="102" text-anchor="end" style="fill: var(--ink); font: 12px 'IBM Plex Mono', monospace">exit 30,899.63</text>
+<text x="1096" y="16" text-anchor="end" style="fill: var(--gain); font: 12px 'IBM Plex Mono', monospace">target 30,900.25</text>
+<text x="645" y="44" text-anchor="middle" style="fill: var(--gain); font: 12px 'IBM Plex Mono', monospace">+90.15 pts</text>
+<text x="153" y="44" text-anchor="middle" style="fill: var(--loss); font: 12px 'IBM Plex Mono', monospace">8.23</text>
+</svg>
+</section>
+
+<section style="display: flex; flex-direction: column; margin-top: 40px">
+<span class="k" style="padding-bottom: 10px">Exits</span>
+<div class="xt" style="border-top: 1px solid var(--ink)"><span>20:23:31</span><span>9 MNQ</span><span>@ 30,900.25</span><span class="g">+$1,617.57</span><span style="font-family: 'Newsreader', serif; font-size: 16px; color: var(--pencil)">Target, filled on 9 of 10 contracts</span></div>
+<div class="xt" style="border-bottom: 1px solid var(--rule)"><span>20:23:39</span><span>1 MNQ</span><span>@ 30,894.00</span><span class="g">+$167.23</span><span style="font-family: 'Newsreader', serif; font-size: 16px; color: var(--pencil)">Closed by hand, 8 s later</span></div>
+</section>
+
+<figure style="margin: 64px 0 0; display: flex; flex-direction: column; gap: 12px">
+<div class="shot" style="height: 480px"><span class="chip">Your screenshot after the exit</span></div>
+<figcaption style="display: flex; justify-content: space-between"><span class="k" style="color: var(--ink)">After · 20:23 ET · what the market did next</span><span class="mono" style="font-size: 12px; color: var(--pencil)">Optional</span></figcaption>
+</figure>
+
+<section style="display: flex; flex-direction: column; margin-top: 72px">
+<div class="wr" style="border-top: 1px solid var(--ink)"><h3>Context</h3><p>[What the market was doing before the entry: the session, the move that came before, the levels in play.]</p></div>
+<div class="wr"><h3>Scenario</h3><p>[What you expected to happen, and what would have proved you wrong.]</p></div>
+<div class="wr"><h3>Why I took it</h3><p>[Why this was a trade for you, in general terms. No exact entry rule.]</p></div>
+<div class="wr" style="border-bottom: 1px solid var(--rule)"><h3>Management</h3><p>[How you handled it once in: the target filled on 9 contracts, the last one closed by hand.]</p></div>
+</section>
+
+<nav aria-label="Previous and next trades" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 72px">
+<a href="trade.html" style="display: flex; flex-direction: column; gap: 8px; padding: 22px 24px; border: 1px solid var(--rule); border-radius: 8px; background: var(--sheet); color: var(--ink)">
+<span class="k">‹ Previous trade · 34 s before</span>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-size: 24px; font-weight: 500">Short, Asia · 19:42</span><span class="mono l" style="font-size: 18px">−$166.34</span></div>
+</a>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 22px 24px; border: 1px dashed var(--rule); border-radius: 8px">
+<span class="k">Next trade ›</span>
+<span style="font-size: 24px; color: var(--pencil)">This is the latest trade</span>
+</div>
+</nav>
+
+<footer style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 96px; padding-top: 20px; border-top: 1px solid var(--rule)">
+<span style="font-size: 15px; color: var(--ink2)">Not financial advice. Past performance does not guarantee future results.</span>
+<span class="mono" style="font-size: 11px; color: var(--pencil)">Data: Tradeify via Tradesea · Updated Sep 28, 2026 · © 2026 ALX</span>
+</footer>
+</main>
+
+<nav class="tabbar" aria-label="Main" style="top: 836px">
+<div class="tabs"><a href="home.html">Home</a><a href="journal-calendar.html" aria-current="page">Journal</a><a href="stats.html">Stats</a><a href="strategy.html">Strategy</a></div>
+<button type="button" class="ib" aria-label="Switch theme" onclick="toggleTheme()">
+<span class="when-dark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></span>
+<span class="when-light"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"></path></svg></span>
+</button>
+</nav>
+</div>
+<script>
+function toggleTheme(){var r=document.querySelector('.pg');var d=r.classList.contains('dark');r.classList.toggle('dark',!d);r.classList.toggle('light',d);}
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>ALX · Wireframe Journal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap">
+<style>
+body{margin:0;background:#E9E2D5;font-family:'Newsreader',Georgia,serif;color:#211D18}
+a{color:#2A4A73}a:hover{color:#1B3354}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#5E574D}
+.fr{position:relative;background:#FAF7F0;border:1px solid #211D18;border-radius:8px;overflow:hidden}
+.hatch{position:relative;border:1px solid #CFC5B3;border-radius:4px;background:repeating-linear-gradient(135deg,#DDD4C3 0 1px,#F3EEE4 1px 10px);display:flex;align-items:center;justify-content:center}
+.ph{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:10px;color:#5E574D;background:#F3EEE4;padding:2px 6px}
+.mk{position:absolute;top:-9px;left:-9px;z-index:5;width:22px;height:22px;border-radius:11px;background:#2A4A73;color:#FFFFFF;font:500 11px/22px 'IBM Plex Mono',monospace;text-align:center}
+.tx{height:7px;border-radius:2px;background:#DDD4C3}
+.g{color:#245738}.l{color:#A8452F}
+.seg{display:flex;border:1px solid #CFC5B3;border-radius:5px;overflow:hidden}
+.seg span{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;padding:4px 8px;color:#3D372F}
+.seg .on{background:#211D18;color:#F2ECE1}
+.bar{position:relative;display:flex;align-items:center;justify-content:space-between;height:40px;box-sizing:border-box;padding:0 16px 0 40px;background:#FAF7F0;border-bottom:1px solid #D8CFBF}
+.fold{position:absolute;left:0;right:0;height:0;border-top:1px dashed #A8452F;z-index:4}
+.foldl{position:absolute;right:8px;top:-18px;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:10px;color:#A8452F;background:#FAF7F0;padding:1px 4px}
+.dock{position:absolute;left:0;right:0;height:44px;z-index:6;display:flex;align-items:center;justify-content:center;gap:4px;background:#FAF7F0;border-top:1px solid #D8CFBF}
+.dock span{font-size:13px;line-height:44px;padding:0 12px;color:#5E574D}
+.dock .on{color:#211D18;box-shadow:inset 0 2px 0 #211D18}
+.lk{font-size:14px;color:#2A4A73;border-bottom:1px solid #2A4A73}
+.d{display:flex;flex-direction:column;gap:2px;height:64px;box-sizing:border-box;padding:5px 6px;border:1px solid #E1D9CA;border-radius:3px}
+.dn{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:10px;color:#5E574D}
+.dv{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px}
+.dt{font-size:10px;color:#5E574D}
+.wk{display:flex;flex-direction:column;justify-content:center;height:64px;box-sizing:border-box;padding:5px 6px;border-left:1px solid #211D18;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;color:#5E574D}
+.row{display:grid;grid-template-columns:14px 40px 40px 22px minmax(0,1fr) 10px;align-items:center;gap:6px;padding:8px 0;border-top:1px solid #E1D9CA;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px}
+.lgd{display:flex;gap:12px;padding:14px 0;border-top:1px solid #CFC5B3}
+.lgd i{flex-shrink:0;width:22px;height:22px;border-radius:11px;background:#2A4A73;color:#FFFFFF;font:500 11px/22px 'IBM Plex Mono',monospace;text-align:center;font-style:normal}
+.lgd div{display:flex;flex-direction:column;gap:4px}
+.lgd strong{font-size:17px;font-weight:600}
+.lgd span{font-size:15px;line-height:1.4;color:#3D372F}
+</style>
+</head>
+<body>
+<div style="width: 1440px; height: 1340px; box-sizing: border-box; padding: 60px; display: flex; flex-direction: column; gap: 32px; background: #E9E2D5">
+
+<header style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 18px; border-bottom: 2px solid #211D18">
+<div style="display: flex; align-items: baseline; gap: 18px"><h1 style="margin: 0; font-size: 48px; font-weight: 500; line-height: 1">Journal</h1><span class="mono" style="font-size: 14px; color: #2A4A73">/journal</span></div>
+<span style="font-size: 17px; font-style: italic; color: #3D372F">Vue calendrier par défaut, les deux autres vues en encart</span>
+</header>
+
+<div style="display: flex; gap: 40px; align-items: flex-start">
+
+<div class="fr" style="width: 1000px; height: 1100px; flex-shrink: 0">
+<div class="bar"><span class="mk" style="top: 9px; left: 9px">1</span>
+<div style="display: flex; align-items: center; gap: 12px">
+<svg width="43" height="20" viewBox="0 0 172 80" role="img" aria-label="ALX"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="#211D18" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="#211D18"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="#211D18" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">X</text></svg>
+<span class="mono" style="font-size: 11px; color: #5E574D">Tradeify · MNQ</span>
+</div>
+<div style="display: flex; align-items: center; gap: 10px">
+<div class="seg"><span>R</span><span class="on">$</span><span>pts</span><span>%</span></div>
+<div class="seg"><span>1W</span><span>1M</span><span>3M</span><span>YTD</span><span class="on">All</span></div>
+</div>
+</div>
+
+<div style="padding: 32px 40px 0; display: flex; flex-direction: column; gap: 20px">
+
+<div style="position: relative; display: flex; justify-content: space-between; align-items: center"><span class="mk" style="left: auto; right: 286px">2</span>
+<div style="display: flex; align-items: baseline; gap: 14px"><h2 style="margin: 0; font-size: 40px; font-weight: 500; line-height: 1">Journal</h2><span class="mono" style="font-size: 13px; color: #5E574D">9 trades</span></div>
+<div class="seg"><span class="on" style="padding: 6px 12px">Calendar</span><span style="padding: 6px 12px">Cards</span><span style="padding: 6px 12px">Timeline</span></div>
+</div>
+
+<div style="position: relative; display: flex; gap: 18px; align-items: center"><span class="mk">3</span>
+<div style="display: flex; gap: 6px; align-items: center"><span class="k">Side</span><div class="seg"><span class="on">All</span><span>Long</span><span>Short</span></div></div>
+<div style="display: flex; gap: 6px; align-items: center"><span class="k">Result</span><div class="seg"><span class="on">All</span><span>Win</span><span>Loss</span><span>BE</span></div></div>
+<div style="display: flex; gap: 6px; align-items: center"><span class="k">Session</span><div class="seg"><span class="on">All</span><span>Asia</span><span>London</span><span>NY</span></div></div>
+</div>
+
+<div style="display: flex; gap: 24px; align-items: flex-start; padding-top: 8px">
+<div style="position: relative; width: 616px; display: flex; flex-direction: column; gap: 10px"><span class="mk">4</span>
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<div style="display: flex; gap: 14px; align-items: baseline"><span style="font-size: 20px">‹</span><span style="font-size: 22px; font-weight: 500">September 2026</span><span style="font-size: 20px">›</span></div>
+<span class="mono" style="font-size: 11px; color: #5E574D">Net <span class="g">+$2,145.62</span> · 2 days · 9 trades</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)) 96px; gap: 4px">
+<span class="k" style="font-size: 9px">Mon</span><span class="k" style="font-size: 9px">Tue</span><span class="k" style="font-size: 9px">Wed</span><span class="k" style="font-size: 9px">Thu</span><span class="k" style="font-size: 9px">Fri</span><span class="k" style="font-size: 9px">Week</span>
+<div class="d" style="opacity: 0.35"><span class="dn">31</span></div><div class="d"><span class="dn">1</span></div><div class="d"><span class="dn">2</span></div><div class="d"><span class="dn">3</span></div><div class="d"><span class="dn">4</span></div><div class="wk">—</div>
+<div class="d"><span class="dn">7</span></div><div class="d"><span class="dn">8</span></div><div class="d"><span class="dn">9</span></div><div class="d"><span class="dn">10</span></div><div class="d"><span class="dn">11</span></div><div class="wk">—</div>
+<div class="d"><span class="dn">14</span></div><div class="d"><span class="dn">15</span></div><div class="d"><span class="dn">16</span></div><div class="d"><span class="dn">17</span></div><div class="d"><span class="dn">18</span></div><div class="wk">—</div>
+<div class="d"><span class="dn">21</span></div><div class="d"><span class="dn">22</span></div><div class="d"><span class="dn">23</span></div><div class="d"><span class="dn">24</span></div>
+<div class="d" style="background: rgba(36,87,56,0.16)"><span class="dn">25</span><span class="dv g">+$854.20</span><span class="dt">4 trades</span></div>
+<div class="wk"><span class="g">+$854.20</span></div>
+<div class="d" style="background: rgba(36,87,56,0.24); border: 2px solid #211D18"><span class="dn" style="color: #2A4A73">28 · today</span><span class="dv g">+$1,291.42</span><span class="dt">5 trades</span></div>
+<div class="d"><span class="dn">29</span></div><div class="d"><span class="dn">30</span></div><div class="d" style="opacity: 0.35"><span class="dn">1</span></div><div class="d" style="opacity: 0.35"><span class="dn">2</span></div><div class="wk"><span class="g">+$1,291.42</span></div>
+</div>
+</div>
+
+<div style="position: relative; flex-grow: 1; display: flex; flex-direction: column; gap: 6px; padding: 16px; background: #F1EBDF; border: 1px solid #D8CFBF; border-radius: 6px"><span class="mk">5</span>
+<span class="k">Selected day</span>
+<span style="font-size: 22px; font-weight: 500">Monday, Sep 28</span>
+<span class="mono" style="font-size: 12px"><span class="g">+$1,291.42</span> · 5 trades · from Sun 18:00 ET</span>
+<div style="display: flex; flex-direction: column; padding-top: 8px">
+<div class="row"><span></span><span>19:12</span><span>Long</span><span>6</span><span style="text-align: right; color: #5E574D">BE −$11.42</span><span>›</span></div>
+<div class="row"><span style="color: #2A4A73">↻</span><span>19:32</span><span>Long</span><span>8</span><span class="l" style="text-align: right">−$177.06</span><span>›</span></div>
+<div class="row"><span style="color: #2A4A73">↻</span><span>19:35</span><span>Long</span><span>8</span><span class="l" style="text-align: right">−$138.56</span><span>›</span></div>
+<div class="row"><span style="color: #2A4A73">⇄</span><span>19:42</span><span>Short</span><span>12</span><span class="l" style="text-align: right">−$166.34</span><span>›</span></div>
+<div class="row"><span style="color: #2A4A73">⇄</span><span>19:44</span><span>Long</span><span>10</span><span class="g" style="text-align: right">+$1,784.80</span><span>›</span></div>
+</div>
+<span class="mono" style="font-size: 10px; color: #5E574D; padding-top: 6px">↻ re-entry · ⇄ flip · within 2 min</span>
+<span class="lk" style="align-self: flex-start; margin-top: 8px">Read the day in Timeline →</span>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding-top: 28px; border-top: 1px dashed #B9AE9B">
+<div style="position: relative; display: flex; flex-direction: column; gap: 10px"><span class="mk">6</span>
+<span class="k" style="color: #211D18">Même page, vue Cards</span>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 12px; border: 1px solid #D8CFBF; border-radius: 6px">
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="hatch" style="height: 80px"><span class="ph">capture</span></div><span class="k" style="font-size: 9px">Sun 27 · 19:44</span><span style="font-size: 13px; font-weight: 600">Long · Asia</span><span class="mono g" style="font-size: 11px">+$1,784.80</span></div>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="hatch" style="height: 80px"><span class="ph">capture</span></div><span class="k" style="font-size: 9px">Sun 27 · 19:42</span><span style="font-size: 13px; font-weight: 600">Short · Asia</span><span class="mono l" style="font-size: 11px">−$166.34</span></div>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="hatch" style="height: 80px"><span class="ph">capture</span></div><span class="k" style="font-size: 9px">Sun 27 · 19:35</span><span style="font-size: 13px; font-weight: 600">Long · Asia</span><span class="mono l" style="font-size: 11px">−$138.56</span></div>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="hatch" style="height: 80px"><span class="ph">capture</span></div><span class="k" style="font-size: 9px">Sun 27 · 19:32</span><span style="font-size: 13px; font-weight: 600">Long · Asia</span><span class="mono l" style="font-size: 11px">−$177.06</span></div>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="hatch" style="height: 80px"><span class="ph">capture</span></div><span class="k" style="font-size: 9px">Sun 27 · 19:12</span><span style="font-size: 13px; font-weight: 600">Long · Asia</span><span class="mono" style="font-size: 11px; color: #5E574D">BE −$11.42</span></div>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="hatch" style="height: 80px"><span class="ph">capture</span></div><span class="k" style="font-size: 9px">Fri 25 · 05:15</span><span style="font-size: 13px; font-weight: 600">Short · London</span><span class="mono g" style="font-size: 11px">+$1,039.48</span></div>
+</div>
+</div>
+
+<div style="position: relative; display: flex; flex-direction: column; gap: 10px"><span class="mk">7</span>
+<span class="k" style="color: #211D18">Même page, vue Timeline</span>
+<div style="display: flex; flex-direction: column; gap: 0; padding: 12px 12px 12px 28px; border: 1px solid #D8CFBF; border-radius: 6px; position: relative">
+<div style="position: absolute; left: 16px; top: 16px; bottom: 16px; width: 1px; background: #211D18"></div>
+<span class="k" style="color: #211D18; padding-bottom: 8px">Mon 28 Sep session</span>
+<div style="display: flex; gap: 12px; padding: 8px 0; border-top: 1px solid #E1D9CA"><div class="hatch" style="width: 64px; height: 44px; flex-shrink: 0"></div><div style="flex-grow: 1; display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between"><span style="font-size: 13px; font-weight: 600">19:44 · Long · 10 MNQ <span class="mono" style="font-size: 10px; font-weight: 400; color: #2A4A73">⇄ flip +34 s</span></span><span class="mono g" style="font-size: 11px">+$1,784.80</span></div><div class="tx" style="width: 95%"></div><div class="tx" style="width: 70%"></div></div></div>
+<div style="display: flex; gap: 12px; padding: 8px 0; border-top: 1px solid #E1D9CA"><div class="hatch" style="width: 64px; height: 44px; flex-shrink: 0"></div><div style="flex-grow: 1; display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between"><span style="font-size: 13px; font-weight: 600">19:42 · Short · 12 MNQ <span class="mono" style="font-size: 10px; font-weight: 400; color: #2A4A73">⇄ flip +38 s</span></span><span class="mono l" style="font-size: 11px">−$166.34</span></div><div class="tx" style="width: 90%"></div><div class="tx" style="width: 55%"></div></div></div>
+<div style="display: flex; gap: 12px; padding: 8px 0; border-top: 1px solid #E1D9CA"><div class="hatch" style="width: 64px; height: 44px; flex-shrink: 0"></div><div style="flex-grow: 1; display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between"><span style="font-size: 13px; font-weight: 600">19:35 · Long · 8 MNQ <span class="mono" style="font-size: 10px; font-weight: 400; color: #2A4A73">↻ re-entry +44 s</span></span><span class="mono l" style="font-size: 11px">−$138.56</span></div><div class="tx" style="width: 85%"></div><div class="tx" style="width: 62%"></div></div></div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="fold" style="top: 625px"><span class="foldl" style="top: -62px">ligne de flottaison · écran 1440 × 900</span></div>
+<div class="dock" style="top: 581px"><span class="mk" style="top: -11px; left: 12px">8</span>
+<span>Home</span><span class="on">Journal</span><span>Stats</span><span>Strategy</span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#211D18" stroke-width="1.6" aria-hidden="true" style="position: absolute; right: 16px; top: 11px"><path d="M17 13.5A5.5 5.5 0 1 1 10.5 7a4.5 4.5 0 0 0 6.5 6.5Z"></path></svg>
+</div>
+</div>
+
+<div style="flex-grow: 1; display: flex; flex-direction: column">
+<span class="k" style="padding-bottom: 12px; color: #211D18">Légende</span>
+<div class="lgd"><i>1</i><div><strong>Barre de filtres</strong><span>Identique sur toutes les pages. La période filtre aussi le calendrier.</span></div></div>
+<div class="lgd"><i>2</i><div><strong>Bascule de vue</strong><span>Calendar par défaut. Le dernier choix est mémorisé.</span></div></div>
+<div class="lgd"><i>3</i><div><strong>Filtres du journal</strong><span>Sens, résultat (BE = net entre −30 $ et +30 $), session. Ils s'ajoutent à la période du haut.</span></div></div>
+<div class="lgd"><i>4</i><div><strong>Calendrier</strong><span>Lundi → vendredi. Un jour = une session de 18:00 à 17:00 ET : le dimanche soir compte pour lundi. Case teintée selon le résultat, total par semaine à droite.</span></div></div>
+<div class="lgd"><i>5</i><div><strong>Panneau du jour</strong><span>Le jour cliqué et ses trades dans l'ordre. ↻ = ré-entrée, ⇄ = retournement, moins de 2 min après le trade précédent. Clic sur une ligne : la fiche du trade.</span></div></div>
+<div class="lgd"><i>6</i><div><strong>Vue Cards</strong><span>Grille de 3 colonnes, capture en tête. Pour parcourir visuellement.</span></div></div>
+<div class="lgd"><i>7</i><div><strong>Vue Timeline</strong><span>Un trade = une entrée de carnet, groupées par jour, avec le début de ton explication.</span></div></div>
+<div class="lgd"><i>8</i><div><strong>Menu du bas</strong><span>Barre fixe pleine largeur, Journal marqué.</span></div></div>
+</div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+.seg {
+  position: relative;
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  background: transparent;
+  isolation: isolate;
+}
+.seg button {
+  position: relative;
+  z-index: 1;
+  font-family: var(--monof);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  height: 32px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--ink2);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--fast) var(--ease), background-color var(--fast) var(--ease);
+}
+.seg button:hover { background: var(--rule2); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); cursor: default; }
+.seg button:focus-visible { outline-offset: -2px; }
+
+/* Once measured, the sliding pill paints the pressed state. */
+.measured button[aria-pressed="true"] { background: transparent; }
+.measured button[aria-pressed="true"]:hover { background: transparent; }
+.ind {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--ink);
+  transition: transform 200ms var(--ease), width 200ms var(--ease);
+  pointer-events: none;
+}
+
+.md button { height: 40px; font-size: 13px; padding: 0 14px; }
+.lg button { height: 44px; font-size: 14px; padding: 0 18px; }
+
+.stretch { display: flex; width: 100%; }
+.stretch button { flex: 1 1 0; padding: 0 6px; }

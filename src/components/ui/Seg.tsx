@@ -46,7 +46,6 @@ export function Seg<T extends string>({ options, value, onChange, label, size = 
       aria-label={label}
       className={`${s.seg} ${s[size]} ${stretch ? s.stretch : ""} ${ind ? s.measured : ""} ${className}`}
     >
-      {ind && <span className={s.ind} style={{ transform: `translateX(${ind.x}px)`, width: ind.w }} aria-hidden="true" />}
       {options.map((o) => (
         <button
           key={o.value}
@@ -58,6 +57,8 @@ export function Seg<T extends string>({ options, value, onChange, label, size = 
           {o.label}
         </button>
       ))}
+      {/* After the buttons so `button:nth-child(n)` stays natural; z-index keeps it underneath. */}
+      {ind && <span className={s.ind} style={{ transform: `translateX(${ind.x}px)`, width: ind.w }} aria-hidden="true" />}
     </div>
   );
 }

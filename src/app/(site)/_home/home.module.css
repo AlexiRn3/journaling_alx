@@ -1,0 +1,301 @@
+/* Home · desktop 1440 (1200 px column), tablet, mobile below 720 px. */
+
+.page { padding-top: 72px; }
+
+.secHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.est { font-size: max(.5em, 11px); letter-spacing: 0; }
+.page .ph { color: var(--pencil); }
+.selfStart { align-self: flex-start; }
+
+/* "View the journal →" */
+.more {
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+  color: var(--blue);
+  white-space: nowrap;
+}
+.more:hover { color: var(--ink); }
+.moreText { border-bottom: 1px solid currentColor; }
+.arrow { display: inline-block; transition: transform var(--fade) var(--ease); }
+.more:hover .arrow,
+.more:focus-visible .arrow { transform: translateX(2px); }
+.more:active .arrow { transform: translateX(4px); }
+
+/* ------------------------------------------------------------ 1 · hero */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 48px;
+  align-items: end;
+}
+.lead { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.kicker { font-weight: 400; }
+.net {
+  font-size: 104px;
+  line-height: .95;
+  letter-spacing: -.03em;
+  white-space: nowrap;
+}
+.net .est { font-size: .3em; margin-left: .15em; }
+.caption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; }
+.sentence { font-size: 20px; font-style: italic; color: var(--ink2); line-height: 1.35; }
+.alt { font-size: 14px; color: var(--pencil); white-space: nowrap; }
+
+.rows { margin: 0; display: flex; flex-direction: column; }
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px solid var(--rule);
+}
+.row:first-child { border-top-color: var(--ink); }
+.row:last-child { border-bottom: 1px solid var(--rule); }
+.row dd { margin: 0; font-size: 18px; }
+
+/* ---------------------------------------------------------- 2 · equity */
+
+.equity { display: flex; flex-direction: column; gap: 14px; margin-top: 56px; }
+.chartNarrow { display: none; }
+
+/* ----------------------------------------------------- 3 · key figures */
+
+.figs {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin: 40px 0 0 -20px;
+}
+.figItem { border-left: 1px solid var(--rule); min-width: 0; }
+.figItem:first-child { border-left: 0; }
+.fig {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 4px 20px;
+  color: var(--ink);
+  transition: opacity var(--fast) var(--ease);
+}
+.fig:hover { color: var(--ink); }
+.fig:active { opacity: .7; }
+.figLabel { transition: color var(--fast) var(--ease); }
+.fig:hover .figLabel { color: var(--ink); }
+.figArrow {
+  display: inline-block;
+  margin-left: .5em;
+  color: var(--blue);
+  opacity: 0;
+  transform: translateX(-3px);
+  transition: opacity var(--fade) var(--ease), transform var(--fade) var(--ease);
+}
+.fig:hover .figArrow,
+.fig:focus-visible .figArrow { opacity: 1; transform: none; }
+.figVal { font-size: 28px; line-height: 1.1; letter-spacing: -.02em; white-space: nowrap; }
+.figSub { font-size: 15px; line-height: 1.35; color: var(--pencil); }
+
+/* ------------------------------------------------------ 4 · latest trades */
+
+.latest { display: flex; flex-direction: column; gap: 24px; margin-top: 88px; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.card { min-width: 0; }
+.none {
+  padding: 48px 24px;
+  border: 1px dashed var(--rule);
+  border-radius: 4px;
+  text-align: center;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--pencil);
+}
+
+/* Horizontal strip, one card peeking at the edge; snaps card by card. */
+.carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 0 var(--gutter) 6px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.carousel::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 280px; min-width: 0; scroll-snap-align: start; }
+
+/* ----------------------------------------------- 5 · month + how I trade */
+
+.bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+  gap: 96px;
+  margin-top: 96px;
+  padding-top: 40px;
+  border-top: 1px solid var(--ink);
+}
+
+.month { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.monthNet { font-size: 14px; }
+
+.cal { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.dow { font-size: 10px; }
+.cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 52px;
+  padding: 6px 8px;
+  border: 1px solid var(--rule2);
+  border-radius: 4px;
+  font-family: var(--monof);
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--pencil);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.out { opacity: .4; }
+.has { border-color: transparent; color: var(--ink); }
+.tintG { background: var(--gbg); }
+.tintL { background: var(--lbg); }
+.tintBe { background: var(--rule2); }
+.today { border: 2px solid var(--blue); padding: 5px 7px; color: var(--ink); }
+a.cell {
+  transition: border-color var(--fast) var(--ease), box-shadow var(--fast) var(--ease), transform var(--fast) var(--ease);
+}
+a.cell:hover { color: var(--ink); border-color: var(--pencil); box-shadow: 0 2px 8px var(--shadow); }
+a.cell.today:hover { border-color: var(--blue); }
+a.cell:active { transform: scale(.97); }
+
+.mstats {
+  margin: 0;
+  padding-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.mstats > div { display: flex; flex-direction: column; gap: 4px; }
+.mstats dd { margin: 0; font-size: 18px; }
+
+.how { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.howTitle { font-size: 44px; font-style: italic; font-weight: 400; letter-spacing: -.01em; line-height: 1.1; }
+.howIntro { font-size: 20px; line-height: 1.5; color: var(--ink2); }
+.prin { list-style: none; margin: 0; padding: 0; }
+.prin li {
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule);
+}
+.prin li:first-child { border-top-color: var(--ink); }
+.prin li:last-child { border-bottom: 1px solid var(--rule); }
+.prinNo { font-size: 12px; color: var(--blue); }
+.prinTitle { font-size: 20px; line-height: 1.35; }
+
+/* --------------------------------------------------------- responsive */
+
+@media (max-width: 1199px) {
+  .net { font-size: 88px; }
+  .figs { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 28px; }
+  .figItem:nth-child(3n + 1) { border-left: 0; }
+  .bottom { gap: 64px; }
+}
+
+/* Below 1100 px the latest trades scroll sideways, one card peeking. */
+@media (max-width: 1099px) {
+  .cards {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 0 var(--gutter) 6px;
+    scrollbar-width: none;
+  }
+  .cards::-webkit-scrollbar { display: none; }
+  .card { flex: 0 0 320px; scroll-snap-align: start; }
+}
+
+/* Tablet: the side column goes under the big number. */
+@media (max-width: 1023px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .net { font-size: 80px; }
+  .rows { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; }
+  .row, .row:first-child { border-top-color: var(--ink); border-bottom: 1px solid var(--rule); }
+
+
+  .bottom { grid-template-columns: minmax(0, 1fr); gap: 56px; }
+  .how { padding-top: 32px; border-top: 1px solid var(--ink); }
+  .prin li:first-child { border-top-color: var(--rule); }
+}
+
+@media (max-width: 719px) {
+  .page { padding-top: 24px; }
+
+  .hero { gap: 0; }
+  .lead { gap: 0; }
+  .net { font-size: min(50px, 13vw); line-height: 1; margin-top: 10px; }
+  .caption { flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 8px; }
+  .sentence { font-size: 17px; }
+  .alt { font-size: 13px; }
+  .rows { display: none; }
+
+  .equity { margin-top: 28px; gap: 10px; }
+  .chartWide { display: none; }
+  .chartNarrow { display: block; }
+
+  .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; row-gap: 0; margin: 16px 0 0; }
+  .figItem { border-left: 0; border-top: 1px solid var(--rule); }
+  .figs .figExtra { display: none; }
+  .fig { gap: 4px; padding: 12px 0; }
+  .figVal { font-size: 20px; letter-spacing: 0; }
+  .figSub { display: none; }
+
+  .latest { margin-top: 40px; gap: 14px; }
+  .more { font-size: 15px; }
+
+  .bottom { margin-top: 44px; padding-top: 24px; gap: 44px; }
+  .month { gap: 14px; }
+  .cal { gap: 4px; }
+  .dow { font-size: 9px; }
+  .cell { height: 44px; padding: 4px 6px; font-size: 10px; line-height: 1.25; }
+  .today { padding: 3px 5px; }
+  .mstats { display: none; }
+
+  .how { gap: 14px; padding-top: 24px; }
+  .howTitle { font-size: 34px; }
+  .howIntro { font-size: 18px; }
+  .prin li { gap: 14px; padding: 12px 0; }
+  .prinNo { font-size: 11px; }
+  .prinTitle { font-size: 18px; }
+}
+
+/* Touch screens: text links get a 44 px tall target. */
+@media (max-width: 719px), (pointer: coarse) {
+  .more { min-height: 44px; }
+}
+
+/* Parts shown only on wide (≥ 720 px) or narrow screens. */
+@media (min-width: 720px) {
+  .onlyNarrow { display: none !important; }
+}
+@media (max-width: 719px) {
+  .onlyWide { display: none !important; }
+}

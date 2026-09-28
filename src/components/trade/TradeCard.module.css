@@ -1,0 +1,23 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--ink);
+  transition: transform var(--fade) var(--ease);
+}
+.card:hover { color: var(--ink); }
+.shot { transition: border-color var(--fade) var(--ease), box-shadow var(--fade) var(--ease); }
+.card:hover .shot { border-color: var(--pencil); box-shadow: 0 4px 14px var(--shadow); }
+.card:active { transform: scale(.99); }
+.none { position: absolute; right: 12px; bottom: 12px; }
+.head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.title { font-size: 24px; font-weight: 500; line-height: 1.2; }
+.val { font-size: 18px; white-space: nowrap; }
+.sub { font-size: 15px; color: var(--pencil); }
+.card:hover .title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+
+.compact { gap: 8px; }
+.compact .title { font-size: 21px; }
+.compact .val { font-size: 16px; }
+.compact .sub { font-size: 14px; }
+.compact .none { font-size: 10px; }

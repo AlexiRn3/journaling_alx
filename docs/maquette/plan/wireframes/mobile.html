@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>ALX · Wireframes mobile</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap">
+<style>
+body{margin:0;background:#E9E2D5;font-family:'Newsreader',Georgia,serif;color:#211D18}
+a{color:#2A4A73}a:hover{color:#1B3354}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#5E574D}
+.phone{position:relative;width:390px;height:844px;box-sizing:border-box;background:#FAF7F0;border:1px solid #211D18;border-radius:28px;overflow:hidden}
+.hatch{position:relative;border:1px solid #CFC5B3;background:repeating-linear-gradient(135deg,#DDD4C3 0 1px,#F3EEE4 1px 10px);display:flex;align-items:center;justify-content:center}
+.ph{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:10px;color:#5E574D;background:#F3EEE4;padding:2px 6px}
+.tx{height:7px;border-radius:2px;background:#DDD4C3}
+.g{color:#245738}.l{color:#A8452F}
+.top{display:flex;align-items:center;justify-content:space-between;height:52px;box-sizing:border-box;padding:0 12px 0 16px;border-bottom:1px solid #D8CFBF;background:#FAF7F0}
+.pill{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;height:32px;box-sizing:border-box;padding:0 10px;display:flex;align-items:center;border:1px solid #CFC5B3;border-radius:6px}
+.ib{width:36px;height:36px;display:flex;align-items:center;justify-content:center}
+.mdock{position:absolute;left:0;right:0;bottom:0;z-index:6;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));height:60px;background:#FAF7F0;border-top:1px solid #D8CFBF}
+.mi{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;height:60px;box-sizing:border-box;font-size:12px;color:#5E574D}
+.mi.on{color:#211D18;font-weight:600;box-shadow:inset 0 2px 0 #211D18}
+.kp{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-top:1px solid #D8CFBF}
+.kv{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:17px}
+.seg{display:flex;border:1px solid #CFC5B3;border-radius:6px;overflow:hidden}
+.seg span{flex-grow:1;text-align:center;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;padding:9px 0;color:#3D372F}
+.seg .on{background:#211D18;color:#F2ECE1}
+.c{display:flex;flex-direction:column;gap:2px;height:48px;box-sizing:border-box;padding:4px;border:1px solid #E1D9CA;border-radius:3px;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:9px;color:#5E574D}
+.cv{font-size:10px}
+.row{display:grid;grid-template-columns:14px 44px 44px 28px minmax(0,1fr) 10px;align-items:center;min-height:44px;border-top:1px solid #E1D9CA;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px}
+.col{display:flex;flex-direction:column;gap:14px;width:390px}
+.cap{font-size:22px;font-weight:500}
+.note{display:flex;gap:10px;font-size:15px;line-height:1.4;color:#3D372F}
+.note b{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-weight:500;font-size:11px;color:#2A4A73;padding-top:3px;min-width:12px}
+.chip{flex-shrink:0;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;padding:8px 12px;border:1px solid #CFC5B3;border-radius:999px;color:#3D372F}
+.chip.on{background:#211D18;border-color:#211D18;color:#F2ECE1}
+</style>
+</head>
+<body>
+<div style="width: 2240px; height: 1400px; box-sizing: border-box; padding: 60px 45px; display: flex; flex-direction: column; gap: 32px; background: #E9E2D5">
+
+<header style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 18px; border-bottom: 2px solid #211D18">
+<div style="display: flex; align-items: baseline; gap: 18px"><h1 style="margin: 0; font-size: 48px; font-weight: 500; line-height: 1">Mobile</h1><span class="mono" style="font-size: 14px; color: #2A4A73">390 px</span></div>
+<span style="font-size: 17px; font-style: italic; color: #3D372F">Même contenu, empilé. Menu en barre d'onglets fixe en bas, le switch de thème monte en haut.</span>
+</header>
+
+<div style="display: flex; gap: 42px; align-items: flex-start">
+
+<div class="col">
+<div class="phone">
+<div class="top">
+<svg width="40" height="19" viewBox="0 0 172 80" role="img" aria-label="ALX"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="#211D18" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="#211D18"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="#211D18" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">X</text></svg>
+<div style="display: flex; gap: 6px; align-items: center"><span class="pill">$ ▾</span><span class="pill">All ▾</span><span class="ib"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#211D18" stroke-width="1.6" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"></path></svg></span></div>
+</div>
+<div style="padding: 20px 20px 0; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="k">Tradeify · MNQ</span>
+<span class="mono g" style="font-size: 40px; line-height: 1">+$2,145.62</span>
+<span style="font-size: 14px; color: #5E574D">Net result · 9 trades · 33.3 % win rate</span>
+</div>
+<svg width="350" height="160" viewBox="0 0 920 260" preserveAspectRatio="none" role="img" aria-label="Equity curve">
+<line x1="0" y1="214.6" x2="920" y2="214.6" stroke="#B9AE9B" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+<polygon points="20,214.6 117.8,212.4 215.6,213.6 313.3,230.3 411.1,142.3 508.9,143.3 606.7,158.3 704.4,170 802.2,184.1 900,33.1 900,214.6" fill="rgba(36,87,56,0.08)"></polygon>
+<polyline points="20,214.6 117.8,212.4 215.6,213.6 313.3,230.3 411.1,142.3 508.9,143.3 606.7,158.3 704.4,170 802.2,184.1 900,33.1" fill="none" stroke="#211D18" stroke-width="2" vector-effect="non-scaling-stroke"></polyline>
+</svg>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px">
+<div class="kp"><span class="k">Expectancy</span><span class="kv g">+$238.40</span></div>
+<div class="kp"><span class="k">Profit factor</span><span class="kv">4.04</span></div>
+<div class="kp"><span class="k">Max drawdown</span><span class="kv l">−$493.38</span></div>
+<div class="kp"><span class="k">Median hold</span><span class="kv">7 min</span></div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-size: 20px; font-weight: 500">Latest trades</span><span style="font-size: 14px; color: #2A4A73">All →</span></div>
+<div style="display: flex; gap: 12px; width: 440px">
+<div style="width: 250px; flex-shrink: 0; display: flex; flex-direction: column; gap: 6px"><div class="hatch" style="height: 110px; border-radius: 4px"><span class="ph">capture</span></div><span class="k" style="font-size: 10px">Sun 27 · 19:44 ET</span><div style="display: flex; justify-content: space-between"><span style="font-size: 16px; font-weight: 600">Long · Asia</span><span class="mono g" style="font-size: 13px">+$1,784.80</span></div></div>
+<div style="width: 250px; flex-shrink: 0; display: flex; flex-direction: column; gap: 6px"><div class="hatch" style="height: 110px; border-radius: 4px"><span class="ph">capture</span></div><span class="k" style="font-size: 10px">Sun 27 · 19:42 ET</span></div>
+</div>
+</div>
+<div class="mdock">
+<span class="mi on"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 11l8-6 8 6v8h-5v-5h-6v5H4z"></path></svg>Home</span>
+<span class="mi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="1.5"></rect><path d="M9 8h6M9 12h6M9 16h3"></path></svg>Journal</span>
+<span class="mi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19v-8M12 19V5M19 19v-6"></path></svg>Stats</span>
+<span class="mi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M14.5 9.5 13 13l-3.5 1.5L11 11z"></path></svg>Strategy</span>
+</div>
+</div>
+<span class="cap">Home</span>
+<div class="note"><b>a</b><span>Barre du haut : logo, unité et période en menus déroulants, switch de thème.</span></div>
+<div class="note"><b>b</b><span>Courbe sur toute la largeur, 4 chiffres clés au lieu de 6.</span></div>
+<div class="note"><b>c</b><span>Derniers trades en carrousel horizontal : la carte suivante dépasse pour inviter à glisser.</span></div>
+</div>
+
+<div class="col">
+<div class="phone">
+<div class="top">
+<svg width="40" height="19" viewBox="0 0 172 80" role="img" aria-label="ALX"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="#211D18" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="#211D18"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="#211D18" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">X</text></svg>
+<div style="display: flex; gap: 6px; align-items: center"><span class="pill">$ ▾</span><span class="pill">All ▾</span><span class="ib"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#211D18" stroke-width="1.6" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"></path></svg></span></div>
+</div>
+<div style="padding: 18px 16px 0; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: baseline; justify-content: space-between"><span style="font-size: 30px; font-weight: 500">Journal</span><span class="pill">Filters · 0</span></div>
+<div class="seg"><span class="on">Calendar</span><span>Cards</span><span>Timeline</span></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-size: 18px">‹ September 2026 ›</span><span class="mono g" style="font-size: 12px">+$2,145.62</span></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px">
+<span class="k" style="font-size: 9px; text-align: center">Mon</span><span class="k" style="font-size: 9px; text-align: center">Tue</span><span class="k" style="font-size: 9px; text-align: center">Wed</span><span class="k" style="font-size: 9px; text-align: center">Thu</span><span class="k" style="font-size: 9px; text-align: center">Fri</span>
+<span class="c" style="opacity: 0.35">31</span><span class="c">1</span><span class="c">2</span><span class="c">3</span><span class="c">4</span>
+<span class="c">7</span><span class="c">8</span><span class="c">9</span><span class="c">10</span><span class="c">11</span>
+<span class="c">14</span><span class="c">15</span><span class="c">16</span><span class="c">17</span><span class="c">18</span>
+<span class="c">21</span><span class="c">22</span><span class="c">23</span><span class="c">24</span><span class="c" style="background: rgba(36,87,56,0.16)">25<span class="cv g">+$854</span></span>
+<span class="c" style="background: rgba(36,87,56,0.24); border: 2px solid #211D18; color: #2A4A73">28 · today<span class="cv g">+$1.3k</span></span><span class="c">29</span><span class="c">30</span><span class="c" style="opacity: 0.35">1</span><span class="c" style="opacity: 0.35">2</span>
+</div>
+</div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; top: 520px; z-index: 7; display: flex; flex-direction: column; padding: 10px 16px 0; background: #FAF7F0; border-top: 1px solid #211D18; border-radius: 16px 16px 0 0; box-shadow: 0 -10px 30px rgba(33,29,24,0.16)">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #B9AE9B"></span>
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0 6px"><span style="font-size: 19px; font-weight: 500">Monday, Sep 28</span><span class="mono g" style="font-size: 13px">+$1,291.42</span></div>
+<div class="row"><span></span><span>19:12</span><span>Long</span><span>6</span><span style="text-align: right; color: #5E574D">BE −$11.42</span><span>›</span></div>
+<div class="row"><span style="color: #2A4A73">↻</span><span>19:32</span><span>Long</span><span>8</span><span class="l" style="text-align: right">−$177.06</span><span>›</span></div>
+<div class="row"><span style="color: #2A4A73">↻</span><span>19:35</span><span>Long</span><span>8</span><span class="l" style="text-align: right">−$138.56</span><span>›</span></div>
+<div class="row"><span style="color: #2A4A73">⇄</span><span>19:42</span><span>Short</span><span>12</span><span class="l" style="text-align: right">−$166.34</span><span>›</span></div>
+<div class="row"><span style="color: #2A4A73">⇄</span><span>19:44</span><span>Long</span><span>10</span><span class="g" style="text-align: right">+$1,784.80</span><span>›</span></div>
+</div>
+</div>
+<span class="cap">Journal</span>
+<div class="note"><b>a</b><span>Les trois vues restent, en onglets pleine largeur. Filtres regroupés dans un seul bouton.</span></div>
+<div class="note"><b>b</b><span>Calendrier lundi → vendredi, montant arrondi dans la case (+$1.3k).</span></div>
+<div class="note"><b>c</b><span>Toucher un jour ouvre un panneau par le bas avec ses trades. Il passe par-dessus le menu du bas.</span></div>
+</div>
+
+<div class="col">
+<div class="phone">
+<div class="top">
+<svg width="40" height="19" viewBox="0 0 172 80" role="img" aria-label="ALX"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="#211D18" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="#211D18"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="#211D18" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">X</text></svg>
+<div style="display: flex; gap: 6px; align-items: center"><span class="pill">$ ▾</span><span class="pill">All ▾</span><span class="ib"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#211D18" stroke-width="1.6" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"></path></svg></span></div>
+</div>
+<div style="padding: 14px 20px 16px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; color: #2A4A73">← Journal</span>
+<span class="k">Sun 27 Sep · 19:44 → 20:23 ET</span>
+<span style="font-size: 28px; font-weight: 500; line-height: 1.1">Long MNQ, Asia session</span>
+<div style="display: flex; gap: 12px; align-items: baseline"><span class="mono g" style="font-size: 32px; line-height: 1">+$1,784.80</span><span class="mono" style="font-size: 12px; color: #5E574D">+90.15 pts</span></div>
+</div>
+<div class="hatch" style="height: 230px; border-left: none; border-right: none"><span class="ph">Before · toucher pour zoomer</span></div>
+<div style="padding: 16px 20px 0; display: flex; flex-direction: column; gap: 14px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px">
+<div class="kp"><span class="k">Entry</span><span class="kv">30,809.47</span></div>
+<div class="kp"><span class="k">Exit (avg)</span><span class="kv">30,899.63</span></div>
+<div class="kp"><span class="k">Contracts</span><span class="kv">10</span></div>
+<div class="kp"><span class="k">Hold</span><span class="kv">39 min</span></div>
+<div class="kp"><span class="k">Stop · est.</span><span class="kv" style="color: #5E574D; font-style: italic">~30,801.25</span></div>
+<div class="kp"><span class="k">Fees</span><span class="kv">$18.20</span></div>
+</div>
+<span style="font-size: 21px; font-weight: 500">Context</span>
+<div class="tx" style="width: 100%"></div><div class="tx" style="width: 84%"></div>
+</div>
+<div class="mdock">
+<span class="mi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 11l8-6 8 6v8h-5v-5h-6v5H4z"></path></svg>Home</span>
+<span class="mi on"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="1.5"></rect><path d="M9 8h6M9 12h6M9 16h3"></path></svg>Journal</span>
+<span class="mi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19v-8M12 19V5M19 19v-6"></path></svg>Stats</span>
+<span class="mi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M14.5 9.5 13 13l-3.5 1.5L11 11z"></path></svg>Strategy</span>
+</div>
+</div>
+<span class="cap">Trade</span>
+<div class="note"><b>a</b><span>Même récit vertical. Capture bord à bord, zoom au toucher.</span></div>
+<div class="note"><b>b</b><span>Exécution en grille de 2 colonnes. Le chemin du prix passe sous la grille.</span></div>
+<div class="note"><b>c</b><span>Glisser à gauche / droite : trade suivant / précédent.</span></div>
+</div>
+
+<div class="col">
+<div class="phone">
+<div class="top">
+<svg width="40" height="19" viewBox="0 0 172 80" role="img" aria-label="ALX"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="#211D18" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="#211D18"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="#211D18" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">X</text></svg>
+<div style="display: flex; gap: 6px; align-items: center"><span class="pill">$ ▾</span><span class="pill">All ▾</span><span class="ib"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#211D18" stroke-width="1.6" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"></path></svg></span></div>
+</div>
+<div style="padding: 18px 0 0 16px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 30px; font-weight: 500">Statistics</span>
+<div style="display: flex; gap: 8px; width: 520px"><span class="chip on">Overview</span><span class="chip">Equity</span><span class="chip">Distribution</span><span class="chip">Session</span><span class="chip">Hour</span></div>
+</div>
+<div style="padding: 10px 16px 0; display: flex; flex-direction: column; gap: 14px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px">
+<div class="kp"><span class="k">Net</span><span class="kv g">+$2,145.62</span></div>
+<div class="kp"><span class="k">Trades</span><span class="kv">9</span></div>
+<div class="kp"><span class="k">Win rate</span><span class="kv">33.3 %</span></div>
+<div class="kp"><span class="k">Expectancy</span><span class="kv g">+$238.40</span></div>
+<div class="kp"><span class="k">Profit factor</span><span class="kv">4.04</span></div>
+<div class="kp"><span class="k">Max drawdown</span><span class="kv l">−$493.38</span></div>
+<div class="kp"><span class="k">Avg win</span><span class="kv g">+$950.12</span></div>
+<div class="kp"><span class="k">Avg loss</span><span class="kv l">−$117.46</span></div>
+</div>
+<div style="display: flex; align-items: baseline; gap: 10px; padding-top: 6px; border-top: 1px solid #211D18"><span class="mono" style="font-size: 11px; color: #2A4A73">02</span><span style="font-size: 21px; font-weight: 500">Equity and drawdown</span></div>
+<svg width="358" height="130" viewBox="0 0 920 260" preserveAspectRatio="none" role="img" aria-label="Equity curve">
+<line x1="0" y1="214.6" x2="920" y2="214.6" stroke="#B9AE9B" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+<polyline points="20,214.6 117.8,212.4 215.6,213.6 313.3,230.3 411.1,142.3 508.9,143.3 606.7,158.3 704.4,170 802.2,184.1 900,33.1" fill="none" stroke="#211D18" stroke-width="2" vector-effect="non-scaling-stroke"></polyline>
+</svg>
+</div>
+<div class="mdock">
+<span class="mi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 11l8-6 8 6v8h-5v-5h-6v5H4z"></path></svg>Home</span>
+<span class="mi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="1.5"></rect><path d="M9 8h6M9 12h6M9 16h3"></path></svg>Journal</span>
+<span class="mi on"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19v-8M12 19V5M19 19v-6"></path></svg>Stats</span>
+<span class="mi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M14.5 9.5 13 13l-3.5 1.5L11 11z"></path></svg>Strategy</span>
+</div>
+</div>
+<span class="cap">Stats</span>
+<div class="note"><b>a</b><span>Le sommaire devient une rangée de pastilles qui défile et reste collée sous la barre du haut.</span></div>
+<div class="note"><b>b</b><span>Overview en 2 colonnes. Les tableaux de découpage gardent barre + net, win % passe en dessous.</span></div>
+</div>
+
+<div class="col">
+<div class="phone">
+<div class="top">
+<svg width="40" height="19" viewBox="0 0 172 80" role="img" aria-label="ALX"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="#211D18" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="#211D18"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="#211D18" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">X</text></svg>
+<span class="ib"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#211D18" stroke-width="1.6" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"></path></svg></span>
+</div>
+<div style="padding: 28px 22px 0; display: flex; flex-direction: column; gap: 14px">
+<span class="k" style="color: #2A4A73">Strategy</span>
+<span style="font-size: 44px; font-weight: 500; line-height: 1; letter-spacing: -0.02em">How I trade</span>
+<span class="mono" style="font-size: 11px; color: #A8452F">[Intro: what MSNR is, in two sentences]</span>
+<div class="tx" style="width: 100%"></div><div class="tx" style="width: 92%"></div><div class="tx" style="width: 64%"></div>
+<span class="k" style="color: #2A4A73; padding-top: 18px">The idea</span>
+<div class="tx" style="width: 100%"></div><div class="tx" style="width: 96%"></div><div class="tx" style="width: 90%"></div><div class="tx" style="width: 50%"></div>
+<div style="padding: 16px 0; border-top: 1px solid #211D18; border-bottom: 1px solid #211D18; margin-top: 8px"><span style="font-size: 22px; font-style: italic; line-height: 1.25">[One sentence you want people to remember.]</span></div>
+<span class="k" style="color: #2A4A73; padding-top: 10px">Principles</span>
+<div style="display: flex; gap: 12px; padding: 10px 0; border-top: 1px solid #D8CFBF"><span class="mono" style="font-size: 11px; color: #2A4A73; padding-top: 4px">01</span><span style="font-size: 18px; font-weight: 500">[Principle]</span></div>
+<div style="display: flex; gap: 12px; padding: 10px 0; border-top: 1px solid #D8CFBF"><span class="mono" style="font-size: 11px; color: #2A4A73; padding-top: 4px">02</span><span style="font-size: 18px; font-weight: 500">[Principle]</span></div>
+</div>
+<div class="mdock">
+<span class="mi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 11l8-6 8 6v8h-5v-5h-6v5H4z"></path></svg>Home</span>
+<span class="mi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="1.5"></rect><path d="M9 8h6M9 12h6M9 16h3"></path></svg>Journal</span>
+<span class="mi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19v-8M12 19V5M19 19v-6"></path></svg>Stats</span>
+<span class="mi on"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M14.5 9.5 13 13l-3.5 1.5L11 11z"></path></svg>Strategy</span>
+</div>
+</div>
+<span class="cap">Strategy</span>
+<div class="note"><b>a</b><span>Barre du haut réduite au logo et au thème.</span></div>
+<div class="note"><b>b</b><span>Lecture pleine largeur, les libellés de section passent au-dessus des paragraphes.</span></div>
+</div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+.foot { margin-top: 96px; }
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+.note { font-size: 15px; color: var(--ink2); }
+.src { font-size: 11px; color: var(--pencil); white-space: nowrap; }
+@media (max-width: 719px) {
+  .foot { margin-top: 48px; }
+  .inner { flex-direction: column; gap: 6px; padding-top: 16px; }
+  .note { font-size: 14px; }
+  .src { font-size: 10px; white-space: normal; }
+}

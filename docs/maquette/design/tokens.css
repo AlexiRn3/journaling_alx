@@ -1,0 +1,143 @@
+/* ALX · design tokens and base styles
+   Direction "Carnet de bord" : papier chaud, encre, chiffres en mono.
+   Polices : Newsreader (titres + texte) et IBM Plex Mono (chiffres, dates, libellés).
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap">
+*/
+
+:root,
+.light {
+  --paper: #F2ECE1;   /* fond de page */
+  --sheet: #FAF7F0;   /* cartes, barres */
+  --rule: #D8CFBF;    /* filets */
+  --rule2: #E7DFD1;   /* filets légers, quadrillage */
+  --ink: #211D18;     /* texte principal */
+  --ink2: #3D372F;    /* texte secondaire fort */
+  --pencil: #5E574D;  /* texte secondaire, libellés */
+  --blue: #2A4A73;    /* liens, état actif, ré-entrée / retournement */
+  --gain: #245738;    /* texte d'un gain */
+  --loss: #A8452F;    /* texte d'une perte */
+  --gm: #1B7046;      /* marque graphique gain (points, barres) */
+  --lm: #DB8B6B;      /* marque graphique perte */
+  --bm: #B9AE9B;      /* marque graphique break-even */
+  --gbg: rgba(27, 112, 70, .10);
+  --lbg: rgba(168, 69, 47, .10);
+  --dot: rgba(33, 29, 24, .05);   /* grain papier */
+  --shadow: rgba(33, 29, 24, .14);
+  --field: #FFFFFF;
+}
+
+.dark {
+  --paper: #1A1714;
+  --sheet: #24201B;
+  --rule: #3A332B;
+  --rule2: #2E2923;
+  --ink: #EDE5D8;
+  --ink2: #D6CCBC;
+  --pencil: #A89E8E;
+  --blue: #9DB7DC;
+  --gain: #8CC79D;
+  --loss: #E08064;
+  --gm: #5FB47D;
+  --lm: #C4553A;
+  --bm: #6B6256;
+  --gbg: rgba(95, 180, 125, .14);
+  --lbg: rgba(196, 85, 58, .16);
+  --dot: rgba(237, 229, 216, .035);
+  --shadow: rgba(0, 0, 0, .45);
+  --field: #1F1B17;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --paper: #1A1714; --sheet: #24201B; --rule: #3A332B; --rule2: #2E2923;
+    --ink: #EDE5D8; --ink2: #D6CCBC; --pencil: #A89E8E; --blue: #9DB7DC;
+    --gain: #8CC79D; --loss: #E08064; --gm: #5FB47D; --lm: #C4553A; --bm: #6B6256;
+    --gbg: rgba(95, 180, 125, .14); --lbg: rgba(196, 85, 58, .16);
+    --dot: rgba(237, 229, 216, .035); --shadow: rgba(0, 0, 0, .45); --field: #1F1B17;
+  }
+}
+
+/* Base */
+body {
+  margin: 0;
+  background-color: var(--paper);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 4px 4px;               /* grain léger, fond seulement */
+  color: var(--ink);
+  font-family: 'Newsreader', Georgia, serif;
+}
+a { color: var(--blue); text-decoration: none; border-bottom: 1px solid currentColor; }
+a:hover { color: var(--ink); }
+
+.mono { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-variant-numeric: tabular-nums; }
+.k {      /* petit libellé en capitales */
+  font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--pencil);
+}
+.g { color: var(--gain); }   /* toujours avec le signe + */
+.l { color: var(--loss); }   /* toujours avec le signe − */
+.be { color: var(--pencil); }
+
+/* Échelle typographique desktop
+   Display 104 / 0.95 mono (résultat net) · H1 72 serif · H2 32 · H3 24
+   Texte 19–20 / 1.5 · Petit 15 · Libellés mono 11 capitales +0.08em
+   Mobile : H1 38 · résultat 50 · texte 17 */
+
+/* Barre de filtres, collée en haut (56 px) */
+.bar {
+  position: sticky; top: 0; z-index: 5;
+  height: 56px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; background: var(--sheet); border-bottom: 1px solid var(--rule);
+}
+
+/* Contrôle segmenté (unité, période, filtres) */
+.seg { display: flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.seg button {
+  font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px;
+  height: 32px; padding: 0 12px; border: 0; background: transparent; color: var(--ink2); cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+/* Menu principal : barre fixe en bas, pleine largeur (desktop) */
+.tabbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;
+  height: 64px; display: flex; align-items: center; justify-content: center;
+  background: var(--sheet); border-top: 1px solid var(--rule);
+}
+.tabbar .tabs { display: flex; gap: 8px; }
+.tabbar .tabs a { border: 0; font-size: 17px; height: 64px; line-height: 64px; padding: 0 22px; color: var(--pencil); }
+.tabbar .tabs a[aria-current="page"] { color: var(--ink); box-shadow: inset 0 2px 0 var(--ink); }
+.tabbar .theme { position: absolute; right: 24px; top: 10px; }
+main { padding-bottom: 96px; }            /* le pied de page ne passe jamais sous le menu */
+
+/* Menu mobile : barre d'onglets fixe en bas, icône + libellé */
+.mdock {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  height: 64px; background: var(--sheet); border-top: 1px solid var(--rule);
+}
+.mdock a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; border: 0; font-size: 12px; color: var(--pencil); }
+.mdock a[aria-current="page"] { color: var(--ink); font-weight: 600; box-shadow: inset 0 2px 0 var(--ink); }
+
+/* Bouton icône (thème, navigation de mois) : cible 44 px */
+.ib { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 0; padding: 0; background: transparent; border-radius: 22px; color: var(--ink); cursor: pointer; }
+
+/* Emplacement de capture TradingView (papier quadrillé) */
+.shot {
+  position: relative; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;
+  background-color: var(--sheet);
+  background-image: linear-gradient(var(--rule2) 1px, transparent 1px), linear-gradient(90deg, var(--rule2) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Barres divergentes des découpages (Stats) */
+.trk { position: relative; height: 16px; }
+.trk::before { content: ""; position: absolute; left: 50%; top: -6px; bottom: -6px; width: 1px; background: var(--pencil); opacity: .5; }
+.pos { position: absolute; left: calc(50% + 1px); top: 0; height: 100%; background: var(--gm); border-radius: 0 4px 4px 0; }
+.neg { position: absolute; right: 50%; top: 0; height: 100%; background: var(--lm); border-radius: 4px 0 0 4px; }
+
+/* Mouvement : la courbe d'equity se trace en 0,9 s une seule fois, fondus de 180 ms, pas de rebond */
+@media (prefers-reduced-motion: no-preference) {
+  .equity-line { stroke-dasharray: 4000; stroke-dashoffset: 4000; animation: draw .9s ease-out forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+}

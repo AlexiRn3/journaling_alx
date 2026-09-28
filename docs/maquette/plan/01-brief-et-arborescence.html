@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>ALX · Brief et arborescence</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap">
+<style>
+body{margin:0;background:#F2ECE1;font-family:'Newsreader',Georgia,serif;color:#211D18}
+a{color:#2A4A73}a:hover{color:#1B3354}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5E574D}
+.sec{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:13px;color:#2A4A73;letter-spacing:.04em}
+.h2{margin:0;font-size:40px;font-weight:500;line-height:1.1;letter-spacing:-.01em}
+.cell{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border-top:1px solid #D8CFBF}
+.v{font-size:19px;line-height:1.35}
+.page{display:flex;flex-direction:column;gap:6px;padding:16px 18px;background:#FAF7F0;border:1px solid #211D18;border-radius:6px}
+.pn{font-size:22px;font-weight:600}
+.pu{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;color:#2A4A73}
+.pd{font-size:15px;line-height:1.35;color:#5E574D}
+.vl{width:1px;height:28px;background:#211D18;align-self:center}
+.seg{display:flex;border:1px solid #CFC5B3;border-radius:6px;overflow:hidden}
+.seg span{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;padding:6px 10px;color:#3D372F}
+.seg .on{background:#211D18;color:#F2ECE1}
+.li{display:flex;gap:10px;font-size:16px;line-height:1.4;color:#3D372F}
+.li b{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-weight:500;font-size:12px;color:#2A4A73;padding-top:3px;min-width:18px}
+</style>
+</head>
+<body>
+<div style="width: 1440px; height: 2280px; box-sizing: border-box; padding: 80px; display: flex; flex-direction: column; gap: 72px; background-color: #F2ECE1; background-image: radial-gradient(rgba(33,29,24,0.05) 1px, transparent 1px); background-size: 4px 4px">
+
+<header style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; padding-bottom: 32px; border-bottom: 2px solid #211D18">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<svg width="129" height="60" viewBox="0 0 172 80" role="img" aria-label="ALX">
+<text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">A</text>
+<line x1="78" y1="6" x2="78" y2="64" stroke="#211D18" stroke-width="3"></line>
+<rect x="71" y="18" width="14" height="36" fill="#211D18"></rect>
+<line x1="71" y1="61" x2="108" y2="61" stroke="#211D18" stroke-width="6"></line>
+<text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">X</text>
+</svg>
+<h1 style="margin: 0; font-size: 64px; font-weight: 500; line-height: 1; letter-spacing: -0.02em">Site de trading, plan complet</h1>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; align-items: flex-end">
+<span class="k">Plan v1 · 28 sept. 2026</span>
+<span style="font-size: 18px; font-style: italic; color: #A8452F">À valider avant les maquettes</span>
+</div>
+</header>
+
+<section style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: baseline; gap: 16px"><span class="sec">01</span><h2 class="h2">Le brief</h2></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 32px; row-gap: 4px">
+<div class="cell"><span class="k">Objectif</span><span class="v">Montrer mes trades et ma façon de trader, sans dévoiler mes règles d'entrée.</span></div>
+<div class="cell"><span class="k">Public</span><span class="v">Site public en lecture. Zone admin privée, pour moi seul.</span></div>
+<div class="cell"><span class="k">Compte</span><span class="v">Un seul compte Tradeify 50K (RTSL···7908), contrats MNQ.</span></div>
+<div class="cell"><span class="k">Langue</span><span class="v">Anglais uniquement.</span></div>
+<div class="cell"><span class="k">Unités</span><span class="v">R, $, points, % du compte. Bascule globale, mémorisée d'une visite à l'autre.</span></div>
+<div class="cell"><span class="k">Stats</span><span class="v">Performance + découpages : session, jour, heure, long/short, durée, type d'entrée. Pas de setup pour l'instant.</span></div>
+<div class="cell"><span class="k">Fiche trade</span><span class="v">Captures annotées, données d'exécution, explication. Pas de volet psychologie.</span></div>
+<div class="cell"><span class="k">Stratégie</span><span class="v">Philosophie et principes. Aucune règle exacte.</span></div>
+<div class="cell"><span class="k">Données</span><span class="v">Import depuis Tradesea (planche suivante). Captures et textes ajoutés par moi dans l'admin.</span></div>
+<div class="cell"><span class="k">Direction</span><span class="v">Carnet de bord : papier chaud, grain léger, serif + mono.</span></div>
+<div class="cell"><span class="k">Couleurs</span><span class="v">Vert et rouge sourds, différents aussi en luminosité. Switch clair/sombre.</span></div>
+<div class="cell"><span class="k">Navigation</span><span class="v">Barre de navigation fixe en bas, pleine largeur. Barre de filtres collante en haut.</span></div>
+<div class="cell"><span class="k">Mouvement</span><span class="v">Discret : la courbe se dessine au chargement, fondus courts.</span></div>
+<div class="cell"><span class="k">Formats</span><span class="v">Desktop 1440 px et mobile 390 px, pour chaque page.</span></div>
+<div class="cell"><span class="k">Logo</span><span class="v">ALX. Trois pistes sur la planche de style.</span></div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: baseline; gap: 16px"><span class="sec">02</span><h2 class="h2">Arborescence</h2></div>
+<div style="display: flex; gap: 40px; align-items: flex-start">
+
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 0">
+<div style="align-self: center; display: flex; align-items: center; gap: 10px; padding: 10px 18px; border: 1px solid #211D18; border-radius: 999px; background: #FAF7F0">
+<span class="k" style="color: #211D18">Menu du bas</span><span class="mono" style="font-size: 13px">Home · Journal · Stats · Strategy</span>
+</div>
+<div class="vl"></div>
+<div style="height: 1px; background: #211D18; margin: 0 12.5%"></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px">
+<div style="display: flex; flex-direction: column"><div class="vl"></div>
+<div class="page"><span class="pn">Home</span><span class="pu">/</span><span class="pd">Courbe d'equity en grand, chiffres clés, derniers trades, mois en cours.</span></div></div>
+<div style="display: flex; flex-direction: column"><div class="vl"></div>
+<div class="page"><span class="pn">Journal</span><span class="pu">/journal</span><span class="pd">Calendrier, cartes, fil. Une bascule entre les trois vues.</span></div>
+<div class="vl"></div>
+<div class="page" style="border-style: dashed"><span class="pn">Trade</span><span class="pu">/journal/2026-09-27-1944</span><span class="pd">Récit vertical : captures, exécution, explication.</span></div></div>
+<div style="display: flex; flex-direction: column"><div class="vl"></div>
+<div class="page"><span class="pn">Stats</span><span class="pu">/stats</span><span class="pd">Performance puis découpages, une longue page à sections.</span></div></div>
+<div style="display: flex; flex-direction: column"><div class="vl"></div>
+<div class="page"><span class="pn">Strategy</span><span class="pu">/strategy</span><span class="pd">Philosophie et principes, lecture longue.</span></div></div>
+</div>
+</div>
+
+<div style="width: 340px; flex-shrink: 0; display: flex; flex-direction: column; gap: 0; padding: 20px; border: 1px dashed #A8452F; border-radius: 8px">
+<div style="display: flex; align-items: center; gap: 8px; padding-bottom: 14px">
+<svg width="14" height="16" viewBox="0 0 14 16" aria-hidden="true"><rect x="1" y="7" width="12" height="8" rx="1.5" fill="none" stroke="#A8452F" stroke-width="1.5"></rect><path d="M4 7V4.5a3 3 0 0 1 6 0V7" fill="none" stroke="#A8452F" stroke-width="1.5"></path></svg>
+<span class="k" style="color: #A8452F">Privé, hors menu</span>
+</div>
+<div class="page"><span class="pn">Login</span><span class="pu">/admin/login</span></div>
+<div class="vl"></div>
+<div class="page"><span class="pn">Admin</span><span class="pu">/admin</span><span class="pd">Import des trades, liste des trades à compléter.</span></div>
+<div class="vl"></div>
+<div class="page"><span class="pn">Edit trade</span><span class="pu">/admin/trades/[id]</span><span class="pd">Captures, explication. Publié en fiche courte dès l'import, masquable.</span></div>
+</div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: baseline; gap: 16px"><span class="sec">03</span><h2 class="h2">Éléments communs à toutes les pages</h2></div>
+
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span class="k" style="color: #211D18">Barre de filtres, collée en haut</span>
+<div style="display: flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 20px; background: #FAF7F0; border: 1px solid #D8CFBF; border-radius: 6px">
+<div style="display: flex; align-items: center; gap: 16px">
+<svg width="56" height="26" viewBox="0 0 172 80" role="img" aria-label="ALX"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="#211D18" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="#211D18"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="#211D18" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">X</text></svg>
+<span class="mono" style="font-size: 12px; color: #5E574D">Tradeify · MNQ</span>
+</div>
+<div style="display: flex; align-items: center; gap: 16px">
+<div class="seg"><span>R</span><span class="on">$</span><span>pts</span><span>%</span></div>
+<div class="seg"><span>1W</span><span>1M</span><span>3M</span><span>YTD</span><span class="on">All</span></div>
+<span class="mono" style="font-size: 12px; color: #5E574D">Updated Sep 28, 09:58 ET</span>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; padding-top: 6px">
+<div class="li"><b>a</b><span>Collée en haut, 56 px. Se masque quand on descend, revient dès qu'on remonte.</span></div>
+<div class="li"><b>b</b><span>Unité et période s'appliquent à toutes les pages et restent mémorisées.</span></div>
+<div class="li"><b>c</b><span>Sur Strategy, seul le logo reste : pas de chiffres sur cette page.</span></div>
+</div>
+</div>
+
+<div style="display: flex; gap: 48px; align-items: flex-start">
+<div style="display: flex; flex-direction: column; gap: 14px; width: 620px">
+<span class="k" style="color: #211D18">Barre de navigation, fixe en bas</span>
+<div style="position: relative; display: flex; align-items: center; justify-content: center; height: 60px; background: #FAF7F0; border-top: 1px solid #D8CFBF; border-bottom: 1px solid #D8CFBF">
+<span style="font-size: 17px; line-height: 58px; padding: 0 18px; box-shadow: inset 0 2px 0 #211D18">Home</span>
+<span style="font-size: 17px; line-height: 58px; padding: 0 18px; color: #5E574D">Journal</span>
+<span style="font-size: 17px; line-height: 58px; padding: 0 18px; color: #5E574D">Stats</span>
+<span style="font-size: 17px; line-height: 58px; padding: 0 18px; color: #5E574D">Strategy</span>
+<span style="position: absolute; right: 16px; top: 12px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#211D18" stroke-width="1.6" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"></path></svg>
+</span>
+</div>
+<div class="li"><b>a</b><span>Collée au bas de l'écran, pleine largeur, fond papier et filet en haut. Plus de pilule flottante.</span></div>
+<div class="li"><b>b</b><span>Page active marquée d'un trait d'encre en haut. La lune, à droite, bascule le thème.</span></div>
+<div class="li"><b>c</b><span>Mobile : barre d'onglets pleine largeur, 4 icônes + libellés. Le switch de thème est dans la barre du haut.</span></div>
+</div>
+
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 14px">
+<span class="k" style="color: #211D18">Pied de page</span>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 20px 0; border-top: 1px solid #211D18">
+<span style="font-size: 15px; color: #3D372F">Not financial advice. Past performance does not guarantee future results.</span>
+<span class="mono" style="font-size: 12px; color: #5E574D">Data: Tradeify account via Tradesea · Updated Sep 28, 2026 · © 2026 ALX</span>
+</div>
+<div class="li"><b>a</b><span>96 px de marge sous le pied de page pour qu'il ne passe jamais sous le menu du bas.</span></div>
+</div>
+</div>
+</section>
+
+</div>
+</body>
+</html>

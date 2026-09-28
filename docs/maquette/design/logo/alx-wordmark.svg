@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="172" height="80" viewBox="0 0 172 80" role="img" aria-label="ALX">
+  <!-- Le A et le X utilisent Newsreader 500. Vectoriser le texte avant un usage final. -->
+  <text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">A</text>
+  <line x1="78" y1="6" x2="78" y2="64" stroke="#211D18" stroke-width="3"/>
+  <rect x="71" y="18" width="14" height="36" fill="#211D18"/>
+  <line x1="71" y1="61" x2="108" y2="61" stroke="#211D18" stroke-width="6"/>
+  <text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">X</text>
+</svg>

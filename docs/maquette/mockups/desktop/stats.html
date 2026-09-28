@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALX · Statistics</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap">
+<style>
+body{margin:0;background:#F2ECE1}
+.light{--paper:#F2ECE1;--sheet:#FAF7F0;--rule:#D8CFBF;--rule2:#E7DFD1;--ink:#211D18;--ink2:#3D372F;--pencil:#5E574D;--blue:#2A4A73;--gain:#245738;--loss:#A8452F;--gm:#1B7046;--lm:#DB8B6B;--bm:#B9AE9B;--gbg:rgba(27,112,70,.10);--lbg:rgba(168,69,47,.10);--dot:rgba(33,29,24,.05);--shadow:rgba(33,29,24,.14)}
+.dark{--paper:#1A1714;--sheet:#24201B;--rule:#3A332B;--rule2:#2E2923;--ink:#EDE5D8;--ink2:#D6CCBC;--pencil:#A89E8E;--blue:#9DB7DC;--gain:#8CC79D;--loss:#E08064;--gm:#5FB47D;--lm:#C4553A;--bm:#6B6256;--gbg:rgba(95,180,125,.14);--lbg:rgba(196,85,58,.16);--dot:rgba(237,229,216,.035);--shadow:rgba(0,0,0,.45)}
+.pg{position:relative;box-sizing:border-box;background-color:var(--paper);background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:4px 4px;color:var(--ink);font-family:'Newsreader',Georgia,serif;overflow:hidden}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
+a:hover{color:var(--ink)}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.g{color:var(--gain)}.l{color:var(--loss)}.be{color:var(--pencil)}
+.bar{position:absolute;left:0;right:0;top:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;box-sizing:border-box;background:var(--sheet);border-bottom:1px solid var(--rule);z-index:5}
+.seg{display:flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.seg button{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;height:32px;padding:0 12px;border:0;background:transparent;color:var(--ink2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.tabbar{position:absolute;left:0;right:0;height:64px;display:flex;align-items:center;justify-content:center;background:var(--sheet);border-top:1px solid var(--rule);z-index:6}
+.tabbar .tabs{display:flex;gap:8px}
+.tabbar .tabs a{border:0;font-size:17px;height:64px;line-height:64px;padding:0 22px;color:var(--pencil)}
+.tabbar .tabs a:hover{color:var(--ink)}
+.tabbar .tabs a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 2px 0 var(--ink)}
+.tabbar .ib{position:absolute;right:24px;top:10px}
+.ib{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:0;padding:0;background:transparent;border-radius:22px;color:var(--ink);cursor:pointer}
+.toc a{display:flex;gap:12px;align-items:baseline;padding:9px 0 9px 14px;border:0;border-left:1px solid var(--rule);font-size:16px;color:var(--pencil)}
+.toc a b{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-weight:400;font-size:11px}
+.toc a[aria-current="true"]{color:var(--ink);border-left:2px solid var(--ink)}
+.sh{display:flex;align-items:baseline;gap:14px;padding-bottom:14px;border-bottom:1px solid var(--ink)}
+.sh b{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-weight:400;font-size:12px;color:var(--blue)}
+.sh h2{margin:0;font-size:30px;font-weight:500;letter-spacing:-.01em}
+.sh span{margin-left:auto;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;color:var(--pencil)}
+.kpi{display:flex;flex-direction:column;gap:6px;padding:18px 0;border-bottom:1px solid var(--rule2)}
+.kv{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:28px;line-height:1.1}
+.ks{font-size:15px;color:var(--pencil)}
+.br{display:grid;grid-template-columns:150px 364px 80px 90px minmax(0,1fr);align-items:center;min-height:46px;border-bottom:1px solid var(--rule2);font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:14px}
+.bh{min-height:34px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.nil{color:var(--pencil)}
+.trk{position:relative;width:340px;height:16px}
+.trk::before{content:"";position:absolute;left:170px;top:-6px;bottom:-6px;width:1px;background:var(--pencil);opacity:.5}
+.pos{position:absolute;left:171px;top:0;height:16px;background:var(--gm);border-radius:0 4px 4px 0}
+.neg{position:absolute;top:0;height:16px;background:var(--lm);border-radius:4px 0 0 4px}
+.r{text-align:right}
+</style>
+<style>
+/* Export: bars behave like the real site (fixed), page centred */
+body{background:#E9E2D5}
+.pg{margin:0 auto}
+.when-dark,.when-light{display:contents}
+.light .when-dark,.dark .when-light{display:none}
+.bar,.mbar,.abar{position:fixed !important;top:0 !important;left:50% !important;right:auto !important;width:1440px;transform:translateX(-50%)}
+.tabbar,.mdock{position:fixed !important;top:auto !important;bottom:0 !important;left:50% !important;right:auto !important;width:1440px;transform:translateX(-50%)}
+</style>
+</head>
+<body>
+<div class="pg light" style="width: 1440px; height: 3720px">
+
+<header class="bar">
+<div style="display: flex; align-items: center; gap: 18px">
+<a href="home.html" aria-label="ALX, home" style="border: 0; color: var(--ink); display: flex"><svg width="56" height="26" viewBox="0 0 172 80" aria-hidden="true" style="color: var(--ink)"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="currentColor" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="currentColor"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="currentColor" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">X</text></svg></a>
+<span style="width: 1px; height: 20px; background: var(--rule)"></span>
+<span class="mono" style="font-size: 12px; color: var(--pencil)">Tradeify 50K · MNQ</span>
+</div>
+<div style="display: flex; align-items: center; gap: 16px">
+<div class="seg" role="group" aria-label="Unit"><button type="button" aria-pressed="false">R</button><button type="button" aria-pressed="true">$</button><button type="button" aria-pressed="false">pts</button><button type="button" aria-pressed="false">%</button></div>
+<div class="seg" role="group" aria-label="Period"><button type="button" aria-pressed="false">1W</button><button type="button" aria-pressed="false">1M</button><button type="button" aria-pressed="false">3M</button><button type="button" aria-pressed="false">YTD</button><button type="button" aria-pressed="true">All</button></div>
+<span class="mono" style="font-size: 11px; color: var(--pencil)">Updated Sep 28, 09:58 ET</span>
+</div>
+</header>
+
+<main style="position: absolute; left: 120px; right: 120px; top: 120px; display: flex; flex-direction: column">
+
+<div style="display: flex; justify-content: space-between; align-items: flex-end">
+<h1 style="margin: 0; font-size: 72px; font-weight: 500; letter-spacing: -0.02em; line-height: 1">Statistics</h1>
+<span class="mono" style="font-size: 13px; color: var(--pencil)">All figures in $ · All time · 9 trades · BE = net within ±$30</span>
+</div>
+
+<div style="display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 40px; margin-top: 48px; align-items: start">
+
+<nav class="toc" aria-label="Sections" style="display: flex; flex-direction: column">
+<a href="#overview" aria-current="true"><b>01</b>Overview</a>
+<a href="#equity"><b>02</b>Equity</a>
+<a href="#distribution"><b>03</b>Distribution</a>
+<a href="#session"><b>04</b>By session</a>
+<a href="#hour"><b>05</b>By hour</a>
+<a href="#weekday"><b>06</b>By weekday</a>
+<a href="#side"><b>07</b>Long vs short</a>
+<a href="#hold"><b>08</b>Hold time</a>
+<a href="#entry"><b>09</b>Entry type</a>
+</nav>
+
+<div style="display: flex; flex-direction: column; gap: 72px">
+
+<section id="overview" style="display: flex; flex-direction: column">
+<div class="sh"><b>01</b><h2>Overview</h2></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 32px">
+<div class="kpi"><span class="k">Net</span><span class="kv g">+$2,145.62</span><span class="ks">+4.29 % · +12.50 R est.</span></div>
+<div class="kpi"><span class="k">Trades</span><span class="kv">9</span><span class="ks">2 wins · 4 losses · 3 BE</span></div>
+<div class="kpi"><span class="k">Win rate</span><span class="kv">33.3 %</span><span class="ks">break-even excluded</span></div>
+<div class="kpi"><span class="k">Expectancy</span><span class="kv g">+$238.40</span><span class="ks">+1.39 R per trade, est.</span></div>
+<div class="kpi"><span class="k">Profit factor</span><span class="kv">4.04</span><span class="ks">gross win ÷ gross loss</span></div>
+<div class="kpi"><span class="k">Max drawdown</span><span class="kv l">−$493.38</span><span class="ks">−0.99 % · −3.47 R</span></div>
+<div class="kpi"><span class="k">Average win</span><span class="kv g">+$1,412.14</span><span class="ks">+8.44 R est.</span></div>
+<div class="kpi"><span class="k">Average loss</span><span class="kv l">−$169.92</span><span class="ks">−1.11 R</span></div>
+<div class="kpi"><span class="k">Win / loss ratio</span><span class="kv">8.31</span><span class="ks">average win ÷ average loss</span></div>
+<div class="kpi"><span class="k">Largest win</span><span class="kv g">+$1,784.80</span><span class="ks">Mon 28 session, 19:44</span></div>
+<div class="kpi"><span class="k">Largest loss</span><span class="kv l">−$197.70</span><span class="ks">Fri 25 session, 05:15</span></div>
+<div class="kpi"><span class="k">Longest losing streak</span><span class="kv">3</span><span class="ks">Mon 28, 19:32 → 19:44</span></div>
+</div>
+</section>
+
+<section id="equity" style="display: flex; flex-direction: column; gap: 16px">
+<div class="sh"><b>02</b><h2>Equity and drawdown</h2><span>one dot per trade, in closing order</span></div>
+<svg width="960" height="288" viewBox="0 0 1000 300" role="img" aria-label="Equity curve from $0 to +$2,145.62">
+<line x1="56" y1="57.14" x2="1000" y2="57.14" style="stroke: var(--rule2); stroke-width: 1"></line>
+<line x1="56" y1="150" x2="1000" y2="150" style="stroke: var(--rule2); stroke-width: 1"></line>
+<line x1="56" y1="242.86" x2="1000" y2="242.86" style="stroke: var(--rule); stroke-width: 1"></line>
+<text x="0" y="61" style="fill: var(--pencil); font: 11px 'IBM Plex Mono', monospace">$2,000</text>
+<text x="0" y="154" style="fill: var(--pencil); font: 11px 'IBM Plex Mono', monospace">$1,000</text>
+<text x="0" y="247" style="fill: var(--pencil); font: 11px 'IBM Plex Mono', monospace">$0</text>
+<line x1="503" y1="16" x2="503" y2="276" style="stroke: var(--rule); stroke-width: 1; stroke-dasharray: 3 4"></line>
+<text x="280" y="294" text-anchor="middle" style="fill: var(--pencil); font: 11px 'IBM Plex Mono', monospace; letter-spacing: .08em">FRI SEP 25 SESSION</text>
+<text x="752" y="294" text-anchor="middle" style="fill: var(--pencil); font: 11px 'IBM Plex Mono', monospace; letter-spacing: .08em">MON SEP 28 SESSION</text>
+<polygon points="56,242.86 155.3,240.44 254.7,241.71 354,260.06 453.3,163.54 552.7,164.6 652,181.04 751.3,193.91 850.7,209.35 950,43.62 950,242.86" style="fill: var(--gbg)"></polygon>
+<polyline points="56,242.86 155.3,240.44 254.7,241.71 354,260.06 453.3,163.54 552.7,164.6 652,181.04 751.3,193.91 850.7,209.35 950,43.62" style="fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round"></polyline>
+<circle cx="155.3" cy="240.44" r="5" style="fill: var(--bm); stroke: var(--paper); stroke-width: 2"></circle>
+<circle cx="254.7" cy="241.71" r="5" style="fill: var(--bm); stroke: var(--paper); stroke-width: 2"></circle>
+<circle cx="354" cy="260.06" r="5" style="fill: var(--lm); stroke: var(--paper); stroke-width: 2"></circle>
+<circle cx="453.3" cy="163.54" r="5" style="fill: var(--gm); stroke: var(--paper); stroke-width: 2"></circle>
+<circle cx="552.7" cy="164.6" r="5" style="fill: var(--bm); stroke: var(--paper); stroke-width: 2"></circle>
+<circle cx="652" cy="181.04" r="5" style="fill: var(--lm); stroke: var(--paper); stroke-width: 2"></circle>
+<circle cx="751.3" cy="193.91" r="5" style="fill: var(--lm); stroke: var(--paper); stroke-width: 2"></circle>
+<circle cx="850.7" cy="209.35" r="5" style="fill: var(--lm); stroke: var(--paper); stroke-width: 2"></circle>
+<circle cx="950" cy="43.62" r="5" style="fill: var(--gm); stroke: var(--paper); stroke-width: 2"></circle>
+<text x="940" y="36" text-anchor="end" style="fill: var(--ink); font: 12px 'IBM Plex Mono', monospace">+$2,145.62</text>
+</svg>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><span class="k">Drawdown from the last peak</span><span class="mono l" style="font-size: 12px">max −$493.38 · Fri 25 06:03 → Mon 28 19:44</span></div>
+<svg width="960" height="108" viewBox="0 0 1000 112" role="img" aria-label="Drawdown, maximum −$493.38">
+<line x1="56" y1="10" x2="1000" y2="10" style="stroke: var(--rule); stroke-width: 1"></line>
+<line x1="56" y1="100" x2="1000" y2="100" style="stroke: var(--rule2); stroke-width: 1"></line>
+<text x="0" y="14" style="fill: var(--pencil); font: 11px 'IBM Plex Mono', monospace">$0</text>
+<text x="0" y="104" style="fill: var(--pencil); font: 11px 'IBM Plex Mono', monospace">−$500</text>
+<polygon points="56,10 155.3,10 254.7,12.46 354,48.04 453.3,10 552.7,12.06 652,43.93 751.3,68.87 850.7,98.81 950,10" style="fill: var(--lbg); stroke: var(--lm); stroke-width: 1.5; stroke-linejoin: round"></polygon>
+</svg>
+</section>
+
+<section id="distribution" style="display: flex; flex-direction: column; gap: 20px">
+<div class="sh"><b>03</b><h2>Distribution of results</h2><span>number of trades per result band</span></div>
+<div style="display: flex; gap: 40px; align-items: flex-end; height: 190px; padding: 0 40px; border-bottom: 1px solid var(--ink)">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px; width: 140px"><span class="mono" style="font-size: 14px">3</span><div style="width: 88px; height: 150px; background: var(--lm); border-radius: 4px 4px 0 0"></div></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px; width: 140px"><span class="mono" style="font-size: 14px">1</span><div style="width: 88px; height: 50px; background: var(--lm); opacity: .6; border-radius: 4px 4px 0 0"></div></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px; width: 140px"><span class="mono" style="font-size: 14px">3</span><div style="width: 88px; height: 150px; background: var(--bm); border-radius: 4px 4px 0 0"></div></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px; width: 140px"><span class="mono" style="font-size: 14px">0</span><div style="width: 88px; height: 2px; background: var(--gm)"></div></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px; width: 140px"><span class="mono" style="font-size: 14px">2</span><div style="width: 88px; height: 100px; background: var(--gm); border-radius: 4px 4px 0 0"></div></div>
+</div>
+<div style="display: flex; gap: 40px; padding: 0 40px">
+<span class="mono" style="width: 140px; text-align: center; font-size: 12px; color: var(--pencil)">≤ −$150</span>
+<span class="mono" style="width: 140px; text-align: center; font-size: 12px; color: var(--pencil)">−$150 → −$30</span>
+<span class="mono" style="width: 140px; text-align: center; font-size: 12px; color: var(--pencil)">BE, ±$30</span>
+<span class="mono" style="width: 140px; text-align: center; font-size: 12px; color: var(--pencil)">$30 → $1k</span>
+<span class="mono" style="width: 140px; text-align: center; font-size: 12px; color: var(--pencil)">&gt; $1k</span>
+</div>
+</section>
+
+<section id="session" style="display: flex; flex-direction: column">
+<div class="sh"><b>04</b><h2>By session</h2><span>ET · Asia 18:00 · London 03:00 · New York 09:30</span></div>
+<div class="br bh"><span>Session</span><span></span><span>Trades</span><span>Win %</span><span class="r">Net</span></div>
+<div class="br"><span>Asia</span><div class="trk"><span class="pos" style="width: 170px"></span></div><span>7</span><span>25.0</span><span class="r g">+$1,303.84</span></div>
+<div class="br"><span>London</span><div class="trk"><span class="pos" style="width: 110px"></span></div><span>2</span><span>50.0</span><span class="r g">+$841.78</span></div>
+<div class="br nil"><span>New York</span><div class="trk"></div><span>0</span><span>—</span><span class="r">—</span></div>
+</section>
+
+<section id="hour" style="display: flex; flex-direction: column">
+<div class="sh"><b>05</b><h2>By hour of entry</h2><span>ET</span></div>
+<div class="br bh"><span>Hour</span><span></span><span>Trades</span><span>Win %</span><span class="r">Net</span></div>
+<div class="br"><span>05:00</span><div class="trk"><span class="pos" style="width: 111px"></span></div><span>2</span><span>50.0</span><span class="r g">+$841.78</span></div>
+<div class="br"><span>19:00</span><div class="trk"><span class="pos" style="width: 170px"></span></div><span>5</span><span>25.0</span><span class="r g">+$1,291.42</span></div>
+<div class="br"><span>21:00</span><div class="trk"><span class="pos" style="width: 3px"></span></div><span>2</span><span>—</span><span class="r g">+$12.42</span></div>
+</section>
+
+<section id="weekday" style="display: flex; flex-direction: column">
+<div class="sh"><b>06</b><h2>By weekday</h2><span>session day, 18:00 → 17:00 ET</span></div>
+<div class="br bh"><span>Day</span><span></span><span>Trades</span><span>Win %</span><span class="r">Net</span></div>
+<div class="br"><span>Monday</span><div class="trk"><span class="pos" style="width: 170px"></span></div><span>5</span><span>25.0</span><span class="r g">+$1,291.42</span></div>
+<div class="br nil"><span>Tuesday</span><div class="trk"></div><span>0</span><span>—</span><span class="r">—</span></div>
+<div class="br nil"><span>Wednesday</span><div class="trk"></div><span>0</span><span>—</span><span class="r">—</span></div>
+<div class="br nil"><span>Thursday</span><div class="trk"></div><span>0</span><span>—</span><span class="r">—</span></div>
+<div class="br"><span>Friday</span><div class="trk"><span class="pos" style="width: 112px"></span></div><span>4</span><span>50.0</span><span class="r g">+$854.20</span></div>
+</section>
+
+<section id="side" style="display: flex; flex-direction: column">
+<div class="sh"><b>07</b><h2>Long vs short</h2></div>
+<div class="br bh"><span>Side</span><span></span><span>Trades</span><span>Win %</span><span class="r">Net</span></div>
+<div class="br"><span>Long</span><div class="trk"><span class="pos" style="width: 170px"></span></div><span>5</span><span>33.3</span><span class="r g">+$1,444.10</span></div>
+<div class="br"><span>Short</span><div class="trk"><span class="pos" style="width: 83px"></span></div><span>4</span><span>33.3</span><span class="r g">+$701.52</span></div>
+</section>
+
+<section id="hold" style="display: flex; flex-direction: column">
+<div class="sh"><b>08</b><h2>Hold time</h2><span>median 7 min</span></div>
+<div class="br bh"><span>Held</span><span></span><span>Trades</span><span>Win %</span><span class="r">Net</span></div>
+<div class="br"><span>&lt; 5 min</span><div class="trk"><span class="neg" style="left: 137px; width: 33px"></span></div><span>3</span><span>0.0</span><span class="r l">−$541.10</span></div>
+<div class="br"><span>5 → 30 min</span><div class="trk"><span class="neg" style="left: 162px; width: 8px"></span></div><span>3</span><span>0.0</span><span class="r l">−$123.90</span></div>
+<div class="br"><span>30 → 60 min</span><div class="trk"><span class="pos" style="width: 170px"></span></div><span>3</span><span>100.0</span><span class="r g">+$2,810.62</span></div>
+<div class="br nil"><span>&gt; 60 min</span><div class="trk"></div><span>0</span><span>—</span><span class="r">—</span></div>
+</section>
+
+<section id="entry" style="display: flex; flex-direction: column">
+<div class="sh"><b>09</b><h2>By entry type</h2><span>within 2 min of the previous close</span></div>
+<div class="br bh"><span>Entry</span><span></span><span>Trades</span><span>Win %</span><span class="r">Net</span></div>
+<div class="br"><span>First entry</span><div class="trk"><span class="neg" style="left: 149px; width: 21px"></span></div><span>4</span><span>0.0</span><span class="r l">−$196.70</span></div>
+<div class="br"><span>↻ Re-entry</span><div class="trk"><span class="pos" style="width: 76px"></span></div><span>3</span><span>33.3</span><span class="r g">+$723.86</span></div>
+<div class="br"><span>⇄ Flip</span><div class="trk"><span class="pos" style="width: 170px"></span></div><span>2</span><span>50.0</span><span class="r g">+$1,618.46</span></div>
+<p style="margin: 14px 0 0; font-size: 16px; line-height: 1.5; color: var(--pencil)">Re-entry: same side, reopened within 2 min of a close. Flip: opposite side, within 2 min. 3 of the 4 first entries ended at break-even.</p>
+</section>
+
+</div>
+</div>
+
+<footer style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 96px; padding-top: 20px; border-top: 1px solid var(--rule)">
+<span style="font-size: 15px; color: var(--ink2)">Not financial advice. Past performance does not guarantee future results.</span>
+<span class="mono" style="font-size: 11px; color: var(--pencil)">Data: Tradeify via Tradesea · Updated Sep 28, 2026 · © 2026 ALX</span>
+</footer>
+</main>
+
+<nav class="tabbar" aria-label="Main" style="top: 836px">
+<div class="tabs"><a href="home.html">Home</a><a href="journal-calendar.html">Journal</a><a href="stats.html" aria-current="page">Stats</a><a href="strategy.html">Strategy</a></div>
+<button type="button" class="ib" aria-label="Switch theme" onclick="toggleTheme()">
+<span class="when-dark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></span>
+<span class="when-light"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"></path></svg></span>
+</button>
+</nav>
+</div>
+<script>
+function toggleTheme(){var r=document.querySelector('.pg');var d=r.classList.contains('dark');r.classList.toggle('dark',!d);r.classList.toggle('light',d);}
+</script>
+</body>
+</html>

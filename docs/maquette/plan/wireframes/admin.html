@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>ALX · Wireframe Admin</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap">
+<style>
+body{margin:0;background:#E9E2D5;font-family:'Newsreader',Georgia,serif;color:#211D18}
+a{color:#2A4A73}a:hover{color:#1B3354}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#5E574D}
+.fr{position:relative;background:#FAF7F0;border:1px solid #211D18;border-radius:8px;overflow:hidden}
+.mk{position:absolute;top:-9px;left:-9px;z-index:5;width:22px;height:22px;border-radius:11px;background:#2A4A73;color:#FFFFFF;font:500 11px/22px 'IBM Plex Mono',monospace;text-align:center}
+.g{color:#245738}.l{color:#A8452F}
+.abar{position:relative;display:flex;align-items:center;justify-content:space-between;height:44px;box-sizing:border-box;padding:0 20px 0 40px;background:#211D18;color:#F2ECE1}
+.tab{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;padding:8px 12px;border:1px solid #CFC5B3;border-bottom:none;border-radius:5px 5px 0 0;color:#5E574D;background:#F1EBDF}
+.tab.on{background:#FAF7F0;color:#211D18;border-color:#211D18}
+.btn{font-family:'Newsreader',Georgia,serif;font-size:15px;padding:9px 16px;background:#211D18;color:#F2ECE1;border:1px solid #211D18;border-radius:6px}
+.btn2{font-family:'Newsreader',Georgia,serif;font-size:15px;padding:9px 16px;background:transparent;color:#211D18;border:1px solid #211D18;border-radius:6px}
+.tr{display:grid;grid-template-columns:150px 70px 50px 110px minmax(0,1fr) 110px;align-items:center;min-height:44px;border-top:1px solid #E1D9CA;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px}
+.th{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#5E574D;min-height:30px;border-top:1px solid #211D18}
+.miss{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:10px;padding:2px 7px;border:1px solid #A8452F;color:#A8452F;border-radius:999px}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#3D372F}
+.in{box-sizing:border-box;height:38px;padding:0 10px;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:13px;color:#211D18;background:#FFFFFF;border:1px solid #B9AE9B;border-radius:5px}
+.ta{box-sizing:border-box;width:100%;height:86px;padding:10px;font-family:'Newsreader',Georgia,serif;font-size:15px;color:#211D18;background:#FFFFFF;border:1px solid #B9AE9B;border-radius:5px;resize:none}
+.drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;height:170px;border:1.5px dashed #B9AE9B;border-radius:6px;background:#F1EBDF}
+.cap{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;color:#211D18}
+.lgd{display:flex;gap:12px;padding:14px 0;border-top:1px solid #CFC5B3}
+.lgd i{flex-shrink:0;width:22px;height:22px;border-radius:11px;background:#2A4A73;color:#FFFFFF;font:500 11px/22px 'IBM Plex Mono',monospace;text-align:center;font-style:normal}
+.lgd div{display:flex;flex-direction:column;gap:4px}
+.lgd strong{font-size:17px;font-weight:600}
+.lgd span{font-size:15px;line-height:1.4;color:#3D372F}
+</style>
+</head>
+<body>
+<div style="width: 1440px; height: 2460px; box-sizing: border-box; padding: 60px; display: flex; flex-direction: column; gap: 32px; background: #E9E2D5">
+
+<header style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 18px; border-bottom: 2px solid #211D18">
+<div style="display: flex; align-items: baseline; gap: 18px"><h1 style="margin: 0; font-size: 48px; font-weight: 500; line-height: 1">Admin</h1><span class="mono" style="font-size: 14px; color: #2A4A73">/admin · /admin/trades/[id]</span></div>
+<span style="font-size: 17px; font-style: italic; color: #3D372F">Privé, derrière un login. Pas de menu du bas ici.</span>
+</header>
+
+<div style="display: flex; gap: 40px; align-items: flex-start">
+
+<div style="width: 1000px; flex-shrink: 0; display: flex; flex-direction: column; gap: 14px">
+<span class="cap">Écran A · /admin</span>
+<div class="fr" style="height: 840px">
+<div class="abar"><span class="mk" style="top: 11px; left: 9px">1</span>
+<span class="mono" style="font-size: 12px; letter-spacing: 0.08em">ALX · ADMIN</span>
+<span class="mono" style="font-size: 11px; color: #CFC6B8">Signed in as Alexi · View site · Sign out</span>
+</div>
+<div style="padding: 32px 40px 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; align-items: baseline; gap: 14px"><h2 style="margin: 0; font-size: 36px; font-weight: 500">Trades</h2><span class="mono" style="font-size: 12px; color: #5E574D">9 imported · 9 published (short)</span></div>
+
+<div style="position: relative; display: flex; flex-direction: column"><span class="mk">2</span>
+<div style="display: flex; gap: 4px"><span class="tab on">Paste from Tradesea</span><span class="tab">Upload today's orders CSV</span><span class="tab" style="color: #B9AE9B">Auto-sync · not available yet</span></div>
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 18px; border: 1px solid #211D18; border-radius: 0 6px 6px 6px">
+<label class="k" for="paste" style="color: #3D372F">Paste the Recent Trades table from Tradesea Compass</label>
+<textarea id="paste" class="ta" style="height: 110px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5E574D">Tradeify  RTSL50436117908  MNQ  2026-09-27, 7:44:34 PM  2026-09-27, 8:23:39 PM  Long  1  $30,809.48  $30,894.00  $167.23  $1.82
+Tradeify  RTSL50436117908  MNQ  2026-09-27, 7:44:34 PM  2026-09-27, 8:23:31 PM  Long  9  $30,809.47  $30,900.25  $1,617.57  $16.38
+…</textarea>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: #F1EBDF; border-radius: 5px">
+<span class="mono" style="font-size: 11px">10 rows → 9 trades · 1 partial exit merged · 3 re-entries, 2 flips linked · 0 duplicates</span>
+<button class="btn" type="button">Import 9 trades</button>
+</div>
+</div>
+</div>
+
+<div style="position: relative; display: flex; flex-direction: column"><span class="mk">3</span>
+<div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px">
+<span style="font-size: 22px; font-weight: 500">To complete</span>
+<div style="display: flex; border: 1px solid #CFC5B3; border-radius: 5px; overflow: hidden"><span class="mono" style="font-size: 11px; padding: 5px 10px; background: #211D18; color: #F2ECE1">To complete 9</span><span class="mono" style="font-size: 11px; padding: 5px 10px">Published 9</span><span class="mono" style="font-size: 11px; padding: 5px 10px">Hidden 0</span></div>
+</div>
+<div class="tr th"><span>Opened (ET)</span><span>Side</span><span>Qty</span><span>Net</span><span>Missing</span><span></span></div>
+<div class="tr"><span>Sun 27 · 19:44</span><span>Long</span><span>10</span><span class="g">+$1,784.80</span><span style="display: flex; gap: 6px"><span class="miss">captures</span><span class="miss">explanation</span><span class="miss" style="border-color: #B9AE9B; color: #5E574D">stop est.</span></span><a href="#edit" style="font-size: 14px; font-family: 'Newsreader', serif">Complete →</a></div>
+<div class="tr"><span>Sun 27 · 19:42</span><span>Short</span><span>12</span><span class="l">−$166.34</span><span style="display: flex; gap: 6px"><span class="miss">captures</span><span class="miss">explanation</span><span class="miss" style="border-color: #B9AE9B; color: #5E574D">stop est.</span></span><a href="#edit" style="font-size: 14px; font-family: 'Newsreader', serif">Complete →</a></div>
+<div class="tr"><span>Sun 27 · 19:35</span><span>Long</span><span>8</span><span class="l">−$138.56</span><span style="display: flex; gap: 6px"><span class="miss">captures</span><span class="miss">explanation</span><span class="miss" style="border-color: #B9AE9B; color: #5E574D">stop est.</span></span><a href="#edit" style="font-size: 14px; font-family: 'Newsreader', serif">Complete →</a></div>
+<div class="tr"><span>Sun 27 · 19:32</span><span>Long</span><span>8</span><span class="l">−$177.06</span><span style="display: flex; gap: 6px"><span class="miss">captures</span><span class="miss">explanation</span><span class="miss" style="border-color: #B9AE9B; color: #5E574D">stop est.</span></span><a href="#edit" style="font-size: 14px; font-family: 'Newsreader', serif">Complete →</a></div>
+<div class="tr" style="color: #5E574D"><span>+ 5 more</span><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+</div>
+</div>
+
+<span class="cap" id="edit" style="padding-top: 26px">Écran B · /admin/trades/[id]</span>
+<div class="fr" style="height: 1260px">
+<div class="abar">
+<span class="mono" style="font-size: 12px; letter-spacing: 0.08em">ALX · ADMIN</span>
+<span class="mono" style="font-size: 11px; color: #CFC6B8">Signed in as Alexi · View site · Sign out</span>
+</div>
+<div style="padding: 28px 40px 0; display: flex; flex-direction: column; gap: 32px">
+
+<div style="position: relative; display: flex; flex-direction: column; gap: 14px"><span class="mk">4</span>
+<a href="#" style="font-size: 14px">← Trades</a>
+<h2 style="margin: 0; font-size: 34px; font-weight: 500">Sun 27 Sep · 19:44 · Long MNQ</h2>
+<div style="display: flex; gap: 28px; align-items: center; padding: 12px 14px; background: #F1EBDF; border-radius: 6px">
+<svg width="12" height="14" viewBox="0 0 14 16" aria-hidden="true"><rect x="1" y="7" width="12" height="8" rx="1.5" fill="none" stroke="#5E574D" stroke-width="1.5"></rect><path d="M4 7V4.5a3 3 0 0 1 6 0V7" fill="none" stroke="#5E574D" stroke-width="1.5"></path></svg>
+<span class="mono" style="font-size: 12px">Entry 30,809.47</span><span class="mono" style="font-size: 12px">Exit 30,899.63 (2)</span><span class="mono" style="font-size: 12px">10 MNQ</span><span class="mono" style="font-size: 12px">Fees $18.20</span><span class="mono g" style="font-size: 12px">Net +$1,784.80</span>
+<span class="mono" style="font-size: 10px; color: #5E574D; margin-left: auto">from Tradesea, read-only</span>
+</div>
+</div>
+
+<div style="position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px"><span class="mk">5</span>
+<div class="fld"><label for="stop">Stop price</label><input id="stop" class="in" type="text" value="30,801.25" style="font-style: italic; color: #5E574D"><span class="mono" style="font-size: 11px; color: #5E574D">Estimated from exits (8.23 pts) · Risk ~$164.50 · +10.85 R</span></div>
+<div class="fld"><label for="target">Target price</label><input id="target" class="in" type="text" value=""></div>
+<div class="fld"><label for="session">Session</label><select id="session" class="in"><option>Asia (auto)</option></select></div>
+</div>
+
+<div style="position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px"><span class="mk">6</span>
+<div class="fld"><span class="k" style="color: #3D372F">Before · at entry</span><div class="drop"><span style="font-size: 16px">Drop a TradingView screenshot</span><span class="mono" style="font-size: 11px; color: #5E574D">PNG or JPG · annotated</span></div></div>
+<div class="fld"><span class="k" style="color: #3D372F">After · outcome</span><div class="drop"><span style="font-size: 16px">Drop a TradingView screenshot</span><span class="mono" style="font-size: 11px; color: #5E574D">Optional</span></div></div>
+</div>
+
+<div style="position: relative; display: flex; flex-direction: column; gap: 18px"><span class="mk">7</span>
+<div class="fld"><label for="ctx">Context</label><textarea id="ctx" class="ta"></textarea></div>
+<div class="fld"><label for="scn">Scenario</label><textarea id="scn" class="ta"></textarea></div>
+<div class="fld"><label for="why">Why I took it</label><textarea id="why" class="ta"></textarea></div>
+<div class="fld"><label for="mgmt">Management</label><textarea id="mgmt" class="ta"></textarea></div>
+<span class="mono" style="font-size: 11px; color: #5E574D">Markdown supported. Never write the exact entry criteria here: this text is public.</span>
+</div>
+
+<div style="position: relative; display: flex; justify-content: space-between; align-items: center; padding-top: 18px; border-top: 1px solid #211D18"><span class="mk">8</span>
+<div style="display: flex; gap: 10px; align-items: center">
+<input id="pub" type="checkbox" checked style="width: 18px; height: 18px; accent-color: #211D18">
+<label for="pub" style="font-size: 16px">Published on the site</label>
+</div>
+<div style="display: flex; gap: 10px"><button class="btn2" type="button">Preview</button><button class="btn" type="button">Save</button></div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div style="flex-grow: 1; display: flex; flex-direction: column; padding-top: 28px">
+<span class="k" style="padding-bottom: 12px; color: #211D18">Légende</span>
+<div class="lgd"><i>1</i><div><strong>Barre admin</strong><span>Sombre pour ne jamais confondre avec le site public.</span></div></div>
+<div class="lgd"><i>2</i><div><strong>Import</strong><span>Coller le tableau Compass (ce que tu fais déjà), ou le CSV des ordres du jour. Aperçu avant validation : lignes lues, fusions, doublons.</span></div></div>
+<div class="lgd"><i>3</i><div><strong>À compléter</strong><span>Tout trade importé est publié tout de suite en fiche courte et arrive ici. Les badges disent ce qui manque pour la fiche complète.</span></div></div>
+<div class="lgd"><i>4</i><div><strong>Données importées</strong><span>Verrouillées. Seul ce qui vient de toi est modifiable.</span></div></div>
+<div class="lgd"><i>5</i><div><strong>Stop, objectif, session</strong><span>Stop pré-rempli : celui du CSV s'il existe, sinon l'estimation depuis les sorties. Tu peux le corriger. Pas de setup pour l'instant.</span></div></div>
+<div class="lgd"><i>6</i><div><strong>Captures</strong><span>Glisser-déposer, avant et après. Compressées automatiquement.</span></div></div>
+<div class="lgd"><i>7</i><div><strong>Explication</strong><span>Les 4 intertitres de la fiche publique, dans le même ordre.</span></div></div>
+<div class="lgd"><i>8</i><div><strong>Publication</strong><span>Cochée par défaut. Décocher pour masquer un trade. Aperçu avant d'enregistrer.</span></div></div>
+</div>
+
+</div>
+</div>
+</body>
+</html>

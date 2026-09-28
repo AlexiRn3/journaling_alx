@@ -1,0 +1,151 @@
+{
+  "overview": {
+    "net": 2145.62,
+    "net_r_est": 12.5,
+    "net_pct": 4.29,
+    "trades": 9,
+    "wins": 2,
+    "losses": 4,
+    "be": 3,
+    "win_rate": 33.3,
+    "expectancy_usd": 238.4,
+    "expectancy_r_est": 1.39,
+    "profit_factor": 4.04,
+    "avg_win": 1412.14,
+    "avg_loss": -169.92,
+    "max_drawdown": -493.38,
+    "fees": 152.88
+  },
+  "by_session": {
+    "Asia": {
+      "trades": 7,
+      "wins": 1,
+      "losses": 3,
+      "be": 3,
+      "net": 1303.84,
+      "win_rate": 25.0
+    },
+    "London": {
+      "trades": 2,
+      "wins": 1,
+      "losses": 1,
+      "be": 0,
+      "net": 841.78,
+      "win_rate": 50.0
+    }
+  },
+  "by_session_day": {
+    "2026-09-25": {
+      "trades": 4,
+      "wins": 1,
+      "losses": 1,
+      "be": 2,
+      "net": 854.2,
+      "win_rate": 50.0
+    },
+    "2026-09-28": {
+      "trades": 5,
+      "wins": 1,
+      "losses": 3,
+      "be": 1,
+      "net": 1291.42,
+      "win_rate": 25.0
+    }
+  },
+  "by_hour_et": {
+    "21:00": {
+      "trades": 2,
+      "wins": 0,
+      "losses": 0,
+      "be": 2,
+      "net": 12.42,
+      "win_rate": null
+    },
+    "05:00": {
+      "trades": 2,
+      "wins": 1,
+      "losses": 1,
+      "be": 0,
+      "net": 841.78,
+      "win_rate": 50.0
+    },
+    "19:00": {
+      "trades": 5,
+      "wins": 1,
+      "losses": 3,
+      "be": 1,
+      "net": 1291.42,
+      "win_rate": 25.0
+    }
+  },
+  "by_side": {
+    "Short": {
+      "trades": 4,
+      "wins": 1,
+      "losses": 2,
+      "be": 1,
+      "net": 701.52,
+      "win_rate": 33.3
+    },
+    "Long": {
+      "trades": 5,
+      "wins": 1,
+      "losses": 2,
+      "be": 2,
+      "net": 1444.1,
+      "win_rate": 33.3
+    }
+  },
+  "by_hold": {
+    "5-30 min": {
+      "trades": 3,
+      "wins": 0,
+      "losses": 1,
+      "be": 2,
+      "net": -123.9,
+      "win_rate": 0.0
+    },
+    "30-60 min": {
+      "trades": 3,
+      "wins": 2,
+      "losses": 0,
+      "be": 1,
+      "net": 2810.62,
+      "win_rate": 100.0
+    },
+    "<5 min": {
+      "trades": 3,
+      "wins": 0,
+      "losses": 3,
+      "be": 0,
+      "net": -541.1,
+      "win_rate": 0.0
+    }
+  },
+  "by_entry_type": {
+    "first": {
+      "trades": 4,
+      "wins": 0,
+      "losses": 1,
+      "be": 3,
+      "net": -196.7,
+      "win_rate": 0.0
+    },
+    "re-entry": {
+      "trades": 3,
+      "wins": 1,
+      "losses": 2,
+      "be": 0,
+      "net": 723.86,
+      "win_rate": 33.3
+    },
+    "flip": {
+      "trades": 2,
+      "wins": 1,
+      "losses": 1,
+      "be": 0,
+      "net": 1618.46,
+      "win_rate": 50.0
+    }
+  }
+}

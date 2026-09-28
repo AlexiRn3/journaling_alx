@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>ALX · Wireframe Stats</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap">
+<style>
+body{margin:0;background:#E9E2D5;font-family:'Newsreader',Georgia,serif;color:#211D18}
+a{color:#2A4A73}a:hover{color:#1B3354}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#5E574D}
+.fr{position:relative;background:#FAF7F0;border:1px solid #211D18;border-radius:8px;overflow:hidden}
+.mk{position:absolute;top:-9px;left:-9px;z-index:5;width:22px;height:22px;border-radius:11px;background:#2A4A73;color:#FFFFFF;font:500 11px/22px 'IBM Plex Mono',monospace;text-align:center}
+.g{color:#245738}.l{color:#A8452F}
+.seg{display:flex;border:1px solid #CFC5B3;border-radius:5px;overflow:hidden}
+.seg span{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;padding:4px 8px;color:#3D372F}
+.seg .on{background:#211D18;color:#F2ECE1}
+.bar{position:relative;display:flex;align-items:center;justify-content:space-between;height:40px;box-sizing:border-box;padding:0 16px 0 40px;background:#FAF7F0;border-bottom:1px solid #D8CFBF}
+.fold{position:absolute;left:0;right:0;height:0;border-top:1px dashed #A8452F;z-index:4}
+.foldl{position:absolute;right:8px;top:-18px;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:10px;color:#A8452F;background:#FAF7F0;padding:1px 4px}
+.dock{position:absolute;left:0;right:0;height:44px;z-index:6;display:flex;align-items:center;justify-content:center;gap:4px;background:#FAF7F0;border-top:1px solid #D8CFBF}
+.dock span{font-size:13px;line-height:44px;padding:0 12px;color:#5E574D}
+.dock .on{color:#211D18;box-shadow:inset 0 2px 0 #211D18}
+.sh{display:flex;align-items:baseline;gap:12px;padding-bottom:12px;border-bottom:1px solid #211D18}
+.sh span{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;color:#2A4A73}
+.sh h3{margin:0;font-size:24px;font-weight:500}
+.kpi{display:flex;flex-direction:column;gap:5px;padding:10px 0;border-bottom:1px solid #E1D9CA}
+.kv{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:20px}
+.br{display:grid;grid-template-columns:110px 280px 56px 70px minmax(0,1fr);align-items:center;height:34px;border-bottom:1px solid #E1D9CA;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px}
+.bh{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#5E574D;height:26px}
+.trk{position:relative;width:280px;height:14px}
+.trk::before{content:"";position:absolute;left:140px;top:-4px;bottom:-4px;width:1px;background:#B9AE9B}
+.pos{position:absolute;left:140px;top:0;height:14px;background:#245738;border-radius:0 2px 2px 0}
+.neg{position:absolute;top:0;height:14px;background:#A8452F;border-radius:2px 0 0 2px}
+.toc{display:flex;gap:10px;padding:7px 0 7px 10px;font-size:14px;color:#5E574D;border-left:1px solid #D8CFBF}
+.toc b{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-weight:400;font-size:10px;padding-top:3px}
+.lgd{display:flex;gap:12px;padding:12px 0;border-top:1px solid #CFC5B3}
+.lgd i{flex-shrink:0;width:22px;height:22px;border-radius:11px;background:#2A4A73;color:#FFFFFF;font:500 11px/22px 'IBM Plex Mono',monospace;text-align:center;font-style:normal}
+.lgd div{display:flex;flex-direction:column;gap:4px}
+.lgd strong{font-size:17px;font-weight:600}
+.lgd span{font-size:15px;line-height:1.4;color:#3D372F}
+</style>
+</head>
+<body>
+<div style="width: 1440px; height: 2700px; box-sizing: border-box; padding: 60px; display: flex; flex-direction: column; gap: 32px; background: #E9E2D5">
+
+<header style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 18px; border-bottom: 2px solid #211D18">
+<div style="display: flex; align-items: baseline; gap: 18px"><h1 style="margin: 0; font-size: 48px; font-weight: 500; line-height: 1">Stats</h1><span class="mono" style="font-size: 14px; color: #2A4A73">/stats</span></div>
+<span style="font-size: 17px; font-style: italic; color: #3D372F">Longue page à sections, tes 9 trades</span>
+</header>
+
+<div style="display: flex; gap: 40px; align-items: flex-start">
+
+<div class="fr" style="width: 1000px; height: 2480px; flex-shrink: 0">
+<div class="bar"><span class="mk" style="top: 9px; left: 9px">1</span>
+<div style="display: flex; align-items: center; gap: 12px">
+<svg width="43" height="20" viewBox="0 0 172 80" role="img" aria-label="ALX"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="#211D18" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="#211D18"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="#211D18" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="#211D18">X</text></svg>
+<span class="mono" style="font-size: 11px; color: #5E574D">Tradeify · MNQ</span>
+</div>
+<div style="display: flex; align-items: center; gap: 10px">
+<div class="seg"><span>R</span><span class="on">$</span><span>pts</span><span>%</span></div>
+<div class="seg"><span>1W</span><span>1M</span><span>3M</span><span>YTD</span><span class="on">All</span></div>
+</div>
+</div>
+
+<div style="padding: 28px 40px 0; display: flex; flex-direction: column; gap: 28px">
+<div style="position: relative; display: flex; align-items: baseline; justify-content: space-between"><span class="mk">2</span>
+<h2 style="margin: 0; font-size: 40px; font-weight: 500; line-height: 1">Statistics</h2>
+<span class="mono" style="font-size: 11px; color: #5E574D">All figures in $ · All time · 9 trades</span>
+</div>
+
+<div style="display: flex; gap: 40px; align-items: flex-start">
+<div style="position: relative; width: 170px; flex-shrink: 0; display: flex; flex-direction: column"><span class="mk">3</span>
+<div class="toc" style="color: #211D18; border-left: 2px solid #211D18"><b>01</b><span>Overview</span></div>
+<div class="toc"><b>02</b><span>Equity</span></div>
+<div class="toc"><b>03</b><span>Distribution</span></div>
+<div class="toc"><b>04</b><span>By session</span></div>
+<div class="toc"><b>05</b><span>By hour</span></div>
+<div class="toc"><b>06</b><span>By weekday</span></div>
+<div class="toc"><b>07</b><span>Long vs short</span></div>
+<div class="toc"><b>08</b><span>Hold time</span></div>
+<div class="toc"><b>09</b><span>Entry type</span></div>
+</div>
+
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 44px">
+
+<section style="position: relative; display: flex; flex-direction: column; gap: 8px"><span class="mk">4</span>
+<div class="sh"><span>01</span><h3>Overview</h3></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px">
+<div class="kpi"><span class="k">Net</span><span class="kv g">+$2,145.62</span></div>
+<div class="kpi"><span class="k">Trades</span><span class="kv">9 <span style="font-size: 12px; color: #5E574D">2 W · 4 L · 3 BE</span></span></div>
+<div class="kpi"><span class="k">Win rate · BE excl.</span><span class="kv">33.3 %</span></div>
+<div class="kpi"><span class="k">Expectancy</span><span class="kv g">+$238.40</span></div>
+<div class="kpi"><span class="k">Profit factor</span><span class="kv">4.04</span></div>
+<div class="kpi"><span class="k">Max drawdown</span><span class="kv l">−$493.38</span></div>
+<div class="kpi"><span class="k">Avg win</span><span class="kv g">+$1,412.14</span></div>
+<div class="kpi"><span class="k">Avg loss</span><span class="kv l">−$169.92</span></div>
+<div class="kpi"><span class="k">Win / loss ratio</span><span class="kv">8.31</span></div>
+<div class="kpi"><span class="k">Largest win</span><span class="kv g">+$1,784.80</span></div>
+<div class="kpi"><span class="k">Largest loss</span><span class="kv l">−$197.70</span></div>
+<div class="kpi"><span class="k">Longest losing streak</span><span class="kv">3</span></div>
+</div>
+</section>
+
+<section style="position: relative; display: flex; flex-direction: column; gap: 10px"><span class="mk">5</span>
+<div class="sh"><span>02</span><h3>Equity and drawdown</h3></div>
+<svg width="710" height="200" viewBox="0 0 920 260" preserveAspectRatio="none" role="img" aria-label="Equity curve">
+<line x1="0" y1="45.4" x2="920" y2="45.4" stroke="#E1D9CA" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="130" x2="920" y2="130" stroke="#E1D9CA" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="214.6" x2="920" y2="214.6" stroke="#B9AE9B" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+<polyline points="20,214.6 117.8,212.4 215.6,213.6 313.3,230.3 411.1,142.3 508.9,143.3 606.7,158.3 704.4,170 802.2,184.1 900,33.1" fill="none" stroke="#211D18" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline>
+</svg>
+<span class="k">Drawdown from peak</span>
+<svg width="710" height="70" viewBox="0 0 920 120" preserveAspectRatio="none" role="img" aria-label="Drawdown">
+<line x1="0" y1="10" x2="920" y2="10" stroke="#B9AE9B" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+<polygon points="20,10 117.8,10 215.6,12.7 313.3,52.3 411.1,10 508.9,12.3 606.7,47.7 704.4,75.4 802.2,108.7 900,10" fill="rgba(168,69,47,0.16)" stroke="#A8452F" stroke-width="1.5" vector-effect="non-scaling-stroke"></polygon>
+</svg>
+<span class="mono" style="font-size: 11px; color: #5E574D">Max drawdown <span class="l">−$493.38</span>, from Fri 25 06:03 to Sun 27 19:44</span>
+</section>
+
+<section style="position: relative; display: flex; flex-direction: column; gap: 10px"><span class="mk">6</span>
+<div class="sh"><span>03</span><h3>Distribution of results</h3></div>
+<div style="display: flex; gap: 24px; align-items: flex-end; height: 150px; padding: 0 20px; border-bottom: 1px solid #211D18">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100px"><span class="mono" style="font-size: 11px">3</span><div style="width: 60px; height: 120px; background: #A8452F"></div></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100px"><span class="mono" style="font-size: 11px">1</span><div style="width: 60px; height: 40px; background: rgba(168,69,47,0.55)"></div></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100px"><span class="mono" style="font-size: 11px">3</span><div style="width: 60px; height: 120px; background: #B9AE9B"></div></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100px"><span class="mono" style="font-size: 11px">0</span><div style="width: 60px; height: 1px; background: #245738"></div></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100px"><span class="mono" style="font-size: 11px">2</span><div style="width: 60px; height: 80px; background: #245738"></div></div>
+</div>
+<div style="display: flex; gap: 24px; padding: 0 20px">
+<span class="mono" style="width: 100px; text-align: center; font-size: 10px; color: #5E574D">≤ −$150</span>
+<span class="mono" style="width: 100px; text-align: center; font-size: 10px; color: #5E574D">−$150 → −$30</span>
+<span class="mono" style="width: 100px; text-align: center; font-size: 10px; color: #5E574D">BE ±$30</span>
+<span class="mono" style="width: 100px; text-align: center; font-size: 10px; color: #5E574D">$30 → $1k</span>
+<span class="mono" style="width: 100px; text-align: center; font-size: 10px; color: #5E574D">&gt; $1k</span>
+</div>
+</section>
+
+<section style="position: relative; display: flex; flex-direction: column"><span class="mk">7</span>
+<div class="sh" style="margin-bottom: 4px"><span>04</span><h3>By session</h3><span style="margin-left: auto; color: #5E574D">ET · Asia 18:00 · London 03:00 · New York 09:30</span></div>
+<div class="br bh"><span>Session</span><span>Net</span><span>Trades</span><span>Win %</span><span style="text-align: right">Net</span></div>
+<div class="br"><span>Asia</span><div class="trk"><span class="pos" style="width: 140px"></span></div><span>7</span><span>25.0</span><span class="g" style="text-align: right">+$1,303.84</span></div>
+<div class="br"><span>London</span><div class="trk"><span class="pos" style="width: 90px"></span></div><span>2</span><span>50.0</span><span class="g" style="text-align: right">+$841.78</span></div>
+<div class="br" style="color: #B9AE9B"><span>New York</span><div class="trk"></div><span>0</span><span>—</span><span style="text-align: right">—</span></div>
+</section>
+
+<section style="position: relative; display: flex; flex-direction: column"><span class="mk">8</span>
+<div class="sh" style="margin-bottom: 4px"><span>05</span><h3>By hour of entry (ET)</h3></div>
+<div class="br bh"><span>Hour</span><span>Net</span><span>Trades</span><span>Win %</span><span style="text-align: right">Net</span></div>
+<div class="br"><span>05:00</span><div class="trk"><span class="pos" style="width: 91px"></span></div><span>2</span><span>50.0</span><span class="g" style="text-align: right">+$841.78</span></div>
+<div class="br"><span>19:00</span><div class="trk"><span class="pos" style="width: 140px"></span></div><span>5</span><span>25.0</span><span class="g" style="text-align: right">+$1,291.42</span></div>
+<div class="br"><span>21:00</span><div class="trk"><span class="pos" style="width: 2px"></span></div><span>2</span><span>—</span><span class="g" style="text-align: right">+$12.42</span></div>
+</section>
+
+<section style="position: relative; display: flex; flex-direction: column"><span class="mk">9</span>
+<div class="sh" style="margin-bottom: 4px"><span>06</span><h3>By weekday</h3><span style="margin-left: auto; color: #5E574D">session day, 18:00 → 17:00 ET</span></div>
+<div class="br bh"><span>Day</span><span>Net</span><span>Trades</span><span>Win %</span><span style="text-align: right">Net</span></div>
+<div class="br"><span>Monday</span><div class="trk"><span class="pos" style="width: 140px"></span></div><span>5</span><span>25.0</span><span class="g" style="text-align: right">+$1,291.42</span></div>
+<div class="br" style="color: #B9AE9B"><span>Tuesday</span><div class="trk"></div><span>0</span><span>—</span><span style="text-align: right">—</span></div>
+<div class="br" style="color: #B9AE9B"><span>Wednesday</span><div class="trk"></div><span>0</span><span>—</span><span style="text-align: right">—</span></div>
+<div class="br" style="color: #B9AE9B"><span>Thursday</span><div class="trk"></div><span>0</span><span>—</span><span style="text-align: right">—</span></div>
+<div class="br"><span>Friday</span><div class="trk"><span class="pos" style="width: 93px"></span></div><span>4</span><span>50.0</span><span class="g" style="text-align: right">+$854.20</span></div>
+</section>
+
+<section style="position: relative; display: flex; flex-direction: column"><span class="mk">10</span>
+<div class="sh" style="margin-bottom: 4px"><span>07</span><h3>Long vs short</h3></div>
+<div class="br bh"><span>Side</span><span>Net</span><span>Trades</span><span>Win %</span><span style="text-align: right">Net</span></div>
+<div class="br"><span>Long</span><div class="trk"><span class="pos" style="width: 140px"></span></div><span>5</span><span>33.3</span><span class="g" style="text-align: right">+$1,444.10</span></div>
+<div class="br"><span>Short</span><div class="trk"><span class="pos" style="width: 68px"></span></div><span>4</span><span>33.3</span><span class="g" style="text-align: right">+$701.52</span></div>
+</section>
+
+<section style="position: relative; display: flex; flex-direction: column"><span class="mk">11</span>
+<div class="sh" style="margin-bottom: 4px"><span>08</span><h3>Hold time</h3><span style="margin-left: auto; color: #5E574D">median 7 min</span></div>
+<div class="br bh"><span>Held</span><span>Net</span><span>Trades</span><span>Win %</span><span style="text-align: right">Net</span></div>
+<div class="br"><span>&lt; 5 min</span><div class="trk"><span class="neg" style="left: 113px; width: 27px"></span></div><span>3</span><span>0.0</span><span class="l" style="text-align: right">−$541.10</span></div>
+<div class="br"><span>5 → 30 min</span><div class="trk"><span class="neg" style="left: 134px; width: 6px"></span></div><span>3</span><span>0.0</span><span class="l" style="text-align: right">−$123.90</span></div>
+<div class="br"><span>30 → 60 min</span><div class="trk"><span class="pos" style="width: 140px"></span></div><span>3</span><span>100.0</span><span class="g" style="text-align: right">+$2,810.62</span></div>
+<div class="br" style="color: #B9AE9B"><span>&gt; 60 min</span><div class="trk"></div><span>0</span><span>—</span><span style="text-align: right">—</span></div>
+</section>
+
+<section style="position: relative; display: flex; flex-direction: column"><span class="mk">12</span>
+<div class="sh" style="margin-bottom: 4px"><span>09</span><h3>By entry type</h3><span style="margin-left: auto; color: #5E574D">within 2 min of the previous close</span></div>
+<div class="br bh"><span>Entry</span><span>Net</span><span>Trades</span><span>Win %</span><span style="text-align: right">Net</span></div>
+<div class="br"><span>First entry</span><div class="trk"><span class="neg" style="left: 123px; width: 17px"></span></div><span>4</span><span>0.0</span><span class="l" style="text-align: right">−$196.70</span></div>
+<div class="br"><span>↻ Re-entry</span><div class="trk"><span class="pos" style="width: 63px"></span></div><span>3</span><span>33.3</span><span class="g" style="text-align: right">+$723.86</span></div>
+<div class="br"><span>⇄ Flip</span><div class="trk"><span class="pos" style="width: 140px"></span></div><span>2</span><span>50.0</span><span class="g" style="text-align: right">+$1,618.46</span></div>
+<span class="mono" style="font-size: 10px; color: #5E574D; padding-top: 8px">Re-entry: same side · Flip: opposite side · 3 of 4 first entries were break-even</span>
+</section>
+
+</div>
+</div>
+</div>
+
+<div class="fold" style="top: 625px"><span class="foldl" style="top: -62px">ligne de flottaison · écran 1440 × 900</span></div>
+<div class="dock" style="top: 581px">
+<span>Home</span><span>Journal</span><span class="on">Stats</span><span>Strategy</span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#211D18" stroke-width="1.6" aria-hidden="true" style="position: absolute; right: 16px; top: 11px"><path d="M17 13.5A5.5 5.5 0 1 1 10.5 7a4.5 4.5 0 0 0 6.5 6.5Z"></path></svg>
+</div>
+</div>
+
+<div style="flex-grow: 1; display: flex; flex-direction: column">
+<span class="k" style="padding-bottom: 12px; color: #211D18">Légende</span>
+<div class="lgd"><i>1</i><div><strong>Barre de filtres</strong><span>Toute la page se recalcule quand tu changes d'unité ou de période.</span></div></div>
+<div class="lgd"><i>2</i><div><strong>En-tête</strong><span>Rappelle l'unité, la période et le nombre de trades pris en compte.</span></div></div>
+<div class="lgd"><i>3</i><div><strong>Sommaire</strong><span>Collé à gauche pendant le défilement. La section visible est soulignée.</span></div></div>
+<div class="lgd"><i>4</i><div><strong>Overview</strong><span>12 chiffres. Les cases de Home pointent ici.</span></div></div>
+<div class="lgd"><i>5</i><div><strong>Equity et drawdown</strong><span>La courbe, puis la baisse depuis le dernier sommet, alignées sur le même axe.</span></div></div>
+<div class="lgd"><i>6</i><div><strong>Distribution</strong><span>Combien de trades par tranche de résultat, avec une tranche BE (±30 $) en gris. Pas de section setup pour l'instant.</span></div></div>
+<div class="lgd"><i>7</i><div><strong>By session</strong><span>Même modèle pour 04 à 08 : barre depuis zéro, trades, win % (BE exclus), net.</span></div></div>
+<div class="lgd"><i>8</i><div><strong>By hour</strong><span>Heure d'entrée, en ET.</span></div></div>
+<div class="lgd"><i>9</i><div><strong>By weekday</strong><span>Lundi → vendredi, par journée de session : le dimanche soir compte pour lundi.</span></div></div>
+<div class="lgd"><i>10</i><div><strong>Long vs short</strong><span>Deux lignes, même échelle.</span></div></div>
+<div class="lgd"><i>11</i><div><strong>Hold time</strong><span>Par tranche de durée, médiane en titre.</span></div></div>
+<div class="lgd"><i>12</i><div><strong>By entry type</strong><span>Première entrée, ré-entrée (même sens) ou retournement (sens inverse), moins de 2 min après la clôture précédente. Suit dans le temps ce qui rapporte vraiment.</span></div></div>
+</div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+/* Strategy · a long read: a label column on the left, the text on the right. */
+
+.page { padding-top: 128px; }
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(160px, 260px) minmax(0, 820px);
+}
+.row + .row { margin-top: 128px; }
+.row.rowNote { margin-top: 104px; }
+.row.rowNext { margin-top: 72px; }
+
+.lab {
+  margin: 0;
+  padding-top: 12px;
+  font-family: var(--monof);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.page .ph { color: var(--pencil); }
+
+/* Title */
+.intro { display: flex; flex-direction: column; gap: 28px; }
+.title { font-size: 112px; font-weight: 500; letter-spacing: -.03em; line-height: .95; }
+.title em { font-style: italic; font-weight: 400; }
+.lede { font-size: 28px; line-height: 1.45; color: var(--ink2); }
+
+/* 01 · The idea */
+.idea { display: flex; flex-direction: column; gap: 22px; }
+.para { font-size: 22px; line-height: 1.6; }
+.quote {
+  margin: 24px 0 0;
+  padding: 32px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.quote p { font-size: 44px; font-style: italic; line-height: 1.2; letter-spacing: -.01em; }
+
+/* 02 · Principles */
+.principles { list-style: none; margin: 0; padding: 0; }
+.principle {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  padding: 26px 0;
+  border-top: 1px solid var(--rule);
+}
+.principle:first-child { border-top-color: var(--ink); }
+.principle:last-child { border-bottom: 1px solid var(--rule); }
+.no { font-size: 13px; color: var(--blue); padding-top: 10px; }
+.pTitle { font-size: 32px; font-weight: 500; line-height: 1.15; }
+.pBody { margin-top: 8px; font-size: 20px; line-height: 1.55; }
+
+/* 03 · Not on this page */
+.note {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 32px 36px;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+.note p { font-size: 26px; line-height: 1.45; }
+.lock { flex-shrink: 0; width: 22px; height: 26px; margin-top: 6px; color: var(--ink); }
+
+/* Next */
+.buttons { display: flex; flex-wrap: wrap; gap: 16px; }
+.btn { min-height: 52px; padding: 0 24px; font-size: 18px; }
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 1199px) {
+  .page { padding-top: 104px; }
+  .title { font-size: 96px; }
+}
+
+/* Tablet and mobile: the label goes above its text. */
+@media (max-width: 899px) {
+  .page { padding-top: 72px; }
+  .row { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .row + .row { margin-top: 88px; }
+  .row.rowNote { margin-top: 72px; }
+  .row.rowNext { margin-top: 48px; }
+  .rowNext > span:first-child { display: none; }
+  .lab { padding-top: 0; }
+  .title { font-size: 88px; }
+}
+
+@media (max-width: 719px) {
+  .page { padding-top: 52px; }
+  .row { gap: 16px; }
+  .row + .row { margin-top: 56px; }
+  .row.rowNote { margin-top: 48px; gap: 14px; }
+  .row.rowNext { margin-top: 32px; }
+  .lab { font-size: 11px; }
+
+  .intro { gap: 16px; }
+  .title { font-size: 60px; }
+  .lede { font-size: 21px; }
+
+  .idea { gap: 16px; }
+  .para { font-size: 18px; }
+  .quote { margin-top: 12px; padding: 22px 0; }
+  .quote p { font-size: 28px; line-height: 1.25; }
+
+  .principles { margin-top: -2px; }
+  .principle { grid-template-columns: 40px minmax(0, 1fr); padding: 18px 0; }
+  .no { font-size: 12px; padding-top: 6px; }
+  .pTitle { font-size: 24px; }
+  .pBody { margin-top: 6px; font-size: 17px; line-height: 1.5; }
+
+  .note { gap: 14px; padding: 22px; }
+  .note p { font-size: 20px; }
+  .lock { width: 18px; height: 22px; margin-top: 4px; }
+
+  .buttons { flex-direction: column; gap: 12px; }
+  .btn { width: 100%; font-size: 17px; }
+}

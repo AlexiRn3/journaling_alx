@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALX · How I trade</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap">
+<style>
+body{margin:0;background:#F2ECE1}
+.light{--paper:#F2ECE1;--sheet:#FAF7F0;--rule:#D8CFBF;--rule2:#E7DFD1;--ink:#211D18;--ink2:#3D372F;--pencil:#5E574D;--blue:#2A4A73;--gain:#245738;--loss:#A8452F;--gm:#1B7046;--lm:#DB8B6B;--bm:#B9AE9B;--gbg:rgba(27,112,70,.10);--lbg:rgba(168,69,47,.10);--dot:rgba(33,29,24,.05);--shadow:rgba(33,29,24,.14)}
+.dark{--paper:#1A1714;--sheet:#24201B;--rule:#3A332B;--rule2:#2E2923;--ink:#EDE5D8;--ink2:#D6CCBC;--pencil:#A89E8E;--blue:#9DB7DC;--gain:#8CC79D;--loss:#E08064;--gm:#5FB47D;--lm:#C4553A;--bm:#6B6256;--gbg:rgba(95,180,125,.14);--lbg:rgba(196,85,58,.16);--dot:rgba(237,229,216,.035);--shadow:rgba(0,0,0,.45)}
+.pg{position:relative;box-sizing:border-box;background-color:var(--paper);background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:4px 4px;color:var(--ink);font-family:'Newsreader',Georgia,serif;overflow:hidden}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
+a:hover{color:var(--ink)}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.bar{position:absolute;left:0;right:0;top:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;box-sizing:border-box;background:var(--sheet);border-bottom:1px solid var(--rule);z-index:5}
+.tabbar{position:absolute;left:0;right:0;height:64px;display:flex;align-items:center;justify-content:center;background:var(--sheet);border-top:1px solid var(--rule);z-index:6}
+.tabbar .tabs{display:flex;gap:8px}
+.tabbar .tabs a{border:0;font-size:17px;height:64px;line-height:64px;padding:0 22px;color:var(--pencil)}
+.tabbar .tabs a:hover{color:var(--ink)}
+.tabbar .tabs a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 2px 0 var(--ink)}
+.tabbar .ib{position:absolute;right:24px;top:10px}
+.ib{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:0;padding:0;background:transparent;border-radius:22px;color:var(--ink);cursor:pointer}
+.row{display:grid;grid-template-columns:260px 820px;gap:0}
+.lab{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);padding-top:12px}
+.ph{color:var(--pencil)}
+.pr{display:grid;grid-template-columns:64px minmax(0,1fr);gap:0;padding:26px 0;border-top:1px solid var(--rule)}
+.pr b{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-weight:400;font-size:13px;color:var(--blue);padding-top:10px}
+.pr h3{margin:0;font-size:32px;font-weight:500;line-height:1.15}
+.pr p{margin:8px 0 0;font-size:20px;line-height:1.55}
+.btn{display:inline-flex;align-items:center;height:52px;padding:0 24px;border-radius:6px;font-size:18px;border:1px solid var(--ink)}
+</style>
+<style>
+/* Export: bars behave like the real site (fixed), page centred */
+body{background:#E9E2D5}
+.pg{margin:0 auto}
+.when-dark,.when-light{display:contents}
+.light .when-dark,.dark .when-light{display:none}
+.bar,.mbar,.abar{position:fixed !important;top:0 !important;left:50% !important;right:auto !important;width:1440px;transform:translateX(-50%)}
+.tabbar,.mdock{position:fixed !important;top:auto !important;bottom:0 !important;left:50% !important;right:auto !important;width:1440px;transform:translateX(-50%)}
+</style>
+</head>
+<body>
+<div class="pg light" style="width: 1440px; height: 2220px">
+
+<header class="bar">
+<a href="home.html" aria-label="ALX, home" style="border: 0; color: var(--ink); display: flex"><svg width="56" height="26" viewBox="0 0 172 80" aria-hidden="true" style="color: var(--ink)"><text x="62" y="64" text-anchor="end" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">A</text><line x1="78" y1="6" x2="78" y2="64" stroke="currentColor" stroke-width="3"></line><rect x="71" y="18" width="14" height="36" fill="currentColor"></rect><line x1="71" y1="61" x2="108" y2="61" stroke="currentColor" stroke-width="6"></line><text x="112" y="64" text-anchor="start" font-family="Newsreader, Georgia, serif" font-size="72" font-weight="500" fill="currentColor">X</text></svg></a>
+<span class="mono" style="font-size: 12px; color: var(--pencil)">Tradeify 50K · MNQ</span>
+</header>
+
+<main style="position: absolute; left: 120px; right: 120px; top: 56px; display: flex; flex-direction: column">
+
+<section class="row" style="margin-top: 128px">
+<span class="lab">Strategy</span>
+<div style="display: flex; flex-direction: column; gap: 28px">
+<h1 style="margin: 0; font-size: 112px; font-weight: 500; letter-spacing: -0.03em; line-height: 0.95">How I <span style="font-style: italic; font-weight: 400">trade</span></h1>
+<span class="k">Method · MSNR · MNQ futures</span>
+<p class="ph" style="margin: 0; font-size: 28px; line-height: 1.45">[Intro: what MSNR is, in two sentences, without any entry rule.]</p>
+</div>
+</section>
+
+<section class="row" style="margin-top: 128px">
+<span class="lab">01 · The idea</span>
+<div style="display: flex; flex-direction: column; gap: 22px">
+<p class="ph" style="margin: 0; font-size: 22px; line-height: 1.6">[First paragraph: how you read the market, what you look for, what you ignore.]</p>
+<p class="ph" style="margin: 0; font-size: 22px; line-height: 1.6">[Second paragraph: why this method suits you, and how you got to it.]</p>
+<blockquote style="margin: 24px 0 0; padding: 32px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink)">
+<p class="ph" style="margin: 0; font-size: 44px; font-style: italic; line-height: 1.2">[One sentence you want people to remember.]</p>
+</blockquote>
+</div>
+</section>
+
+<section class="row" style="margin-top: 128px">
+<span class="lab">02 · Principles</span>
+<div style="display: flex; flex-direction: column">
+<div class="pr" style="border-top: 1px solid var(--ink)"><b>01</b><div><h3 class="ph">[Principle]</h3><p class="ph">[One or two sentences on why it matters to you.]</p></div></div>
+<div class="pr"><b>02</b><div><h3 class="ph">[Principle]</h3><p class="ph">[One or two sentences on why it matters to you.]</p></div></div>
+<div class="pr"><b>03</b><div><h3 class="ph">[Principle]</h3><p class="ph">[One or two sentences on why it matters to you.]</p></div></div>
+<div class="pr"><b>04</b><div><h3 class="ph">[Principle]</h3><p class="ph">[One or two sentences on why it matters to you.]</p></div></div>
+<div class="pr" style="border-bottom: 1px solid var(--rule)"><b>05</b><div><h3 class="ph">[Principle]</h3><p class="ph">[One or two sentences on why it matters to you.]</p></div></div>
+</div>
+</section>
+
+<section class="row" style="margin-top: 104px">
+<span class="lab">03 · Not on this page</span>
+<div style="display: flex; gap: 20px; align-items: flex-start; padding: 32px 36px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 8px">
+<svg width="22" height="26" viewBox="0 0 14 16" aria-hidden="true" style="flex-shrink: 0; margin-top: 6px; color: var(--ink)"><rect x="1" y="7" width="12" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2"></rect><path d="M4 7V4.5a3 3 0 0 1 6 0V7" fill="none" stroke="currentColor" stroke-width="1.2"></path></svg>
+<p style="margin: 0; font-size: 26px; line-height: 1.45">The exact entry rules stay in my notebook. This page is the thinking. The journal shows the execution.</p>
+</div>
+</section>
+
+<section class="row" style="margin-top: 72px">
+<span></span>
+<div style="display: flex; gap: 16px">
+<a href="journal-calendar.html" class="btn" style="background: var(--ink); color: var(--paper)">See it applied in the journal</a>
+<a href="stats.html" class="btn" style="color: var(--ink)">Statistics</a>
+</div>
+</section>
+
+<footer style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 120px; padding-top: 20px; border-top: 1px solid var(--rule)">
+<span style="font-size: 15px; color: var(--ink2)">Not financial advice. Past performance does not guarantee future results.</span>
+<span class="mono" style="font-size: 11px; color: var(--pencil)">Data: Tradeify via Tradesea · Updated Sep 28, 2026 · © 2026 ALX</span>
+</footer>
+</main>
+
+<nav class="tabbar" aria-label="Main" style="top: 836px">
+<div class="tabs"><a href="home.html">Home</a><a href="journal-calendar.html">Journal</a><a href="stats.html">Stats</a><a href="strategy.html" aria-current="page">Strategy</a></div>
+<button type="button" class="ib" aria-label="Switch theme" onclick="toggleTheme()">
+<span class="when-dark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></span>
+<span class="when-light"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"></path></svg></span>
+</button>
+</nav>
+</div>
+<script>
+function toggleTheme(){var r=document.querySelector('.pg');var d=r.classList.contains('dark');r.classList.toggle('dark',!d);r.classList.toggle('light',d);}
+</script>
+</body>
+</html>

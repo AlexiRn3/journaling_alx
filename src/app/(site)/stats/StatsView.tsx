@@ -159,7 +159,7 @@ export function StatsView({ trades, slugs, rules }: Props) {
             </Section>
 
             <Section id="hour" num="05" title="By hour of entry" caption="ET">
-              {has ? <Breakdown rows={tables.hour} unit={unit} head="Hour" labelledBy="hour-h" mobileNote="hour of entry, ET" /> : <Empty />}
+              {has ? <Breakdown rows={tables.hour} unit={unit} head="Hour" labelledBy="hour-h" mobileNote="hours in ET" /> : <Empty />}
             </Section>
 
             <Section id="weekday" num="06" title="By weekday" caption="session day, 18:00 → 17:00 ET">

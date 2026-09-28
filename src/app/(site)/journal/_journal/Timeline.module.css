@@ -1,0 +1,117 @@
+/* Timeline view: a logbook, one section per session day. */
+
+.days { display: flex; flex-direction: column; gap: 56px; margin-top: 48px; }
+
+.day {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+  scroll-margin-top: 8px;
+}
+
+.dayHead {
+  position: sticky;
+  top: calc(var(--bar-h) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 16px;
+}
+.dayName { font-size: 34px; font-weight: 500; line-height: 1.05; }
+.opened { font-size: 12px; color: var(--pencil); }
+.dayNet { margin-top: 12px; font-size: 24px; line-height: 1.2; }
+.counts { font-size: 15px; color: var(--pencil); }
+
+.list {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 36px;
+  border-left: 1px solid var(--ink);
+}
+
+.ent {
+  position: relative;
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule2);
+}
+.node {
+  position: absolute;
+  left: -42px;
+  top: 28px;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 3px var(--paper);
+  transition: transform var(--fast) var(--ease);
+}
+.ent:hover .node { transform: scale(1.25); }
+
+.time { display: flex; flex-direction: column; gap: 4px; line-height: 1.3; }
+.t1 { font-size: 18px; }
+.t2 { font-size: 12px; color: var(--pencil); }
+
+.body { display: flex; gap: 28px; align-items: flex-start; min-width: 0; }
+.text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+
+.follow { font-size: 12px; line-height: 1.4; color: var(--pencil); }
+.linked { color: var(--blue); }
+
+.titleRow { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; }
+.title { font-size: 22px; font-weight: 500; line-height: 1.25; }
+.val { font-size: 18px; white-space: nowrap; }
+.meta { font-size: 12px; line-height: 1.5; color: var(--pencil); }
+
+.story {
+  margin-top: 6px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--pencil);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* The whole entry opens the trade. */
+.open { align-self: flex-start; margin-top: 4px; font-size: 15px; }
+.open::after { content: ""; position: absolute; inset: 0; }
+.ent:hover .title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.ent:hover .open { color: var(--ink); }
+.ent:active .text { opacity: .8; }
+
+.thumb { flex-shrink: 0; width: 240px; height: 144px; }
+
+@media (max-width: 1099px) {
+  .day { grid-template-columns: 200px minmax(0, 1fr); gap: 32px; }
+  .dayName { font-size: 28px; }
+  .ent { grid-template-columns: 72px minmax(0, 1fr); gap: 16px; }
+  .thumb { width: 180px; height: 108px; }
+}
+
+@media (max-width: 859px) {
+  .day { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .dayHead { position: static; padding-top: 0; }
+}
+
+@media (max-width: 719px) {
+  .days { gap: 40px; margin-top: 24px; }
+  .dayHead { gap: 4px; }
+  .dayName { font-size: 26px; }
+  .dayNet { margin-top: 6px; font-size: 20px; }
+  .list { padding-left: 22px; }
+  .ent { grid-template-columns: 50px minmax(0, 1fr); gap: 12px; padding: 18px 0; }
+  .node { left: -28px; top: 22px; width: 10px; height: 10px; border-radius: 5px; }
+  .t1 { font-size: 15px; }
+  .t2 { font-size: 11px; }
+  .title { font-size: 19px; }
+  .val { font-size: 15px; }
+  .follow, .meta { font-size: 11px; }
+  .story { font-size: 16px; }
+  .body { flex-direction: column; gap: 12px; }
+  .thumb { width: 100%; height: 160px; }
+}

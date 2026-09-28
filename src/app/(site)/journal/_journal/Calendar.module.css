@@ -84,7 +84,9 @@
 .g { background: var(--gbg); }
 .l { background: var(--lbg); }
 .be { background: var(--rule2); }
-.has:hover { border-color: var(--pencil); }
+@media (hover: hover) {
+  .has:hover { border-color: var(--pencil); }
+}
 .has:active { transform: scale(.98); }
 .sel, .sel:hover { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
 
@@ -161,7 +163,9 @@
   color: var(--ink);
   transition: background-color var(--fast) var(--ease), transform var(--fast) var(--ease);
 }
-.row:hover { background: var(--rule2); color: var(--ink); }
+@media (hover: hover) {
+  .row:hover { background: var(--rule2); color: var(--ink); }
+}
 .row:active { transform: scale(.99); }
 .icon { color: var(--blue); }
 .num { text-align: right; white-space: nowrap; }
@@ -182,7 +186,7 @@
 .sNet { flex-shrink: 0; font-size: 16px; }
 .sSub { padding: 4px 0 10px; font-size: 11px; color: var(--pencil); }
 .sLegend { display: block; padding-top: 10px; font-size: 10px; color: var(--pencil); }
-.sheetLink { font-size: 15px; margin-top: 16px; }
+.sheetLink { display: inline-block; font-size: 15px; margin-top: 16px; }
 
 /* Empty month / no trades */
 .note { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 8px; }

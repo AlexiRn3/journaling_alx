@@ -1,0 +1,61 @@
+/* Admin shell: dark bar, no bottom menu. Desktop-first (1440 px), usable on a laptop and a tablet. */
+
+.bar {
+  /* Dark in both themes so the admin is never taken for the public site. */
+  --bar-bg: var(--ink);
+  --bar-fg: var(--paper);
+  --bar-dim: color-mix(in srgb, var(--paper) 62%, var(--ink));
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: var(--bar-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 20px 0 32px;
+  background: var(--bar-bg);
+  color: var(--bar-fg);
+}
+:global(:root.dark) .bar {
+  --bar-bg: color-mix(in srgb, var(--paper) 55%, #000);
+  --bar-fg: var(--ink);
+  --bar-dim: var(--pencil);
+  border-bottom: 1px solid var(--rule);
+}
+@media (prefers-color-scheme: dark) {
+  :global(:root:not(.light)) .bar {
+    --bar-bg: color-mix(in srgb, var(--paper) 55%, #000);
+    --bar-fg: var(--ink);
+    --bar-dim: var(--pencil);
+    border-bottom: 1px solid var(--rule);
+  }
+}
+
+.brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.logo { display: flex; color: var(--bar-fg); border: 0; }
+.logo:hover { color: var(--bar-fg); }
+.badge { font-size: 12px; letter-spacing: .12em; }
+
+.right { display: flex; align-items: center; gap: 20px; min-width: 0; font-size: 15px; }
+.where {
+  color: var(--bar-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.link { color: var(--bar-fg); white-space: nowrap; }
+.link:hover { color: var(--bar-dim); }
+.bar .theme { color: var(--bar-fg); }
+.bar .theme:hover { background: color-mix(in srgb, var(--bar-fg) 14%, transparent); }
+
+@media (max-width: 900px) {
+  .bar { padding: 0 8px 0 20px; }
+  .where { display: none; }
+}
+
+.main { padding: 56px 0 120px; min-height: calc(100dvh - var(--bar-h)); }
+@media (max-width: 719px) {
+  .main { padding-top: 28px; }
+}

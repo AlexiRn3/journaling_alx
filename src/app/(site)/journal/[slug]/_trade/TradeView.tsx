@@ -293,7 +293,7 @@ function Execution({ trade: t, linked, avgStopPts }: { trade: Trade; linked: Tra
     { key: "hold", label: "Hold", value: fmtHold(t.hold_seconds) },
     {
       key: "mae",
-      label: "MAE / MFE",
+      label: mm === null ? "MAE / MFE" : "MAE / MFE · pts",
       value: mm ?? "Not tracked",
       cls: mm === null ? s.muted : undefined,
       hideMobile: mm === null,
@@ -348,10 +348,7 @@ function Exits({ trade: t, unit, instrument }: { trade: Trade; unit: Unit; instr
                 <span className={s.desk}>
                   {e.qty} {instrument}
                 </span>
-                <span className={s.mob}>
-                  {" · "}
-                  {e.qty}
-                </span>
+                <span className={s.mob}>· {e.qty}</span>
               </span>
               <span role="cell" className={`mono ${s.xPrice}`}>
                 @ {fmtPrice(e.price)}
@@ -409,7 +406,7 @@ function Neighbours({ trade: t, prev, next, unit }: { trade: Trade; prev: NavTra
       )}
       {next ? (
         <Link href={next.href} transitionTypes={["nav-forward"]} className={`plain ${s.card}`}>
-          <span className="k">Next trade › · {neighbourGap(t, next.trade, "after")}</span>
+          <span className="k">Next trade · {neighbourGap(t, next.trade, "after")} ›</span>
           <span className={s.cardRow}>
             <span className={s.cardT}>{neighbourTitle(next.trade)}</span>
             <span className={`mono ${resultClass(next.trade.result)} ${s.cardV}`}>{resultText(next.trade, unit)}</span>

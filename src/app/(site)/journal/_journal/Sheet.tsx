@@ -26,12 +26,10 @@ const OUT_MS = 200;
 /** Stops the page from scrolling behind the sheet. Returns the undo. */
 function lockScroll(): () => void {
   const html = document.documentElement;
-  const prev = { overflow: html.style.overflow, gutter: html.style.scrollbarGutter };
-  if (html.scrollHeight > html.clientHeight) html.style.scrollbarGutter = "stable";
+  const prev = html.style.overflow;
   html.style.overflow = "hidden";
   return () => {
-    html.style.overflow = prev.overflow;
-    html.style.scrollbarGutter = prev.gutter;
+    html.style.overflow = prev;
   };
 }
 
@@ -91,6 +89,8 @@ export function Sheet({ open, onClose, title, aside, sub, children, className = 
     if (open && !d.open) {
       closing.current = false;
       d.showModal();
+      // Focus the sheet itself: the title is read out, the close button is the next Tab stop.
+      panel.current?.focus({ preventScroll: true });
       d.querySelector<HTMLElement>(`.${s.body}`)?.scrollTo(0, 0);
       unlock.current = lockScroll();
     } else if (!open && d.open) {
@@ -163,7 +163,7 @@ export function Sheet({ open, onClose, title, aside, sub, children, className = 
       }}
     >
       <div ref={back} className={s.backdrop} onClick={() => onCloseRef.current()} aria-hidden="true" />
-      <div ref={panel} className={s.panel}>
+      <div ref={panel} className={s.panel} tabIndex={-1}>
         <div
           className={s.grab}
           onPointerDown={onPointerDown}

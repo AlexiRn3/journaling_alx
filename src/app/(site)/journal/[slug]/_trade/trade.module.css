@@ -48,8 +48,8 @@
 .kick { grid-area: kick; }
 .title {
   grid-area: title;
-  font-size: 72px;
-  font-weight: 500;
+  font-size: 64px;
+  font-weight: 400;
   letter-spacing: -.02em;
   line-height: 1;
   text-wrap: balance;
@@ -97,14 +97,14 @@
 
 .day {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   margin-top: 28px;
   padding: 14px 0;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
 }
-.dayK { margin-right: 8px; white-space: nowrap; font-weight: 400; }
+.dayK { margin-right: 8px; padding-top: 6px; white-space: nowrap; font-weight: 400; }
 .dayList {
   position: relative;
   display: flex;
@@ -116,8 +116,7 @@
 }
 .dayChip {
   position: relative;
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   font-family: var(--monof);
   font-size: 12px;
   line-height: 1.4;
@@ -327,11 +326,17 @@ a.dayChip:active { transform: scale(.97); }
 /* -------------------------------------------------------- in between */
 
 @media (max-width: 1100px) and (min-width: 720px) {
-  .title { font-size: 56px; }
-  .big { font-size: 56px; }
-  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .title, .big { font-size: 56px; }
+  .v { font-size: 20px; }
   .xr { grid-template-columns: 96px 80px 130px 130px minmax(0, 1fr); }
   .wr { grid-template-columns: 180px minmax(0, 1fr); gap: 40px; }
+}
+@media (max-width: 959px) and (min-width: 720px) {
+  .title, .big { font-size: 48px; }
+  .grid { column-gap: 16px; }
+  .v { font-size: 17px; }
+  .grid .desk, .kick .desk { display: none; }
+  .grid .mob, .kick .mob { display: inline; }
 }
 
 /* ---------------------------------------------------------------- mobile */
@@ -351,7 +356,7 @@ a.dayChip:active { transform: scale(.97); }
     row-gap: 10px;
     margin-top: 18px;
   }
-  .title { font-size: 38px; line-height: 1.05; }
+  .title { font-size: 32px; line-height: 1.05; }
   .res { align-items: flex-start; text-align: left; gap: 10px; margin-top: 6px; }
   .big { font-size: 42px; }
   .others { font-size: 12px; }
@@ -425,7 +430,7 @@ a.dayChip:active { transform: scale(.97); }
     font-size: 13px;
   }
   .xTime { grid-area: time; }
-  .xQty { grid-area: qty; }
+  .xQty { grid-area: qty; margin-left: .6ch; }
   .xPrice { grid-area: price; margin-left: .6ch; }
   .xVal { grid-area: val; font-size: 14px; align-self: start; padding-left: 12px; text-align: right; }
   .xNote { grid-area: note; font-size: 14px; }

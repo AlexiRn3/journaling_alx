@@ -121,11 +121,11 @@ export function executionNote(t: Trade, linked: Trade | null, avgStopPts: number
   return null;
 }
 
-/** MAE / MFE cell: "Not tracked", or "3.25 / 12.50 pts". */
+/** MAE / MFE cell, in points: "3.25 / 12.50". null = not tracked. */
 export function maeMfe(t: Trade): string | null {
   if (t.mae === null && t.mfe === null) return null;
   const f = (v: number | null) => (v === null ? "–" : fmtPrice(v));
-  return `${f(t.mae)} / ${f(t.mfe)} pts`;
+  return `${f(t.mae)} / ${f(t.mfe)}`;
 }
 
 /* ------------------------------------------------------------------- exits */

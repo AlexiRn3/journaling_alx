@@ -9,7 +9,8 @@
   gap: 16px 24px;
   flex-wrap: wrap;
 }
-.titleRow { display: flex; align-items: baseline; gap: 8px 20px; flex-wrap: wrap; min-width: 0; }
+.titleRow { flex: 1 1 0; display: flex; align-items: baseline; gap: 8px 20px; flex-wrap: wrap; min-width: 0; }
+.viewSeg { flex-shrink: 0; }
 .h1 { font-weight: 500; }
 .sub { font-size: 13px; color: var(--pencil); }
 
@@ -47,7 +48,9 @@
   transition: background-color var(--fast) var(--ease), color var(--fast) var(--ease),
     border-color var(--fast) var(--ease), transform var(--fast) var(--ease);
 }
-.filterBtn:hover { background: var(--sheet); }
+@media (hover: hover) {
+  .filterBtn:hover { background: var(--sheet); }
+}
 .filterOn, .filterOn:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 
 .sheetCount { flex-shrink: 0; font-size: 12px; color: var(--pencil); }
@@ -87,6 +90,7 @@
 @media (max-width: 719px) {
   .page { padding-top: 24px; }
   .head { align-items: center; flex-wrap: nowrap; }
+  .titleRow { flex: 0 1 auto; }
   .sub { display: none; }
   .viewSeg { display: none !important; }
   .viewTabs { display: flex !important; margin-top: 16px; }

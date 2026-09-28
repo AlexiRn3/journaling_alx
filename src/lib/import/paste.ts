@@ -169,9 +169,11 @@ type Attempt = { ok: true; row: RawRow; end: number } | { ok: false; reason: str
 /** Reads one row starting at token i. */
 function readRow(toks: Tok[], i: number): Attempt {
   // Account name, account id, instrument: everything before the open time (at most 6 tokens).
+  // They sit on the row's first line; the rest of the row may wrap onto the next lines.
   const prefix: Tok[] = [];
   let j = i;
   while (j < toks.length && !isDateStart(toks, j)) {
+    if (toks[j].line !== toks[i].line) return { ok: false, reason: "no open time found" };
     prefix.push(toks[j]);
     j++;
     if (prefix.length > 6) return { ok: false, reason: "no open time found" };

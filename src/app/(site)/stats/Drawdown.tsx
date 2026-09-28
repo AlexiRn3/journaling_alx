@@ -2,6 +2,7 @@
 
 // Drawdown from the last peak, under the equity curve. Same width and same x positions as
 // <EquityChart> (CHART_PAD), so each vertex sits right under its trade's dot.
+// Compact (mobile): no axis labels, as in the mockup; the maximum is written above the chart.
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { CHART_PAD } from "@/components/charts/EquityChart";
@@ -62,7 +63,7 @@ export function DrawdownChart({ trades, unit, compact }: { trades: Trade[]; unit
   const plotW = Math.max(1, W - pad.l - pad.r);
   const x = (i: number) => pad.l + (n ? (i * plotW) / n : plotW / 2);
   const y = (v: number) => top + (-v / floor) * (H - top - bottom);
-  const fs = compact ? 10 : 11;
+  const fs = 11;
 
   const line = pts.map((p) => `${x(p.index).toFixed(1)},${y(p.dd).toFixed(1)}`).join(" ");
   const area = `${line} ${x(n).toFixed(1)},${y(0).toFixed(1)}`;
@@ -79,15 +80,21 @@ export function DrawdownChart({ trades, unit, compact }: { trades: Trade[]; unit
       {W > 0 && n > 0 && (
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} aria-hidden="true" className={s.ddSvg}>
           <line x1={pad.l} x2={W} y1={y(0)} y2={y(0)} className={s.ddZero} />
-          <text x={0} y={y(0) + 4} className={s.ddTick} style={{ fontSize: fs }}>
-            {axis(0, unit, compact)}
-          </text>
+          {!compact && (
+            <text x={0} y={y(0) + 4} className={s.ddTick} style={{ fontSize: fs }}>
+              {axis(0, unit, compact)}
+            </text>
+          )}
           {min < 0 && (
             <>
-              <line x1={pad.l} x2={W} y1={y(-floor)} y2={y(-floor)} className={s.ddGrid} />
-              <text x={0} y={y(-floor) + 4} className={s.ddTick} style={{ fontSize: fs }}>
-                {axis(-floor, unit, compact)}
-              </text>
+              {!compact && (
+                <>
+                  <line x1={pad.l} x2={W} y1={y(-floor)} y2={y(-floor)} className={s.ddGrid} />
+                  <text x={0} y={y(-floor) + 4} className={s.ddTick} style={{ fontSize: fs }}>
+                    {axis(-floor, unit, compact)}
+                  </text>
+                </>
+              )}
               <polygon points={area} className={s.ddArea} />
             </>
           )}

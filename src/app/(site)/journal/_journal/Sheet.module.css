@@ -39,6 +39,8 @@
   will-change: transform;
 }
 
+.panel:focus, .panel:focus-visible { outline: none; }
+
 .dialog[open] .panel { animation: sheet-in 240ms var(--ease) backwards; }
 .dialog[open] .backdrop { animation: backdrop-in 240ms var(--ease) backwards; }
 

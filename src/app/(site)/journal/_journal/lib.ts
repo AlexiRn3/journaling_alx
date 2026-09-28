@@ -166,9 +166,9 @@ export function sideFigure(t: Trade, unit: Unit): string {
   return unit === "R" ? fmtValue(t.net, "$", { compact: true }) : fmtValue(tradeR(t), "R", { compact: true, decimals: 2 });
 }
 
-/** Gap wording: "34 s", "1 min 29 s", then "21 min", "7 h 38" for long pauses. */
+/** Gap wording: "34 s", "1 min 29 s", "21 min", "7 h 37 min" for long pauses. */
 export function gapLabel(sec: number): string {
-  return sec < 120 ? fmtGap(sec) : fmtHold(sec);
+  return fmtGap(sec);
 }
 
 /**

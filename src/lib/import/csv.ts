@@ -190,7 +190,7 @@ export function parseOrdersCsv(text: string): CsvResult {
     const trigger = type === "stop" || type === "stop-limit" ? (stop || price || limit) : type === "limit" ? (limit || price) : (price ?? num(cell("avg")));
     let stamp = readStamp(cell("time"));
     if (dateIdx >= 0 && index.time !== dateIdx && stamp.clock) stamp = readStamp(`${row[dateIdx]} ${stamp.clock}`);
-    if (!side || trigger === null || (!stamp.time && !stamp.clock)) {
+    if (!side || (trigger === null && type !== "market") || (!stamp.time && !stamp.clock)) {
       unreadable.push({
         line: i + 1,
         text: line.trim().slice(0, 160),

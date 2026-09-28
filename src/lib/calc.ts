@@ -379,6 +379,11 @@ export function elapsed(a: string, b: string): number {
   return Math.round((parseNaive(b).getTime() - parseNaive(a).getTime()) / 1000);
 }
 
+/** The stop was not read nor typed: it comes from the average distance of stopped trades. */
+export function isEstimatedStop(t: Trade): boolean {
+  return t.stop.source === "estimated_avg_loser_distance";
+}
+
 /** A trade has a full sheet once it has a "before" screenshot and some explanation. */
 export function hasFullSheet(t: Trade): boolean {
   const s = t.story;

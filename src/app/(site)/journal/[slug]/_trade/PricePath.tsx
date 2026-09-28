@@ -5,8 +5,8 @@
 // so the risk always sits on the left of the entry and the gain on its right.
 // Labels are placed by a small search that keeps them apart at any width (mono font: known widths).
 
+import { isEstimatedStop } from "@/lib/calc";
 import { useLayoutEffect, useRef, useState } from "react";
-import { isEstimatedStop } from "@/components/trade/MiniSchema";
 import { fmtInt, fmtPrice, fmtValue } from "@/lib/format";
 import type { Trade } from "@/lib/types";
 import { sideSign } from "./text";
@@ -64,7 +64,9 @@ function layout(t: Trade, W: number, riskPts: number) {
   const lo = Math.min(...us);
   const span = Math.max(Math.max(...us) - lo, 0.25);
   const wide = W >= 900;
-  const padL = wide ? 112 : Math.max(16, Math.round(W * 0.05));
+  // On wide screens the stop label fits outside, on the left of the stop.
+  const stopText = same(t.exit, stop) ? `exit at stop ${fmtPrice(stop)}` : `stop ${isEstimatedStop(t) ? "~" : ""}${fmtPrice(stop)}`;
+  const padL = wide ? Math.max(112, Math.ceil(stopText.length * cw + OFFSET + 2)) : Math.max(16, Math.round(W * 0.05));
   const padR = wide ? 98 : padL;
   const k = (W - padL - padR) / span; // px per point
   const X = (p: number) => padL + (u(p) - lo) * k;
@@ -94,14 +96,13 @@ function layout(t: Trade, W: number, riskPts: number) {
   const xt = tgt !== null ? X(tgt) : null;
   const exitAtStop = same(t.exit, stop);
   const exitAtTarget = tgt !== null && same(t.exit, tgt);
-  const est = isEstimatedStop(t) ? "~" : "";
   const resultTone: Tone = t.result === "win" ? "gain" : t.result === "loss" ? "loss" : "be";
 
   const o = (row: Row | null, anchor: Anchor, at: number, cost: number): Opt => ({ row, anchor, at, cost });
   const labels: Lab[] = [];
   labels.push({
     key: "stop",
-    text: exitAtStop ? `exit at stop ${fmtPrice(stop)}` : `stop ${est}${fmtPrice(stop)}`,
+    text: stopText,
     tone: "loss",
     opts: [o("bot", "end", xs, 0), o("bot", "start", xs, 2), o("top", "end", xs, 4), o("top", "start", xs, 5)],
   });

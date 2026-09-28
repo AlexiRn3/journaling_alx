@@ -4,22 +4,14 @@
 //
 // Never recomputed: execution data (prices, exits, net…), editorial fields, a stop or target
 // read from the orders CSV or typed in the admin, and classification the owner overrode.
-import type { EntryType, Result, Session, Trade } from "../types.ts";
+import type { EntryType, Result, Session, Trade, TradeOverrides } from "../types.ts";
 import { dirOf, round, round2, secondsBetween, type PipelineRules } from "./util.ts";
 
 /** Classification the owner set by hand in the admin; wins over the computed value. */
-export interface Overrides {
-  session?: Session;
-  entry_type?: EntryType;
-  result?: Result;
-  session_day?: string;
-}
+export type Overrides = TradeOverrides;
 
-/**
- * A stored trade, as the admin handles it. `overrides` is an optional extra field in
- * data/trades.json (not in lib/types.ts yet): it keeps manual classification across imports.
- */
-export type AdminTrade = Trade & { overrides?: Overrides };
+/** A stored trade, as the admin handles it (`overrides` keeps manual classification across imports). */
+export type AdminTrade = Trade;
 
 const pad = (n: number) => String(n).padStart(2, "0");
 

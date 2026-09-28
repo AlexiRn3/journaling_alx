@@ -132,7 +132,7 @@ export function Calendar(p: Props) {
                 </th>
               </tr>
             </thead>
-            <tbody key={month} className={s.body}>
+            <tbody>
               {weeks.map((week) => {
                 const wk = week.map((d) => byDay.get(d)).filter((d): d is DaySummary => !!d);
                 const wkNet = wk.reduce((a, d) => a + d.net, 0);
@@ -196,9 +196,12 @@ export function Calendar(p: Props) {
                           <span className={s.dt}>{plural(wkCount, "trade")}</span>
                         </>
                       ) : (
-                        <span className={`mono ${s.dash}`} aria-label="No trades">
-                          —
-                        </span>
+                        <>
+                          <span className={`mono ${s.dash}`} aria-hidden="true">
+                            —
+                          </span>
+                          <span className="sr-only">No trades</span>
+                        </>
                       )}
                     </td>
                   </tr>

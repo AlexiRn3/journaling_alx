@@ -129,11 +129,13 @@ export function JournalView({ trades, slugs, linkWindow, query }: Props & { quer
   const sub =
     inPeriod.length === 0
       ? `No trades in ${PERIOD_LABEL[period]}`
-      : view === "calendar"
-        ? `${count} · ${plural(sessions, "session")}`
-        : view === "cards"
-          ? `${count} · newest first`
-          : `${count} · read like a logbook`;
+      : shown.length === 0
+        ? count
+        : view === "calendar"
+          ? `${count} · ${plural(sessions, "session")}`
+          : view === "cards"
+            ? `${count} · newest first`
+            : `${count} · read like a logbook`;
 
   const changeView = (v: View) => swap(() => setView(v));
   const clearFilters = () => swap(() => setFilters(NO_FILTERS));

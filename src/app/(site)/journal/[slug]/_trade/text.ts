@@ -1,9 +1,8 @@
 // Wording of the trade sheet: labels, notes and short sentences built from the data.
 // Pure functions, shared by the server page (metadata) and the client view.
-import { ACCOUNT_USD, tradeR, tradeValue } from "@/lib/calc";
+import { ACCOUNT_USD, isEstimatedStop, tradeR, tradeValue } from "@/lib/calc";
 import { dayKey, dowLong, fmtDateFull, fmtDayMonth, fmtDayShort, fmtTime, secondsBetween, weekday } from "@/lib/dates";
 import { ENTRY_ICON, fmtGap, fmtHold, fmtPrice, fmtValue } from "@/lib/format";
-import { isEstimatedStop } from "@/components/trade/MiniSchema";
 import type { Exit, Result, Trade, Unit } from "@/lib/types";
 
 /** Two spellings of the same label: desktop and mobile (390 px). */
@@ -121,11 +120,11 @@ export function executionNote(t: Trade, linked: Trade | null, avgStopPts: number
   return null;
 }
 
-/** MAE / MFE cell: "Not tracked", or "3.25 / 12.50 pts". */
+/** MAE / MFE cell, in points: "3.25 / 12.50". null = not tracked. */
 export function maeMfe(t: Trade): string | null {
   if (t.mae === null && t.mfe === null) return null;
   const f = (v: number | null) => (v === null ? "–" : fmtPrice(v));
-  return `${f(t.mae)} / ${f(t.mfe)} pts`;
+  return `${f(t.mae)} / ${f(t.mfe)}`;
 }
 
 /* ------------------------------------------------------------------- exits */

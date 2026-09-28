@@ -49,7 +49,9 @@
   box-shadow: 0 0 0 3px var(--paper);
   transition: transform var(--fast) var(--ease);
 }
-.ent:hover .node { transform: scale(1.25); }
+@media (hover: hover) {
+  .ent:hover .node { transform: scale(1.25); }
+}
 
 .time { display: flex; flex-direction: column; gap: 4px; line-height: 1.3; }
 .t1 { font-size: 18px; }
@@ -80,8 +82,10 @@
 /* The whole entry opens the trade. */
 .open { align-self: flex-start; margin-top: 4px; font-size: 15px; }
 .open::after { content: ""; position: absolute; inset: 0; }
-.ent:hover .title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
-.ent:hover .open { color: var(--ink); }
+@media (hover: hover) {
+  .ent:hover .title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  .ent:hover .open { color: var(--ink); }
+}
 .ent:active .text { opacity: .8; }
 
 .thumb { flex-shrink: 0; width: 240px; height: 144px; }
@@ -108,6 +112,7 @@
   .node { left: -28px; top: 22px; width: 10px; height: 10px; border-radius: 5px; }
   .t1 { font-size: 15px; }
   .t2 { font-size: 11px; }
+  .titleRow { flex-direction: column; align-items: flex-start; gap: 2px; }
   .title { font-size: 19px; }
   .val { font-size: 15px; }
   .follow, .meta { font-size: 11px; }

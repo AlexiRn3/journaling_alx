@@ -1,0 +1,102 @@
+/* /admin: title, import card, all trades. */
+
+.head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 20px; }
+.title { font-size: 64px; font-weight: 500; letter-spacing: -.02em; line-height: 1; }
+.summary { font-size: 13px; color: var(--pencil); }
+@media (max-width: 719px) {
+  .title { font-size: 44px; }
+}
+
+/* ------------------------------------------------------------- all trades */
+
+.list { margin-top: 56px; }
+.listHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding-bottom: 16px;
+}
+.h2 { font-size: 32px; font-weight: 500; }
+.empty { padding: 28px 0; font-size: 17px; color: var(--pencil); border-bottom: 1px solid var(--rule2); }
+
+.table { font-family: var(--monof); font-variant-numeric: tabular-nums; font-size: 13px; }
+.tr {
+  display: grid;
+  grid-template-columns: 146px 136px 56px 44px 124px 68px 156px minmax(0, 1fr) 112px;
+  column-gap: 6px;
+  align-items: center;
+  min-height: 54px;
+  border-bottom: 1px solid var(--rule2);
+  transition: background-color var(--fast) var(--ease);
+}
+.tr:not(.th):hover { background: color-mix(in srgb, var(--sheet) 70%, transparent); }
+.th {
+  min-height: 36px;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--pencil);
+  border-bottom-color: var(--ink);
+}
+.day { white-space: nowrap; }
+.miss { display: flex; flex-wrap: wrap; gap: 6px; }
+.action { justify-self: end; font-family: var(--serif); font-size: 16px; white-space: nowrap; }
+.unitMobile { display: none; }
+
+.pill {
+  display: inline-block;
+  font-family: var(--monof);
+  font-size: 11px;
+  line-height: 1.4;
+  padding: 3px 8px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--pencil);
+  white-space: nowrap;
+}
+.pub { border-color: var(--gain); color: var(--gain); }
+.missing { border-color: var(--loss); color: var(--loss); }
+
+/* Laptop */
+@media (max-width: 1180px) {
+  .tr { grid-template-columns: 136px 128px 48px 34px 116px 60px 146px minmax(0, 1fr) 100px; }
+}
+
+/* Tablet: each trade on three lines. */
+@media (max-width: 960px) {
+  .th { display: none; }
+  .tr {
+    grid-template-columns: auto auto auto minmax(0, 1fr) auto auto;
+    grid-template-areas:
+      "opened opened opened . net r"
+      "day    side   qty    . .   ."
+      "status miss   miss   miss miss action";
+    column-gap: 16px;
+    row-gap: 8px;
+    padding: 14px 0;
+  }
+  .opened { grid-area: opened; font-size: 14px; }
+  .net { grid-area: net; justify-self: end; font-size: 14px; }
+  .r { grid-area: r; justify-self: end; min-width: 64px; text-align: right; font-size: 14px; }
+  .day { grid-area: day; color: var(--pencil); }
+  .side { grid-area: side; color: var(--pencil); }
+  .qty { grid-area: qty; color: var(--pencil); }
+  .status { grid-area: status; }
+  .miss { grid-area: miss; }
+  .action { grid-area: action; }
+  .unitMobile { display: inline; }
+}
+@media (max-width: 560px) {
+  .tr {
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "opened opened opened net"
+      "day    day    .      r"
+      "status miss   miss   miss"
+      "action action action action";
+  }
+  .side, .qty { display: none; }
+  .action { justify-self: start; }
+}

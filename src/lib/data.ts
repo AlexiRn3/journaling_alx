@@ -7,7 +7,8 @@ import path from "node:path";
 import { sortByOpen, tradeSlugs } from "./calc";
 import type { Strategy, Trade, TradesFile } from "./types";
 
-const DATA_DIR = path.join(process.cwd(), "data");
+// ALX_DATA_DIR lets a dev server work on a copy of the data (tests of the admin).
+const DATA_DIR = process.env.ALX_DATA_DIR || path.join(process.cwd(), "data");
 export const TRADES_FILE = path.join(DATA_DIR, "trades.json");
 export const STRATEGY_FILE = path.join(DATA_DIR, "strategy.json");
 

@@ -24,7 +24,13 @@ interface Props {
   className?: string;
 }
 
-function niceStep(span: number, count: number): number {
+/** Plot margins, exported so companion charts (Stats drawdown) line up with the dots. */
+export const CHART_PAD = {
+  full: { l: 64, r: 20, t: 20, b: 40 },
+  compact: { l: 34, r: 8, t: 12, b: 26 },
+} as const;
+
+export function niceStep(span: number, count: number): number {
   const raw = span / count;
   const mag = 10 ** Math.floor(Math.log10(raw));
   const n = raw / mag;
@@ -64,10 +70,11 @@ export function EquityChart({
   const n = pts.length - 1;
 
   const g = useMemo(() => {
-    const padL = compact ? 34 : 64;
-    const padR = compact ? 8 : 20;
-    const padT = compact ? 12 : 20;
-    const padB = compact ? 26 : 40;
+    const pad0 = CHART_PAD[compact ? "compact" : "full"];
+    const padL = pad0.l;
+    const padR = pad0.r;
+    const padT = pad0.t;
+    const padB = pad0.b;
     const plotW = Math.max(1, W - padL - padR);
     const plotH = H - padT - padB;
     const cums = pts.map((p) => p.cum);

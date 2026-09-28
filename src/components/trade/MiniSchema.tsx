@@ -1,11 +1,8 @@
 // Sketch for a trade without screenshot: entry, stop (and target), and the path to the exit.
+import { isEstimatedStop } from "@/lib/calc";
 import { fmtPrice, resultMark } from "@/lib/format";
 import type { Trade } from "@/lib/types";
 import s from "./MiniSchema.module.css";
-
-export function isEstimatedStop(t: Trade): boolean {
-  return t.stop.source === "estimated_avg_loser_distance";
-}
 
 export function MiniSchema({ trade: t }: { trade: Trade }) {
   const target = t.target && Math.abs(t.target.price - t.exit) > 0.01 ? t.target.price : null;

@@ -151,12 +151,18 @@ export function fmtHold(sec: number): string {
   return `${h} h ${String(min % 60).padStart(2, "0")}`;
 }
 
-/** Gap before a linked trade: "34 s", "1 min 29 s". */
+/** Gap between two trades: "34 s", "1 min 29 s", "22 min", "7 h 38 min", "2 d 4 h". */
 export function fmtGap(sec: number): string {
+  sec = Math.round(sec);
   if (sec < 60) return `${sec} s`;
   const m = Math.floor(sec / 60);
   const s = sec % 60;
-  return s ? `${m} min ${s} s` : `${m} min`;
+  if (m < 10) return s ? `${m} min ${s} s` : `${m} min`;
+  if (m < 60) return `${m} min`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return m % 60 ? `${h} h ${m % 60} min` : `${h} h`;
+  const d = Math.floor(h / 24);
+  return h % 24 ? `${d} d ${h % 24} h` : `${d} d`;
 }
 
 export const ENTRY_LABEL: Record<Trade["entry_type"], string> = {

@@ -5,8 +5,8 @@
 // so the risk always sits on the left of the entry and the gain on its right.
 // Labels are placed by a small search that keeps them apart at any width (mono font: known widths).
 
+import { isEstimatedStop } from "@/lib/calc";
 import { useLayoutEffect, useRef, useState } from "react";
-import { isEstimatedStop } from "@/components/trade/MiniSchema";
 import { fmtInt, fmtPrice, fmtValue } from "@/lib/format";
 import type { Trade } from "@/lib/types";
 import { sideSign } from "./text";

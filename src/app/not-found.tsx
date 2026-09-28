@@ -1,6 +1,9 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageTransition } from "@/components/site/transitions";
+
+export const metadata: Metadata = { title: "Page not found" };
 
 export default function NotFound() {
   return (

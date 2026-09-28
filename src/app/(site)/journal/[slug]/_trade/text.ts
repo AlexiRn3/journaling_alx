@@ -1,9 +1,8 @@
 // Wording of the trade sheet: labels, notes and short sentences built from the data.
 // Pure functions, shared by the server page (metadata) and the client view.
-import { ACCOUNT_USD, tradeR, tradeValue } from "@/lib/calc";
+import { ACCOUNT_USD, isEstimatedStop, tradeR, tradeValue } from "@/lib/calc";
 import { dayKey, dowLong, fmtDateFull, fmtDayMonth, fmtDayShort, fmtTime, secondsBetween, weekday } from "@/lib/dates";
 import { ENTRY_ICON, fmtGap, fmtHold, fmtPrice, fmtValue } from "@/lib/format";
-import { isEstimatedStop } from "@/components/trade/MiniSchema";
 import type { Exit, Result, Trade, Unit } from "@/lib/types";
 
 /** Two spellings of the same label: desktop and mobile (390 px). */

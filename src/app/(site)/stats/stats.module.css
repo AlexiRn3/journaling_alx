@@ -216,7 +216,7 @@
 .tbl { display: flex; flex-direction: column; }
 .tr {
   display: grid;
-  grid-template-columns: 150px minmax(120px, 364px) 80px 90px minmax(max-content, 1fr);
+  grid-template-columns: 150px minmax(120px, 364px) 80px 90px minmax(120px, 1fr); /* same tracks in every row */
   align-items: center;
   min-height: 46px;
   border-bottom: 1px solid var(--rule2);
@@ -342,7 +342,7 @@
   .secDist { gap: 10px; }
 
   .sh { gap: 10px; padding-bottom: 10px; }
-  .sh h2 { font-size: 24px; }
+  .sh h2 { font-size: 24px; letter-spacing: 0; }
   .num { font-size: 11px; }
 
   .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; }
